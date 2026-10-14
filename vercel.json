@@ -4,7 +4,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/(.*)\\.(mjs|css|woff2|woff|ttf|otf|eot|webp|avif|png|jpg|jpeg|gif|svg|ico|bmp|tiff|mp4|webm|mov|m4v|mp3|wav|ogg|aac|m4a|flac|glb|gltf|usdz|lottie)",
+      "source": "/(.*)\\.(mjs|css|woff2|woff|ttf|otf|eot|webp|avif|png|jpg|jpeg|gif|svg|ico|bmp|tiff|mp4|webm|mov|m4v|mp3|wav|ogg|aac|m4a|flac|glb|gltf|usdz|lottie|riv)",
       "headers": [
         {
           "key": "Cache-Control",

@@ -5,243 +5,136 @@
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Page Not Found | Framer</title>
 <style>
+    /* Mirrors FramerStudio's empty state styles, see static/static.go. */
+    @font-face {
+      font-display: swap;
+      font-family: "Inter Variable UI";
+      font-style: normal;
+      font-weight: 100 900;
+      src: url("https://app.framerstatic.com/InterVariable.latin-5EYCRJRY.woff2")
+        format("woff2");
+    }
+
     :root {
-      --color-background: #ffffff;
-      --color-primary: #333;
-      --color-secondary: #888;
-      --color-tint: #0099ff;
-      --font-size-body: 12px;
-      --font-size-title: 12px;
+      --background: #fff;
+      --text: #666;
+      --text-title: #222;
+      --button-background: #f3f3f3;
+      --button-background-hover: #eee;
+      --button-text: #333;
+      --selection-background: rgba(0, 0, 0, 0.1);
+      --selection-text: #000;
     }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/hyOgCu0Xnghbimh0pE8QTvtt2AU.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-        U+FE2E-FE2F;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/NeGmSOXrPBfEFIy5YZeHq17LEDA.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/oYaAX5himiTPYuN8vLWnqBbfD2s.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+1F00-1FFF;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/lEJLP4R0yuCaMCjSXYHtJw72M.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+0370-03FF;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/cRJyLNuTJR5jbyKzGi33wU9cqIQ.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/1ZFS7N918ojhhd0nQWdj3jz4w.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-        U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
-        U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/A0Wcc7NgXMjUuFdquHDrIZpzZw0.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 600;
-      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169,
-        U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/5A3Ce6C9YYmCjpQx9M4inSaKU.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-        U+FE2E-FE2F;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/Qx95Xyt0Ka3SGhinnbXIGpEIyP4.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/6mJuEAguuIuMog10gGvH5d3cl8.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+1F00-1FFF;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/xYYWaj7wCU5zSQH0eXvSaS19wo.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+0370-03FF;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/otTaNuNpVK4RbdlT7zDDdKvQBA.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/d3tHnaQIAeqiE5hGcRw4mmgWYU.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-        U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
-        U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: Inter;
-      src: url(https://framerusercontent.com/assets/DolVirEGb34pEXEp8t8FQBSK4.woff2);
-      font-display: swap;
-      font-style: normal;
-      font-weight: 500;
-      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169,
-        U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-    }
-    @font-face {
-      font-family: Inter Placeholder;
-      src: local("Arial");
-      ascent-override: 89.79%;
-      descent-override: 22.36%;
-      line-gap-override: 0%;
-      size-adjust: 107.89%;
-    }
+
     @media (prefers-color-scheme: dark) {
       :root {
-        --color-background: #000000;
-        --color-primary: #fff;
-        --color-secondary: #888;
+        --background: #111;
+        --text: #999;
+        --text-title: #fff;
+        --button-background: #1f1f1f;
+        --button-background-hover: #262626;
+        --button-text: #fff;
+        --selection-background: rgba(255, 255, 255, 0.15);
+        --selection-text: #fff;
+        color-scheme: dark;
       }
     }
 
-    html,
-    body {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      min-height: 100vh;
-    }
-
     html {
-      box-sizing: border-box;
-      font-feature-settings: "liga", "clig";
-      font-variant-ligatures: common-ligatures;
-      text-rendering: optimizeLegibility;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--color-primary);
-      font-size: var(--font-size-body);
-      background: var(--color-background);
-    }
-
-    a {
-      text-decoration: none;
-      vertical-align: baseline;
-    }
-
-    svg {
-      vertical-align: middle;
-    }
-
-    main {
       box-sizing: border-box;
-      font-family: "Inter", sans-serif;
-      font-weight: 500;
-      max-width: 240px;
-      width: 100%;
-      display: flex;
-      align-items: center;
+      padding: 24px;
+      min-height: 100%;
       flex-direction: column;
-      padding: 0 20px;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      background-color: var(--background);
+      color: var(--text);
+      font-family:
+        "Inter Variable UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      font-feature-settings:
+        "cv01" 1,
+        "cv05" 1,
+        "cv09" 1,
+        "cv11" 1;
+    }
+
+    ::selection {
+      background-color: var(--selection-background);
+      color: var(--selection-text);
+    }
+
+    h1 {
+      max-width: 200px;
+      margin: 15px 0 10px;
+      text-align: center;
+      text-wrap: balance;
+      color: var(--text-title);
+      font-size: 12px;
+      font-weight: 550;
+      line-height: 1;
+    }
+
+    p {
+      max-width: 200px;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 450;
+      letter-spacing: 0;
+      line-height: 1.4;
+      text-align: center;
       text-wrap: balance;
     }
 
-    .framer-logo {
-      color: var(--color-primary);
-      margin-bottom: 20px;
-    }
-
-    .title {
-      margin: 0 0 10px 0;
-      font-size: var(--font-size-title);
-      color: var(--color-primary);
-
-      text-align: center;
-    }
-
-    .description {
-      color: var(--color-secondary);
-      margin-bottom: 20px;
-      line-height: 1.5em;
-      text-align: center;
-    }
-
-    .btn--back {
-      background-color: var(--color-tint);
-      color: #ffffff;
-      padding-left: 8px;
-      padding-right: 8px;
-      border-radius: 8px;
-      line-height: 30px;
+    a {
+      display: inline-flex;
       height: 30px;
+      box-sizing: border-box;
+      padding: 0 10px;
+      margin-top: 15px;
+      background-color: var(--button-background);
+      border-radius: 8px;
+      color: var(--button-text);
+      font-size: 12px;
+      font-weight: 450;
+      letter-spacing: 0;
+      line-height: 1;
+      place-content: center;
+      place-items: center;
+      text-decoration: none;
+      transition: background-color 120ms ease;
     }
 
-    .btn--back:hover {
-      opacity: 0.75;
-      transition: all 0.2s;
+    a:focus-visible {
+      outline: 2px solid var(--text-title);
+      outline-offset: 2px;
+    }
+
+    a:hover {
+      background-color: var(--button-background-hover);
     }
   </style>
-<main>
-<div class="logo">
-<svg class="framer-logo" fill="currentColor" height="21" width="14" xmlns="http://www.w3.org/2000/svg">
-<path d="M 14 0 L 14 7 L 7 7 L 0 0 Z M 14 14 L 7 14 L 7 21 L 0 14 L 0 7 L 7 7 Z"></path>
+<body>
+<svg fill="currentColor" height="21" overflow="visible" style="color: var(--text-title)" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 0v7H7L0 0ZM0 7h7l7 7H7v7l-7-7Z"></path>
 </svg>
-</div>
-<h1 class="title">Page Not Found</h1>
-<div class="description">
-      The page you are looking for does not exist or may have been moved.
-    </div>
-<a class="btn--back" href="/" role="button">Back to Home</a>
-</main>
+<h1>Page not found</h1>
+<p>This page doesn’t exist or has moved.</p>
+<a href="/">Back to home</a>
+</body>
 </html>
