@@ -592,7 +592,6 @@ education_body = f'''
 {metrics((arrow("8", "1"), "changes to replace a teacher across 8 courses", ""),
          (arrow("12", "1"), "copies of the same book a teacher maintains", ""),
          ("1", "version of each exam, reused across every course", ""))}
-{figs(("education-tabs.jpg", "<b>One Education group, three tabs.</b> Subject Areas, Book Libraries and Exam Collections share the same layout, roles and behaviour."), cls="one")}
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
 <p class="big">The best design work on this project happened before any screen: deciding where content lives.</p>
 <p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
@@ -600,7 +599,7 @@ education_body = f'''
 
 CASES = [
     ("education", "Education System", "How subjects, books and exams became one connected system on Aladia.",
-     "cover-education.jpg", "books-03.jpg",
+     "cover-education.jpg", "education-tabs.jpg",
      "Before I designed subjects, books or exams one by one, I had to solve the problem they shared: all teaching content was trapped inside courses. I designed one structure for all three, shared libraries under Education, with the same rules, linked into courses and lectures.",
      [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Information architecture<br>System design"), ("Outcome", "3 libraries, 1 structure")],
      education_body, ("exam", "Exam Module", "Live proctoring UX · Grading system design", "cover-exam.jpg")),
