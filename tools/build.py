@@ -628,6 +628,7 @@ def home():
     steps = "".join(
         f'<div class="step"><div class="step-top"><span>{k}</span>{dots()}</div><div><h3>{t}</h3><p>{d}</p></div></div>'
         for k, t, d in STEPS)
+    works_fill = '<div class="work work-fill" aria-hidden="true"></div>' if len(WORKS) % 2 else ""
     works = "".join(
         f'''<div class="work {side}"><a href="#{slug}">
       <div class="work-media"><img src="img/{img}" alt="{title} case study" loading="lazy"></div>
@@ -682,7 +683,7 @@ def home():
       <div><span class="eyebrow">Selected works <span class="count">(07)</span></span><h2>Complex products, made simple to use</h2></div>
       <p>Every project here started with the same question: <b>how do you make something complex feel simple?</b></p>
     </div>
-    <div class="works">{works}</div>
+    <div class="works">{works}{works_fill}</div>
 
     <div class="rule"></div>
     <div class="testi">
