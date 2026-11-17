@@ -233,6 +233,7 @@ exam_body = f'''
 <p>Teachers write exams in the Document Builder, the same block editor used for books. Each question can be one of eight types, from multiple choice and match-the-pairs to essays and file uploads, and saved questions can be reused in any exam.</p>
 <p>AI sits on each question as an <strong>Ask AI</strong> action, and a teacher can ask it to draft an exam for a subject. The teacher stays the author: AI suggests, the teacher edits and decides.</p>
 {proto("Building questions in the exam builder", "Click through the exam builder: adding a question, choosing its type and writing the options.", "proto-build-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=11-7129&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A7129&show-proto-sidebar=1")}
+{proto("Writing questions with AI, on mobile", "Click through the exam builder on a phone: start an exam, open Aladia AI, and generate questions from the platform’s books or create them yourself.", "proto-exam-mobile.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=57-96937&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=57%3A96937&show-proto-sidebar=1", tag="MOBILE PROTOTYPE")}
 
 {h2("04 — Decision 2", "The course decides the grade, not the exam")}
 <p>Every institution grades differently. An Italian liceo grades from 18 to 30, a school might use A+ to F, and a corporate course may only need pass or fail. And because exams live outside courses, the same exam can appear in all of them.</p>
@@ -448,6 +449,7 @@ books_body = f'''
 {figs(("books-12.jpg", "<b>Books in the lecture.</b> Each book shows the page ranges assigned for this lesson."),
       ("books-13.jpg", "<b>Book details.</b> Description, language, length and its companion volumes."),
       ("books-14.jpg", "<b>The reader.</b> Opens at the assigned pages, with a banner saying who assigned them."), cls="three")}
+{figs(("books-mobile.jpg", "<b>Book details on mobile.</b> The cover, subject and level, key facts, Start Reading, and the companion volume right below."), cls="one")}
 
 {h2("06 — The result", "A new part of the platform")}
 {research("Unmoderated Maze tests on the Aladia platform · 50 participants across 4 flows", [("Book upload usability score", "62", "81")])}
