@@ -588,8 +588,6 @@ def footer():
         <a href="mailto:donyayarahmadi@outlook.com" aria-label="Email">{ICON_MAIL}</a>
       </div>
     </div>
-    <div class="footer-links"><small>EMAIL</small>donyayarahmadi@outlook.com</div>
-    <div class="footer-links"><small>ELSEWHERE</small><a href="https://www.linkedin.com/in/donya-yarahmadi-a0b804235/" target="_blank" rel="noopener">LinkedIn ↗</a><br><a href="https://calendly.com/donyarahmadi/30min" target="_blank" rel="noopener">Book a call ↗</a></div>
   </div>
   <div class="legal"><span>© 2026 Donya Yarahmadi</span><span>Product &amp; UX Design</span></div>
 </footer>'''
