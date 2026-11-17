@@ -187,7 +187,7 @@ def case(slug, title, sub, cover, overview_img, overview, meta, body, nxt):
       <div class="shot reveal"><img src="img/{overview_img}" alt="{title} main screen"></div>
       <div class="side">
         <span class="eyebrow">Overview</span>
-        <p class="reveal">{overview}</p>
+        <p class="reveal" data-words>{overview}</p>
         <dl class="meta reveal d1">{meta_html}</dl>
       </div>
     </div>
@@ -316,7 +316,7 @@ exam_body = f'''
          ("40", "students supervised by one teacher in one view", ""))}
 <p>A complete exam system, from creation to live proctoring, grading and rechecks, and the most structurally complex part of the platform.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big">It all traces back to one early decision: keeping the exam separate from the course.</p>
+<p class="big" data-words>It all traces back to one early decision: keeping the exam separate from the course.</p>
 <p>That’s what lets the same exam run under completely different grading rules, and what keeps performance comparable everywhere. Almost every detail exists because a simpler version broke down against a real edge case during design. The happy path was never the hard part.</p></div>
 '''
 
@@ -385,7 +385,7 @@ subjects_body = f'''
 <li><strong>Teacher calendar:</strong> from every lecture of the course to only their own lessons.</li>
 </ul>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big">The most useful change a designer can make isn’t always on the screen. Sometimes it’s the structure underneath.</p>
+<p class="big" data-words>The most useful change a designer can make isn’t always on the screen. Sometimes it’s the structure underneath.</p>
 <p>Teachers asked for one thing: to find their own lectures. Everything else was friction I uncovered by mapping the full workflow, from subject to teacher to book to exam to course, and designing the system to absorb it.</p></div>
 '''
 
@@ -461,7 +461,7 @@ books_body = f'''
          (arrow("12", "1"), "copies of the same book a teacher maintains", ""))}
 <p>The Book Library shipped as a completely new part of the platform, connected to courses, lectures, subjects, calendar events and live sessions.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big">For something new, the concept has to come before the interface.</p>
+<p class="big" data-words>For something new, the concept has to come before the interface.</p>
 <p>I had to create the mental model, the navigation and the permissions at the same time. Once the structure was clear, every screen could follow from it. And a good default does more than a good form: one optional ISBN field saved more effort than any layout change could have.</p></div>
 '''
 
@@ -537,7 +537,7 @@ connecta_body = f'''
 <p><strong>Constraints:</strong> I was the only designer on the product, and the setup wizard had to ship before a trade-fair deadline, so I prioritised the paths new customers would hit first.</p>
 <p>Studio became easier to navigate and easier to read, even for flows built months earlier.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big">Making a technical product simple doesn’t mean removing its power. It means deciding who needs that power, and when.</p>
+<p class="big" data-words>Making a technical product simple doesn’t mean removing its power. It means deciding who needs that power, and when.</p>
 <p>Across every part of this project, the same principle held: show the simple path by default, and keep the complexity one click away.</p></div>
 '''
 
@@ -590,7 +590,7 @@ education_body = f'''
          (arrow("12", "1"), "copies of the same book a teacher maintains", ""),
          ("1", "version of each exam, reused across every course", ""))}
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big">The best design work on this project happened before any screen: deciding where content lives.</p>
+<p class="big" data-words>The best design work on this project happened before any screen: deciding where content lives.</p>
 <p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
 '''
 
@@ -737,9 +737,8 @@ def home():
     <div class="hero">
       <div class="hero-sticky">
         <h1 class="hero-title"><span class="line"><span>Product</span></span><span class="line"><span>Designer</span></span></h1>
-        <div class="portrait-stage"><div class="portrait" style="transform:rotateY(180deg)">
+        <div class="portrait-stage"><div class="portrait">
           <img class="front" src="img/portrait-color.jpg" alt="Donya Yarahmadi">
-          <img class="back" src="img/portrait-bw.jpg" alt="">
         </div></div>
         <div class="hero-hint">SCROLL</div>
       </div>

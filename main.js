@@ -83,10 +83,21 @@
   function onScroll() {
     ticking = false;
     if (reduce) return;
+
+    // Any [data-words] text: words fade in smoothly, one after another, as it scrolls through.
+    var vh = window.innerHeight;
+    $$("[data-words]").forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (!r.height) return;
+      var ap = clamp((vh * 0.9 - r.top) / (r.height + vh * 0.4), 0, 1);
+      var words = $$(".w", el), pos = ap * (words.length + 3);
+      words.forEach(function (w, i) { w.style.opacity = String(0.18 + 0.82 * clamp((pos - i) / 3, 0, 1)); });
+    });
+
     var home = $("#view-home");
     if (!home || !home.classList.contains("on")) return;
 
-    // Hero: title drifts up and fades, portrait flips from black & white to colour and grows.
+    // Hero: title drifts up and fades, portrait grows.
     var hero = $(".hero");
     if (hero) {
       var p = progressOf(hero);
@@ -96,22 +107,15 @@
       var portrait = $(".portrait");
       var stage = $(".portrait-stage");
       var e = 1 - Math.pow(1 - p, 2);
-      var rotY = 180 - 180 * clamp(p / 0.6, 0, 1);
       var scale = 1 + e * 0.85;
       var base = window.innerWidth < 761 ? 46 : 66, lift = window.innerWidth < 761 ? 22 : 46;
       stage.style.top = (base - lift * e) + "vh";
-      portrait.style.transform = "rotateY(" + rotY + "deg) scale(" + scale + ")";
+      portrait.style.transform = "scale(" + scale + ")";
       $(".hero-hint").style.opacity = String(1 - clamp(p / 0.15, 0, 1));
     }
 
     // About: words light up as the paragraph passes through the viewport.
-    var about = $(".about-text");
-    if (about) {
-      var r = about.getBoundingClientRect(), vh = window.innerHeight;
-      var ap = clamp((vh * 0.85 - r.top) / (r.height + vh * 0.35), 0, 1);
-      var words = $$(".w", about), n = Math.round(ap * words.length);
-      words.forEach(function (w, i) { w.classList.toggle("lit", i < n); });
-    }
+
 
     // "Case  studies": the two words slide in from the edges and meet in the middle.
     var split = $(".cs-split");

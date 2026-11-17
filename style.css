@@ -614,3 +614,6 @@ body:not(.is-case) .footer { margin-top: 0; }
 .ia-col.focus .lib{background:var(--accent);border-color:var(--accent);color:#000}
 .ia-col.focus .lib small{color:#3d3300}
 .ia-link{display:inline-block;margin-left:4px;color:var(--ink);font-weight:600;border-bottom:1px solid var(--ink)}
+/* smooth word highlight on scroll (about, overviews, learned) */
+[data-words] .w { color: var(--ink) !important; opacity: .18; transition: opacity .35s linear; }
+.portrait .back { display: none; }
