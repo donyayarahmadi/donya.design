@@ -20,7 +20,7 @@
   });
 
   /* ---------- Hash routing: #exam, #subjects, #books, #connecta ---------- */
-  var views = { education: 1, exam: 1, subjects: 1, books: 1, connecta: 1 };
+  var views = { "design-system": 1, education: 1, exam: 1, subjects: 1, books: 1, connecta: 1 };
   function route() {
     var h = (location.hash || "").replace("#", "");
     var name = views[h] ? h : "home";

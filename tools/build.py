@@ -594,6 +594,56 @@ education_body = f'''
 <p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
 '''
 
+# ---------------------------------------------------------------- DESIGN SYSTEM
+ds_body = f'''
+{process(("Problem", "A design kit existed, but the platform had many domains, and Figma files and the product had drifted apart."),
+         ("Goal", "Decisions made once and reused everywhere: change a value in one place, and the whole product follows."),
+         ("Core", "Tier 1: the raw palette, over 400 variables with no meaning yet."),
+         ("Themes", "Tier 2: names by purpose, with Light and Dark modes."),
+         ("Breakpoints", "Desktop, Tablet and Mobile modes, so components adapt without being redrawn."),
+         ("Components", "Atoms, molecules and organisms, built on the variables, then a branching workflow for the team."))}
+{h2("01 — The problem", "One kit, many domains, no single truth")}
+<p>Aladia already had a design kit. But the platform was big, with many domains, and over time the Figma files and the live product drifted apart. <strong>Teams were not aligned</strong> on which version was right.</p>
+<div class="callout">The goal: <b>one source of truth</b>, so we could design faster and stay consistent.</div>
+<ul>
+<li><strong>Decisions made once, reused everywhere.</strong> Change a value in one place, and the whole product follows.</li>
+<li><strong>Built from scratch in Figma,</strong> variables first, then components built on top of them.</li>
+</ul>
+
+{h2("02 — Structure", "Four layers, each built on the one before")}
+{chain("STRUCTURE", [("Core", "Tier 1 · raw values, no meaning yet"), ("Themes", "Tier 2 · names by purpose, Light and Dark"), ("Breakpoints", "Desktop, Tablet and Mobile modes"), ("Components", "atoms, molecules, organisms")], "Each layer only uses the one before it, so a change at the bottom flows all the way up.")}
+
+{h2("03 — Tier 1 · Core", "The raw palette")}
+<p>Over 400 variables for colour, typography, radius, spacing, shadows and more. None of them has a meaning yet: they are just the values the rest of the system is allowed to use.</p>
+{figs(("ds-core.jpg", "<b>Core Tier 1.</b> Primitives for radius, colour and typography, and the variable collections in Figma."), cls="one")}
+
+{h2("04 — Tier 2 · Themes", "Names by purpose")}
+<p>Themes give each value a job, like a primary background or a hover state. The same token points to a different core value in Light and in Dark, so components never need to know which theme they are in.</p>
+{figs(("ds-themes.jpg", "<b>Themes Tier 2.</b> Radius and content colours named by purpose, with Light and Dark values side by side."), cls="one")}
+
+{h2("05 — Breakpoints", "One component, three screen sizes")}
+<p>Breakpoint modes for Desktop, Tablet and Mobile change values like spacing, sizes and visibility. A component adapts by switching mode, without being redrawn for each screen. This is what made every screen on the platform responsive, with mobile versions designed too.</p>
+{figs(("ds-breakpoints.jpg", "<b>Core Breakpoints.</b> Responsive values per mode: Desktop, Tablet and Mobile."), cls="one")}
+
+{h2("06 — Components", "Built in atomic levels, with variants and states")}
+<ul>
+<li><strong>Atoms:</strong> foundation pieces with one job each, like dividers, logos, icons and images.</li>
+<li><strong>Molecules:</strong> small interactive parts, like buttons, dropdowns, input fields and chips.</li>
+<li><strong>Organisms:</strong> complex, complete sections, like tables, breadcrumbs, cards and pop-ups.</li>
+</ul>
+{figs(("ds-atomic.jpg", "<b>Atomic levels.</b> Atoms, molecules and organisms."),
+      ("ds-components.jpg", "<b>Variants and states.</b> Icons, buttons, input fields and lists, each with their variants."))}
+
+{h2("07 — Workflow", "How the team worked with it")}
+{chain("WORKFLOW", [("Domain files", "one Figma file per domain, with a local Components page"), ("Branch per task", "a Figma branch named after the task, then design"), ("Approve and merge", "after approval the branch is merged")], "The system stays clean, because nothing reaches it without review.")}
+
+{h2("08 — The result", "One source of truth for the whole platform")}
+{metrics(("735", "design tokens across three tiers", ""),
+         ("450+", "components built on the tokens", ""),
+         ("3", "breakpoint modes, plus Light and Dark themes", ""))}
+<p>Every web screen on Aladia was responsive and had a mobile version, built from the same tokens and components.</p>
+'''
+
 CASES = [
     ("education", "Education System", "How subjects, books and exams became one connected system on Aladia.",
      "cover-education.jpg", "education-tabs.jpg",
@@ -614,7 +664,12 @@ CASES = [
      "cover-books.jpg", "books-01.jpg",
      "Aladia had no concept of a book. Teachers could only attach files to individual lectures, one at a time. I designed a Book Library from zero: one place to upload, organise and reuse books across courses, lectures, subjects and live sessions.",
      [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Content library design<br>In-lecture book reader"), ("Outcome", "Upload usability 62 → 81")],
-     books_body, ("connecta", "Connecta", "Role-based dashboards · Setup wizard design", "cover-connecta.jpg")),
+     books_body, ("design-system", "Design System", "Design tokens · Component library", "cover-design-system.jpg")),
+    ("design-system", "Design System", "Structure, modes and workflow of the design system I built from scratch.",
+     "cover-design-system.jpg", "ds-atomic.jpg",
+     "Aladia had a design kit, but the platform had many domains, and Figma files and the product had drifted apart. I built a design system from scratch in Figma, variables first: a core palette, themes, breakpoint modes and components on top, plus a branching workflow so the team could use it without breaking it.",
+     [("Role", "Product Designer"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Tool", "Figma variables & components"), ("Focus", "Design tokens<br>Component library"), ("Outcome", "735 tokens, 450+ components")],
+     ds_body, ("connecta", "Connecta", "Role-based dashboards · Setup wizard design", "cover-connecta.jpg")),
     ("connecta", "Connecta", "Making complex data integrations simple for people who don’t write code.",
      "cover-connecta.jpg", "connecta-01.jpg",
      "Connecta is a no-code integration platform built inside Odoo. It connects apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync their data without writing code. I designed the whole product: dashboards, setup flow, flow builder and marketing site.",
@@ -627,7 +682,8 @@ WORKS = [
     ("exam", "Exam Module", ["Live proctoring UX", "Grading system design"], "cover-exam.jpg", "right"),
     ("subjects", "Subject Areas", ["Data model design", "Permission systems"], "cover-subjects.jpg", ""),
     ("books", "Book Libraries", ["Content library design", "In-lecture book reader"], "cover-books.jpg", "right"),
-    ("connecta", "Connecta", ["Role-based dashboards", "Setup wizard design"], "cover-connecta.jpg", ""),
+    ("design-system", "Design System", ["Design tokens", "Component library"], "cover-design-system.jpg", ""),
+    ("connecta", "Connecta", ["Role-based dashboards", "Setup wizard design"], "cover-connecta.jpg", "right"),
 ]
 
 TESTIMONIALS = [
@@ -670,7 +726,7 @@ def home():
     works = "".join(
         f'''<div class="work {side}"><a href="#{slug}">
       <div class="work-media"><img src="img/{img}" alt="{title} case study" loading="lazy"></div>
-      <div class="work-meta"><div><div class="work-num">0{i+1} / 05</div><h3>{title}</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">{"<br>".join(tags)}</div></div>
+      <div class="work-meta"><div><div class="work-num">0{i+1} / 06</div><h3>{title}</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">{"<br>".join(tags)}</div></div>
     </a></div>''' for i, (slug, title, tags, img, side) in enumerate(WORKS))
     slides = "".join(
         f'<div class="slide"><blockquote>“{q}”</blockquote><div class="avatar">{ini}</div><div class="who">{who}</div><div class="role">{role}</div></div>'
@@ -719,7 +775,7 @@ def home():
   <div class="frame">
     <div class="cs-split"><div class="sticky"><span class="word l">Case</span><span class="word r">studies</span></div></div>
     <div class="works-head" id="work">
-      <div><span class="eyebrow">Selected works <span class="count">(05)</span></span><h2>Complex products, made simple to use</h2></div>
+      <div><span class="eyebrow">Selected works <span class="count">(06)</span></span><h2>Complex products, made simple to use</h2></div>
       <p>Every project here started with the same question: <b>how do you make something complex feel simple?</b></p>
     </div>
     <div class="works">{works}</div>
