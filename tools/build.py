@@ -46,6 +46,35 @@ def proto(title, desc, thumb, url, tag="FIGMA PROTOTYPE"):
   <div class="proto-body"><span class="flow-tag">{tag}</span><h4>{title}</h4><p>{desc}</p><span class="proto-cta">Open the prototype ↗</span></div>
 </a>'''
 
+
+def process(*stages):
+    items = "".join(f'<li><span>{i+1:02d}</span>{t}</li>' for i, t in enumerate(stages))
+    return f'<div class="process reveal"><span class="kicker">Process</span><ol>{items}</ol></div>'
+
+def chain(title, nodes, note=""):
+    """Horizontal structure/flow diagram. nodes: (label, sub) tuples."""
+    parts = []
+    for i, (label, sub) in enumerate(nodes):
+        if i: parts.append('<span class="ch-arrow">→</span>')
+        parts.append(f'<div class="ch-node"><b>{label}</b>{f"<small>{sub}</small>" if sub else ""}</div>')
+    n = f'<p class="ch-note">{note}</p>' if note else ""
+    return f'<div class="diagram reveal"><span class="flow-tag">{title}</span><div class="chain">{"".join(parts)}</div>{n}</div>'
+
+def hub(title, top, middle, bottom, note=""):
+    """Tree diagram: one top node, a row of middle nodes, a chain of bottom nodes."""
+    mid = "".join(f'<div class="ch-node"><b>{a}</b><small>{b}</small></div>' for a, b in middle)
+    bot = '<span class="ch-arrow">→</span>'.join(f'<div class="ch-node"><b>{a}</b><small>{b}</small></div>' for a, b in bottom)
+    n = f'<p class="ch-note">{note}</p>' if note else ""
+    return f'''<div class="diagram reveal"><span class="flow-tag">{title}</span>
+  <div class="tree"><div class="ch-node root"><b>{top[0]}</b><small>{top[1]}</small></div>
+  <span class="ch-down">↓</span><div class="tier">{mid}</div>
+  <span class="ch-down">↓ linked into</span><div class="chain">{bot}</div></div>{n}</div>'''
+
+def research(method, rows, note=""):
+    r = "".join(f'<tr><td>{a}</td><td>{b}</td><td class="after">{c}</td></tr>' for a, b, c in rows)
+    n = f'<p class="ch-note">{note}</p>' if note else ""
+    return f'<div class="research reveal"><span class="flow-tag">USABILITY TESTING</span><p class="rm">{method}</p><table><thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead><tbody>{r}</tbody></table>{n}</div>'
+
 def arrow(a, b):
     return f'{a}<span class="arrow">→</span>{b}'
 
@@ -86,6 +115,7 @@ def case(slug, title, sub, cover, overview_img, overview, meta, body, nxt):
 
 # ---------------------------------------------------------------- EXAM
 exam_body = f'''
+{process("Framing the problem", "Exam structure", "Flows & UI", "Figma prototypes", "Maze testing", "Handoff")}
 {h2("01 — The problem", "Exams didn’t exist yet")}
 <p>Teachers on Aladia needed to create exams, run them with supervision and grade them, all inside the platform. None of that existed yet.</p>
 <p>And Aladia serves very different institutions. An Italian liceo grades from 18 to 30, while a corporate course grades from 0 to 100. <strong>The same system had to work for both.</strong></p>
@@ -104,6 +134,7 @@ exam_body = f'''
       ("yes", "Exam Collections at the profile level.", "An exam is created once and used anywhere."))}
 <p>Each course adds its own <strong>schedule, proctoring rules and grading scale on top</strong>, without ever touching the exam itself. The exam only knows raw points. Each course decides how those points become a grade.</p>
 <p><strong>Why it matters:</strong> the same exam can run in a course graded 18–30 and one graded 0–100 on the same afternoon. And a teacher with forty students across three courses maintains exactly one version of each exam.</p>
+{chain("HOW AN EXAM MOVES THROUGH THE SYSTEM", [("Exam Collection", "shared, with roles"), ("Exam", "one version"), ("Course", "sets date & grading scale"), ("Student attempt", "on-demand, scheduled or live"), ("Grade", "AI suggests, teacher decides")], "The exam is written once. Each course that uses it brings its own date, rules and grading scale.")}
 {proto("Creating an exam inside a collection", "Click through how a teacher opens a collection and creates an exam there, outside any course.", "proto-create-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=3-62221&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A62221&show-proto-sidebar=1")}
 
 {h2("03 — Building the exam", "Questions, with AI as an assistant")}
@@ -184,6 +215,7 @@ exam_body = f'''
       ("exam-25.jpg", "<b>Subjects radar.</b> One student compared with the class average across subjects."))}
 
 {h2("08 — The result", "A complete exam system, designed from nothing")}
+{research("Unmoderated Maze tests on the Aladia platform · 50 participants across 4 flows", [("Time to create an exam", "6 min", "3.5 min")])}
 {metrics((arrow("6", "3.5"), "minutes to create an exam", "Maze usability test"),
          ("1", "version of each exam, reused across every course", ""),
          ("40", "students supervised by one teacher in one view", ""))}
@@ -195,6 +227,7 @@ exam_body = f'''
 
 # ---------------------------------------------------------------- SUBJECTS
 subjects_body = f'''
+{process("Workflow mapping", "Structure & data model", "Permissions", "Flows & UI", "Edge cases", "Handoff")}
 {h2("01 — The problem", "Built once, rebuilt everywhere")}
 <p>Subjects lived inside courses. Every new course meant creating Mathematics, Italian and History again from scratch, and the Mathematics in one course had nothing to do with the Mathematics in the next. Books and exams couldn’t be linked to a subject at all.</p>
 <p>Teachers were stuck in the same pattern. They could only be assigned to a subject inside a single course, so a teacher with Mathematics in eight courses had to be invited eight separate times. Once inside, they faced a calendar showing every lecture of a year-long course, while they taught roughly one lesson a week. <strong>Finding their own lectures was hard.</strong></p>
@@ -239,6 +272,7 @@ subjects_body = f'''
 <p>Subject Areas, Book Libraries and Exam Collections work exactly the same way: reusable, linked, with the same roles.</p>
 {opts(("no", "Three separate places in the navigation, one for each.", ""),
       ("yes", "One Education tab,", "where teachers land once and branch into subjects, books or exams."))}
+{hub("INFORMATION ARCHITECTURE", ("Education", "one tab in settings and navigation"), [("Subject Areas", "subjects, teachers, study levels"), ("Book Libraries", "books, details, page ranges"), ("Exam Collections", "exams, questions, templates")], [("Course", "uses subjects, books, exams"), ("Lecture", "subject + book pages + exam"), ("Student", "sees only what’s assigned")], "All three share the same four roles: Owner, Curator, Editor, Viewer.")}
 <p>That’s what makes them feel like one system instead of three tools. And it made the other features possible: the Book Library’s subject links and the exams’ subject context both depend on subjects living outside courses.</p>
 
 {h2("06 — The result", "Set up once, reused everywhere")}
@@ -256,6 +290,7 @@ subjects_body = f'''
 
 # ---------------------------------------------------------------- BOOKS
 books_body = f'''
+{process("Workflow audit", "Data model with the PM", "Flows & UI", "Maze testing", "Shipped")}
 {h2("01 — The problem", "Books were just attachments")}
 <p>Before the Book Library, a “book” on Aladia was just a file attached to a lecture. If a teacher needed the same textbook in three courses, they uploaded it three times. The copies had no link to each other, no details, and no connection to their subject. When the book was updated, the teacher had to remember every place it lived, and they always missed at least one.</p>
 <div class="quote">“I have the same PDF uploaded 12 times across my courses. When I update it, I always forget at least one.”<cite>Department head with over 200 teaching PDFs</cite></div>
@@ -264,6 +299,7 @@ books_body = f'''
 {opts(("no", "A better upload button.", "It would make uploading faster, but teachers would still create copies."),
       ("yes", "Make books real objects on the platform,", "living in a central library with their own details, subjects and team roles. Create once, link to any course."))}
 <p>This meant designing a <strong>new data model before any screen</strong>, following the same structure as Subject Areas and Exam Collections: library → book → course → lecture → page range.</p>
+{chain("DATA MODEL", [("Book Library", "shared, with roles"), ("Book", "PDF, link or written"), ("Course", "links the book"), ("Lecture", "picks a page range"), ("Reader", "opens at those pages")], "One book in the library; every lecture points to a different part of it.")}
 
 {h2("02 — Decision 1", "One place, one set of rules")}
 <p>Books, subjects and exams all work in a similar way and connect to each other. If each had its own place and its own rules, teachers would have to learn three systems.</p>
@@ -312,6 +348,7 @@ books_body = f'''
       ("books-14.jpg", "<b>The reader.</b> Opens at the assigned pages, with a banner saying who assigned them."), cls="three")}
 
 {h2("06 — The result", "A new part of the platform")}
+{research("Unmoderated Maze tests on the Aladia platform · 50 participants across 4 flows", [("Book upload usability score", "62", "81")])}
 {metrics((arrow("62", "81"), "usability score for book upload", "Maze usability test"),
          ("48%", "of books added through ISBN search, the fastest route", ""),
          (arrow("12", "1"), "copies of the same book a teacher maintains", ""))}
@@ -323,6 +360,7 @@ books_body = f'''
 
 # ---------------------------------------------------------------- CONNECTA
 connecta_body = f'''
+{process("Product-wide audit", "Role-based views", "Setup wizard", "Studio & AI flows", "Website & portal", "Coded prototype")}
 {h2("01 — The problem", "“No-code” doesn’t mean simple")}
 <p>Behind every connection there is data mapping, sync schedules, retries and conditions between systems that don’t naturally agree. The product showed all of this to everyone, all the time. <strong>A tool built to save people time made them feel they needed a developer.</strong></p>
 <h3>Who it affected</h3>
@@ -358,6 +396,7 @@ connecta_body = f'''
 {opts(("no", "Keep setup inside the flow builder.", "New users would have to understand the whole platform before creating a single connection."),
       ("yes", "A separate four-step wizard", "that starts with searching the app library."))}
 <p><strong>A problem I found along the way:</strong> the connection-details step had so many fields that it broke the wizard’s sidebar layout. I kept only the essential fields and moved the rest into a collapsed <strong>Advanced settings</strong> section. The main path stays short, and the depth is still there for anyone who needs it.</p>
+{chain("SETUP FLOW", [("Ensure app", "existing or new"), ("Connect", "search the library"), ("Authenticate", "6 methods"), ("Details", "essentials only"), ("Test & save", "ready to sync")], "Advanced settings stay collapsed in step 4, so the main path stays short.")}
 {figs(("connecta-04.jpg", "<b>Step 1 — Ensure app.</b> Pick an app you already have, or create one."),
       ("connecta-05.jpg", "<b>Step 2 — Connect.</b> Search the library first; we prefill and test it for you."),
       ("connecta-06.jpg", "<b>Step 3 — Authentication.</b> Six methods described in plain language."),
@@ -391,6 +430,7 @@ connecta_body = f'''
 {metrics((arrow("3", "2"), "overlapping views became two role-based views", ""),
          ("4", "steps to a first working connection, shipped before a trade-fair deadline", ""),
          ("50+", "screens across 20 user flows, as the sole designer", ""))}
+<p><strong>Constraints:</strong> I was the only designer on the product, and the setup wizard had to ship before a trade-fair deadline, so I prioritised the paths new customers would hit first.</p>
 <p>Studio became easier to navigate and easier to read, even for flows built months earlier.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
 <p class="big">Making a technical product simple doesn’t mean removing its power. It means deciding who needs that power, and when.</p>
