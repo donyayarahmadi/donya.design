@@ -187,11 +187,7 @@ exam_body = f'''
 {metrics((arrow("6", "3.5"), "minutes to create an exam", "Maze usability test"),
          ("1", "version of each exam, reused across every course", ""),
          ("40", "students supervised by one teacher in one view", ""))}
-<ul>
-<li>A complete exam system, from creation to live proctoring to grading and rechecks.</li>
-<li>One exam, many courses: each course applies its own grading rules without anyone editing the exam.</li>
-<li>The most structurally complex system on the platform, built to work across very different academic contexts.</li>
-</ul>
+<p>A complete exam system, from creation to live proctoring, grading and rechecks, and the most structurally complex part of the platform.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
 <p class="big">It all traces back to one early decision: keeping the exam separate from the course.</p>
 <p>That’s what lets the same exam run under completely different grading rules, and what keeps performance comparable everywhere. Almost every detail exists because a simpler version broke down against a real edge case during design. The happy path was never the hard part.</p></div>
@@ -404,22 +400,22 @@ CASES = [
     ("exam", "Exam Module", "Designing a complete exam system, from the first question to the final grade.",
      "cover-exam.jpg", "exam-01.jpg",
      "Aladia had no exam system: no builder, no proctoring, no grading. I designed the whole thing from a blank canvas: three exam formats, AI-assisted question creation, live proctored exams, and a grading model that works across courses with completely different scoring scales.",
-     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Live proctoring UX<br>Grading system design")],
+     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Live proctoring UX<br>Grading system design"), ("Outcome", "Exam creation 6 → 3.5 min")],
      exam_body, ("subjects", "Subject Areas", "Data model design · Permission systems", "cover-subjects.jpg")),
     ("subjects", "Subject Areas", "The decision that connected the platform: one shared subject, with its teacher, books and exams following it into every course.",
      "cover-subjects.jpg", "subjects-01.jpg",
      "Subjects on Aladia were rebuilt inside every course, and teachers had to be invited to each course by hand. I moved subjects into one shared Subject Area, so a subject is created once and reused everywhere, and its teacher, books and exams follow it into every course automatically.",
-     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Data model design<br>Permission systems")],
+     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Data model design<br>Permission systems"), ("Outcome", "Teacher changes 8 → 1")],
      subjects_body, ("books", "Book Libraries", "Content library design · In-lecture book reader", "cover-books.jpg")),
     ("books", "Book Libraries", "A book library built from scratch, so teachers upload a book once and use it everywhere.",
      "cover-books.jpg", "books-01.jpg",
      "Aladia had no concept of a book. Teachers could only attach files to individual lectures, one at a time. I designed a Book Library from zero: one place to upload, organise and reuse books across courses, lectures, subjects and live sessions.",
-     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Content library design<br>In-lecture book reader")],
+     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Content library design<br>In-lecture book reader"), ("Outcome", "Upload usability 62 → 81")],
      books_body, ("connecta", "Connecta", "Role-based dashboards · Setup wizard design", "cover-connecta.jpg")),
     ("connecta", "Connecta", "Making complex data integrations simple for people who don’t write code.",
      "cover-connecta.jpg", "connecta-01.jpg",
      "Connecta is a no-code integration platform built inside Odoo. It connects apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync their data without writing code. I designed the whole product: dashboards, setup flow, flow builder and marketing site.",
-     [("Role", "Sole Product Designer"), ("Client", "Connecta Software"), ("Industry", "No-code integration · B2B SaaS"), ("Year", "2026"), ("Focus", "Role-based dashboards<br>Setup wizard design")],
+     [("Role", "Sole Product Designer"), ("Client", "Connecta Software"), ("Industry", "No-code integration · B2B SaaS"), ("Year", "2026"), ("Focus", "Role-based dashboards<br>Setup wizard design"), ("Outcome", "50+ screens, 20 flows")],
      connecta_body, ("exam", "Exam Module", "Live proctoring UX · Grading system design", "cover-exam.jpg")),
 ]
 
@@ -497,7 +493,7 @@ def home():
     </div></div>
     <div class="about">
       <span class="eyebrow">About</span>
-      <p class="about-text" data-words>I’m a Product &amp; UX Designer based in Milan. I help SaaS teams design complex products that feel simple, even when many types of users share the same system.</p>
+      <p class="about-text" data-words>I’m a Product Designer in Milan. For 3+ years I’ve designed B2B and B2C SaaS, shaping the structure behind complex products so they feel simple, even when many types of users share the same system.</p>
     </div>
     <div class="stats"><div class="cols">{stats}</div></div>
   </div>

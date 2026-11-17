@@ -419,3 +419,28 @@ figure .ph, .cs-cover .media, .cs-overview .shot img, .work-media, .next .media,
 
 /* Testimonials: hide the background grid line inside the card */
 .carousel { position: relative; z-index: 2; background: var(--bg); }
+
+/* ---------- Layout polish ---------- */
+/* Shorter hero: less empty scrolling before the facts row */
+.hero { height: 150vh; }
+@media (max-width: 760px) { .hero { height: 135vh; } }
+/* Stats: one even row instead of a staggered layout */
+.stat:nth-child(2), .stat:nth-child(4) { margin-top: 0 !important; }
+.stat:nth-child(3) { margin-top: 0 !important; }
+.stats { padding: 10px 0 70px; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat-num { font-size: clamp(56px, 5.6vw, 92px); }
+@media (max-width: 760px) { .stat:nth-child(3) { border-left: 0; } }
+/* "Case studies": real space between the two words, shorter scroll */
+.cs-split { height: 115vh; }
+.cs-split .sticky { gap: 0; }
+.cs-split .word.l { margin-right: 0.28em; }
+/* Softer blocks to match the rounded images */
+.callout, .learned, .quote, .metrics, .meta, .opt { border-radius: 12px; }
+.metrics { overflow: hidden; }
+.opt .tag { border-radius: 4px; }
+.carousel { border-radius: 14px 14px 0 0; overflow: hidden; }
+.carousel-nav { border-radius: 0 0 14px 14px; }
+/* Case study headings: a little more air before each section */
+.prose h2 { margin-top: 96px; }
+.cs-overview .side p { font-size: 20px; }
