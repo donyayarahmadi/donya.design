@@ -379,12 +379,13 @@ connecta_body = f'''
 {figs(("connecta-ai-1.jpg", "<b>Describe it.</b> Plain-language input with suggested starting points."),
       ("connecta-ai-2.jpg", "<b>Review the draft.</b> Each step the AI created is listed before opening the flow."))}
 
-{h2("05 — Also designed", "The marketing website")}
-<p>Alongside the product, I designed Connecta’s full public website. Instead of a standard SaaS landing page, I built the sections around <strong>puzzle pieces fitting together</strong>, a visual language for what the platform actually does: connecting separate systems into one.</p>
+{h2("05 — Also designed", "The website, app store and customer portal")}
+<p>Alongside the product, I designed Connecta’s public website. Instead of a standard SaaS landing page, I built the sections around <strong>puzzle pieces fitting together</strong>, a visual language for what the platform actually does: connecting separate systems into one.</p>
+<p>The website also sells the product: an <strong>app store</strong> where each connector has its own details page, clear <strong>pricing</strong>, and a <strong>customer portal</strong> where customers and the Connecta team see the status of every installation.</p>
 {figs(("connecta-10.jpg", "<b>App marketplace.</b> Featured and popular connectors with clear pricing."),
-      ("connecta-11.jpg", "<b>Connector page.</b> What syncs in each direction, pricing and installation."),
+      ("connecta-11.jpg", "<b>App details.</b> What the app syncs in each direction, its pricing and what it needs to install."),
       ("connecta-13.jpg", "<b>Pricing.</b> Apps only, or the full platform configured to your plan."),
-      ("connecta-12.jpg", "<b>Contact.</b> Three clear routes: message, partnership or a demo."))}
+      ("connecta-14.jpg", "<b>Customer portal.</b> Every customer project with its environments, versions, health and backups."))}
 
 {h2("06 — The result", "Simple by default, powerful one click away")}
 {metrics((arrow("3", "2"), "overlapping views became two role-based views", ""),
