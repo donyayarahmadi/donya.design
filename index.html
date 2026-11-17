@@ -245,7 +245,23 @@
 <div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Exams inside courses, like most LMS platforms.</b> Simple and fast to build, but a teacher using the same final exam in five courses would end up with five copies to maintain.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Exam Collections at the profile level.</b> An exam is created once and used anywhere.</div></div></div>
 <p>Each course adds its own <strong>schedule, proctoring rules and grading scale on top</strong>, without ever touching the exam itself. The exam only knows raw points. Each course decides how those points become a grade.</p>
 <p><strong>Why it matters:</strong> the same exam can run in a course graded 18–30 and one graded 0–100 on the same afternoon. And a teacher with forty students across three courses maintains exactly one version of each exam.</p>
-<div class="diagram reveal"><span class="flow-tag">HOW AN EXAM MOVES THROUGH THE SYSTEM</span><div class="chain"><div class="ch-node"><b>Exam Collection</b><small>shared, with roles</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Exam</b><small>one version</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Course</b><small>sets date & grading scale</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Student attempt</b><small>on-demand, scheduled or live</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Grade</b><small>AI suggests, teacher decides</small></div></div><p class="ch-note">The exam is written once. Each course that uses it brings its own date, rules and grading scale.</p></div>
+<div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE · EXAM COLLECTIONS</span>
+<div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
+<span class="ch-down">↓</span>
+<div class="ia-cols"><div class="ia-col dim"><div class="ch-node lib"><b>Subject Areas</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My areas</li><li>Shared areas</li></ul><div class="ch-node item"><b>Subject</b><small>title, icon, colour</small></div><ul class="ia-details"><li>Teachers assigned</li><li>Study levels</li><li>Linked books</li><li>Linked exams</li></ul></div><div class="ia-col dim"><div class="ch-node lib"><b>Book Libraries</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My libraries</li><li>Shared libraries</li></ul><div class="ch-node item"><b>Book</b><small>PDF, purchase link or written</small></div><ul class="ia-details"><li>Details, filled by ISBN</li><li>Cover from the first pages</li><li>Subject and level</li><li>Companion volumes</li></ul></div><div class="ia-col focus"><div class="ch-node lib"><b>Exam Collections</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My collections</li><li>Shared collections</li></ul><div class="ch-node item"><b>Exam</b><small>one version, reused</small></div><ul class="ia-details"><li>Questions, AI-assisted</li><li>Written or oral</li><li>Linked subject</li><li>No date, no grading scale</li></ul></div></div>
+<div class="ia-roles"><span>Same roles in all three</span><b>Owner</b><b>Curator</b><b>Editor</b><b>Viewer</b></div>
+<span class="ch-down">↓ added to</span>
+<div class="ia-use">
+<div class="ch-node"><b>Course</b><small>subjects with a level · their teachers invited · books · exams with a date, rules and grading scale</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Lecture & live session</b><small>a subject · the book’s page range · an exam</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
+</div>
+<p class="ch-note">This case study covers the highlighted part: the exam is written once in a collection, with no date or grading scale. Each course that uses it adds its own. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
 <a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=3-62221&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A62221&show-proto-sidebar=1" target="_blank" rel="noopener">
   <div class="proto-thumb"><img src="img/proto-create-1.jpg" alt="Creating an exam inside a collection" loading="lazy"><span class="proto-play">▶</span></div>
   <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Creating an exam inside a collection</h4><p>Click through how a teacher opens a collection and creates an exam there, outside any course.</p><span class="proto-cta">Open the prototype ↗</span></div>
@@ -410,10 +426,23 @@
 <h2 class="reveal"><span class="kicker">05 — Decision 4</span>One home for education content</h2>
 <p>Subject Areas, Book Libraries and Exam Collections work exactly the same way: reusable, linked, with the same roles.</p>
 <div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Three separate places in the navigation, one for each.</b> </div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One Education tab,</b> where teachers land once and branch into subjects, books or exams.</div></div></div>
-<div class="diagram reveal"><span class="flow-tag">INFORMATION ARCHITECTURE</span>
-  <div class="tree"><div class="ch-node root"><b>Education</b><small>one tab in settings and navigation</small></div>
-  <span class="ch-down">↓</span><div class="tier"><div class="ch-node"><b>Subject Areas</b><small>subjects, teachers, study levels</small></div><div class="ch-node"><b>Book Libraries</b><small>books, details, page ranges</small></div><div class="ch-node"><b>Exam Collections</b><small>exams, questions, templates</small></div></div>
-  <span class="ch-down">↓ linked into</span><div class="chain"><div class="ch-node"><b>Course</b><small>uses subjects, books, exams</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Lecture</b><small>subject + book pages + exam</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Student</b><small>sees only what’s assigned</small></div></div></div><p class="ch-note">All three share the same four roles: Owner, Curator, Editor, Viewer.</p></div>
+<div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE · SUBJECT AREAS</span>
+<div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
+<span class="ch-down">↓</span>
+<div class="ia-cols"><div class="ia-col focus"><div class="ch-node lib"><b>Subject Areas</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My areas</li><li>Shared areas</li></ul><div class="ch-node item"><b>Subject</b><small>title, icon, colour</small></div><ul class="ia-details"><li>Teachers assigned</li><li>Study levels</li><li>Linked books</li><li>Linked exams</li></ul></div><div class="ia-col dim"><div class="ch-node lib"><b>Book Libraries</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My libraries</li><li>Shared libraries</li></ul><div class="ch-node item"><b>Book</b><small>PDF, purchase link or written</small></div><ul class="ia-details"><li>Details, filled by ISBN</li><li>Cover from the first pages</li><li>Subject and level</li><li>Companion volumes</li></ul></div><div class="ia-col dim"><div class="ch-node lib"><b>Exam Collections</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My collections</li><li>Shared collections</li></ul><div class="ch-node item"><b>Exam</b><small>one version, reused</small></div><ul class="ia-details"><li>Questions, AI-assisted</li><li>Written or oral</li><li>Linked subject</li><li>No date, no grading scale</li></ul></div></div>
+<div class="ia-roles"><span>Same roles in all three</span><b>Owner</b><b>Curator</b><b>Editor</b><b>Viewer</b></div>
+<span class="ch-down">↓ added to</span>
+<div class="ia-use">
+<div class="ch-node"><b>Course</b><small>subjects with a level · their teachers invited · books · exams with a date, rules and grading scale</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Lecture & live session</b><small>a subject · the book’s page range · an exam</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
+</div>
+<p class="ch-note">This case study covers the highlighted part: subjects live in Subject Areas, and courses use them. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
 <p>That’s what makes them feel like one system instead of three tools. And it made the other features possible: the Book Library’s subject links and the exams’ subject context both depend on subjects living outside courses.</p>
 
 <h2 class="reveal"><span class="kicker">06 — The result</span>Set up once, reused everywhere</h2>
@@ -461,7 +490,23 @@
 <p>I audited the existing workflow, mapped with the PM how books relate to subjects, teachers and courses, and watched teachers try to share one book across three courses. Every time, they uploaded a new copy.</p>
 <div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>A better upload button.</b> It would make uploading faster, but teachers would still create copies.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Make books real objects on the platform,</b> living in a central library with their own details, subjects and team roles. Create once, link to any course.</div></div></div>
 <p>This meant designing a <strong>new data model before any screen</strong>, following the same structure as Subject Areas and Exam Collections: library → book → course → lecture → page range.</p>
-<div class="diagram reveal"><span class="flow-tag">DATA MODEL</span><div class="chain"><div class="ch-node"><b>Book Library</b><small>shared, with roles</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Book</b><small>PDF, link or written</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Course</b><small>links the book</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Lecture</b><small>picks a page range</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Reader</b><small>opens at those pages</small></div></div><p class="ch-note">One book in the library; every lecture points to a different part of it.</p></div>
+<div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE · BOOK LIBRARIES</span>
+<div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
+<span class="ch-down">↓</span>
+<div class="ia-cols"><div class="ia-col dim"><div class="ch-node lib"><b>Subject Areas</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My areas</li><li>Shared areas</li></ul><div class="ch-node item"><b>Subject</b><small>title, icon, colour</small></div><ul class="ia-details"><li>Teachers assigned</li><li>Study levels</li><li>Linked books</li><li>Linked exams</li></ul></div><div class="ia-col focus"><div class="ch-node lib"><b>Book Libraries</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My libraries</li><li>Shared libraries</li></ul><div class="ch-node item"><b>Book</b><small>PDF, purchase link or written</small></div><ul class="ia-details"><li>Details, filled by ISBN</li><li>Cover from the first pages</li><li>Subject and level</li><li>Companion volumes</li></ul></div><div class="ia-col dim"><div class="ch-node lib"><b>Exam Collections</b><small>one per organisation or teacher</small></div>
+<ul class="ia-groups"><li>My collections</li><li>Shared collections</li></ul><div class="ch-node item"><b>Exam</b><small>one version, reused</small></div><ul class="ia-details"><li>Questions, AI-assisted</li><li>Written or oral</li><li>Linked subject</li><li>No date, no grading scale</li></ul></div></div>
+<div class="ia-roles"><span>Same roles in all three</span><b>Owner</b><b>Curator</b><b>Editor</b><b>Viewer</b></div>
+<span class="ch-down">↓ added to</span>
+<div class="ia-use">
+<div class="ch-node"><b>Course</b><small>subjects with a level · their teachers invited · books · exams with a date, rules and grading scale</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Lecture & live session</b><small>a subject · the book’s page range · an exam</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
+</div>
+<p class="ch-note">This case study covers the highlighted part: one book in the library, and every lecture points to a different part of it. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
 
 <h2 class="reveal"><span class="kicker">02 — Decision 1</span>One place, one set of rules</h2>
 <p>Books, subjects and exams all work in a similar way and connect to each other. If each had its own place and its own rules, teachers would have to learn three systems.</p>

@@ -609,3 +609,8 @@ body:not(.is-case) .footer { margin-top: 0; }
   .sf-cols,.sf-cols.two{grid-template-columns:1fr}
   .sf-n.root{min-width:0;width:100%}
 }
+.ia-col.dim{opacity:.32}
+.ia-col.focus{border:2px solid var(--accent);border-style:solid;background:rgba(242,194,0,.06)}
+.ia-col.focus .lib{background:var(--accent);border-color:var(--accent);color:#000}
+.ia-col.focus .lib small{color:#3d3300}
+.ia-link{display:inline-block;margin-left:4px;color:var(--ink);font-weight:600;border-bottom:1px solid var(--ink)}

@@ -76,16 +76,17 @@ def research(method, rows, note=""):
     n = f'<p class="ch-note">{note}</p>' if note else ""
     return f'<div class="research reveal"><span class="flow-tag">USABILITY TESTING</span><p class="rm">{method}</p><table><thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead><tbody>{r}</tbody></table>{n}</div>'
 
-def iatree():
+def iatree(focus=None, note=None):
     def col(name, sub, groups, item, details):
         g = "".join(f"<li>{x}</li>" for x in groups)
         d = "".join(f"<li>{x}</li>" for x in details)
-        return f'''<div class="ia-col"><div class="ch-node lib"><b>{name}</b><small>{sub}</small></div>
+        cls = "" if not focus else (" focus" if name == focus else " dim")
+        return f'''<div class="ia-col{cls}"><div class="ch-node lib"><b>{name}</b><small>{sub}</small></div>
 <ul class="ia-groups">{g}</ul><div class="ch-node item"><b>{item[0]}</b><small>{item[1]}</small></div><ul class="ia-details">{d}</ul></div>'''
     cols = (col("Subject Areas", "one per organisation or teacher", ["My areas", "Shared areas"], ("Subject", "title, icon, colour"), ["Teachers assigned", "Study levels", "Linked books", "Linked exams"])
           + col("Book Libraries", "one per organisation or teacher", ["My libraries", "Shared libraries"], ("Book", "PDF, purchase link or written"), ["Details, filled by ISBN", "Cover from the first pages", "Subject and level", "Companion volumes"])
           + col("Exam Collections", "one per organisation or teacher", ["My collections", "Shared collections"], ("Exam", "one version, reused"), ["Questions, AI-assisted", "Written or oral", "Linked subject", "No date, no grading scale"]))
-    return f'''<div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE</span>
+    return f'''<div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE{" · " + focus.upper() if focus else ""}</span>
 <div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
 <span class="ch-down">↓</span>
 <div class="ia-cols">{cols}</div>
@@ -98,7 +99,7 @@ def iatree():
 <span class="ch-arrow">→</span>
 <div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
 </div>
-<p class="ch-note">Content lives once, above the course. Courses and lectures only point to it, and decide how it is used.</p></div>'''
+<p class="ch-note">{note or "Content lives once, above the course. Courses and lectures only point to it, and decide how it is used."}{' <a class="ia-link" href="#education">See the full system in Education System →</a>' if focus else ""}</p></div>'''
 
 def parts(*items):
     out = "".join(f'<a class="part reveal" href="#{slug}"><img src="img/{img}" alt="{t}" loading="lazy"><div><span class="pn">0{i+1}</span><b>{t}</b><p>{d}</p><span class="proto-cta">Read the case study →</span></div></a>' for i, (slug, t, d, img) in enumerate(items))
@@ -227,7 +228,7 @@ exam_body = f'''
       ("yes", "Exam Collections at the profile level.", "An exam is created once and used anywhere."))}
 <p>Each course adds its own <strong>schedule, proctoring rules and grading scale on top</strong>, without ever touching the exam itself. The exam only knows raw points. Each course decides how those points become a grade.</p>
 <p><strong>Why it matters:</strong> the same exam can run in a course graded 18–30 and one graded 0–100 on the same afternoon. And a teacher with forty students across three courses maintains exactly one version of each exam.</p>
-{chain("HOW AN EXAM MOVES THROUGH THE SYSTEM", [("Exam Collection", "shared, with roles"), ("Exam", "one version"), ("Course", "sets date & grading scale"), ("Student attempt", "on-demand, scheduled or live"), ("Grade", "AI suggests, teacher decides")], "The exam is written once. Each course that uses it brings its own date, rules and grading scale.")}
+{iatree("Exam Collections", "This case study covers the highlighted part: the exam is written once in a collection, with no date or grading scale. Each course that uses it adds its own.")}
 {proto("Creating an exam inside a collection", "Click through how a teacher opens a collection and creates an exam there, outside any course.", "proto-create-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=3-62221&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A62221&show-proto-sidebar=1")}
 
 {h2("03 — Building the exam", "Questions, with AI as an assistant")}
@@ -371,7 +372,7 @@ subjects_body = f'''
 <p>Subject Areas, Book Libraries and Exam Collections work exactly the same way: reusable, linked, with the same roles.</p>
 {opts(("no", "Three separate places in the navigation, one for each.", ""),
       ("yes", "One Education tab,", "where teachers land once and branch into subjects, books or exams."))}
-{hub("INFORMATION ARCHITECTURE", ("Education", "one tab in settings and navigation"), [("Subject Areas", "subjects, teachers, study levels"), ("Book Libraries", "books, details, page ranges"), ("Exam Collections", "exams, questions, templates")], [("Course", "uses subjects, books, exams"), ("Lecture", "subject + book pages + exam"), ("Student", "sees only what’s assigned")], "All three share the same four roles: Owner, Curator, Editor, Viewer.")}
+{iatree("Subject Areas", "This case study covers the highlighted part: subjects live in Subject Areas, and courses use them.")}
 <p>That’s what makes them feel like one system instead of three tools. And it made the other features possible: the Book Library’s subject links and the exams’ subject context both depend on subjects living outside courses.</p>
 
 {h2("06 — The result", "Set up once, reused everywhere")}
@@ -403,7 +404,7 @@ books_body = f'''
 {opts(("no", "A better upload button.", "It would make uploading faster, but teachers would still create copies."),
       ("yes", "Make books real objects on the platform,", "living in a central library with their own details, subjects and team roles. Create once, link to any course."))}
 <p>This meant designing a <strong>new data model before any screen</strong>, following the same structure as Subject Areas and Exam Collections: library → book → course → lecture → page range.</p>
-{chain("DATA MODEL", [("Book Library", "shared, with roles"), ("Book", "PDF, link or written"), ("Course", "links the book"), ("Lecture", "picks a page range"), ("Reader", "opens at those pages")], "One book in the library; every lecture points to a different part of it.")}
+{iatree("Book Libraries", "This case study covers the highlighted part: one book in the library, and every lecture points to a different part of it.")}
 
 {h2("02 — Decision 1", "One place, one set of rules")}
 <p>Books, subjects and exams all work in a similar way and connect to each other. If each had its own place and its own rules, teachers would have to learn three systems.</p>
