@@ -211,7 +211,7 @@ def case(slug, title, sub, cover, overview_img, overview, meta, body, nxt):
 exam_body = f'''
 {tldr("Aladia had no way to run exams. I designed the whole system, from writing questions with AI to live proctoring and grading, so one exam works across courses with completely different grading rules.",
       "UI/UX designer, course domain · Aladia · 2024–2026",
-      [(arrow("6", "3.5"), "minutes to create an exam (Maze usability test)"), ("1", "version of each exam, reused across every course"), ("40", "students supervised by one teacher in one view")])}
+      [("42%", "faster exam creation with the AI flow (Maze usability test)"), ("1", "version of each exam, reused across every course"), ("40", "students supervised by one teacher in one view")])}
 
 {h2("01 — Context", "Schools, universities and companies on one platform")}
 <p>Aladia is an e-learning platform used by very different institutions. An Italian liceo grades from 18 to 30, a corporate course from 0 to 100. Teachers needed to create exams, run them with supervision and grade them, all inside the platform.</p>
@@ -252,9 +252,10 @@ exam_body = f'''
 <p><strong>The system flags, the human decides.</strong> A lost camera, a WiFi drop or leaving fullscreen each gets its own calm message, and is logged for the teacher. Nothing ends an exam automatically.</p>
 
 {h2("07 — The result", "A complete exam system, designed from nothing")}
-{metrics((arrow("6", "3.5"), "minutes to create an exam", "Maze usability test"),
+{metrics(("42%", "faster exam creation with the AI flow", "Maze usability test, 6 → 3.5 min on average"),
          ("1", "version of each exam, reused across every course", ""),
          ("40", "students supervised by one teacher in one view", ""))}
+<p><strong>How the 42% was measured:</strong> in a Maze usability test, participants did the same exam-creation task by hand and with Ask AI, and we compared the average time.</p>
 {proto("A live written exam, proctored and monitored", "The teacher starts the exam, students move into their own rooms, and every room is monitored.", "proto-proctor-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=34-206021&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=34%3A206172&show-proto-sidebar=1")}
 {proto("Student: joining a scheduled exam", "How a student joins a scheduled exam at its set time, takes it and submits.", "proto-student-scheduled.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=44-101499&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=44%3A101499&show-proto-sidebar=1")}
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
