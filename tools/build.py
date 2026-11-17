@@ -631,8 +631,8 @@ ds_body = f'''
 <li><strong>Molecules:</strong> small interactive parts, like buttons, dropdowns, input fields and chips.</li>
 <li><strong>Organisms:</strong> complex, complete sections, like tables, breadcrumbs, cards and pop-ups.</li>
 </ul>
-{figs(("ds-atomic.jpg", "<b>Atomic levels.</b> Atoms, molecules and organisms."),
-      ("ds-components.jpg", "<b>Variants and states.</b> Icons, buttons, input fields and lists, each with their variants."))}
+{figs(("ds-atomic.jpg", "<b>Atomic levels.</b> Atoms, molecules and organisms, in Aladia’s own style."), cls="one")}
+{figs(("ds-components.jpg", "<b>Variants and states.</b> Icons, buttons, input fields and lists, each with their variants."), cls="one")}
 
 {h2("07 — Workflow", "How the team worked with it")}
 {chain("WORKFLOW", [("Domain files", "one Figma file per domain, with a local Components page"), ("Branch per task", "a Figma branch named after the task, then design"), ("Approve and merge", "after approval the branch is merged")], "The system stays clean, because nothing reaches it without review.")}
