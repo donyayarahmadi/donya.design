@@ -348,7 +348,7 @@ subjects_body = f'''
       ("subjects-05.jpg", "<b>Creating a subject.</b> Title, colour, study levels, books and the teachers assigned."),
       ("subjects-06.jpg", "<b>Safe deletion.</b> Before a subject is removed, the courses that use it are listed."),
       ("subjects-08.jpg", "<b>Adding to a course.</b> Teachers pick subjects from the shared areas, with a level for each."))}
-{figs(("subjects-mobile.jpg", "<b>Subject Areas on mobile.</b> My Areas and Shared Areas, with each subject’s levels, courses and teachers."), cls="one")}
+{figs(("subjects-mobile.jpg", "<b>Subjects on mobile.</b> Subject Areas as a list or as cards, and editing a subject: colour, books, files, study levels and assigned teachers."), cls="one")}
 
 {h2("03 — Decision 2", "One decision about who teaches what")}
 <p>A school may run dozens of courses, and the same teacher often teaches the same subject in many of them. The coordinator had to invite each teacher to each course by hand, and keep track of who was where.</p>
