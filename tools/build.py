@@ -540,12 +540,6 @@ connecta_body = f'''
 
 # ---------------------------------------------------------------- EDUCATION (system overview)
 education_body = f'''
-{process(("Discover", "Saw the same pattern three times: subjects, books and exams were all built inside courses, and copied into every new one."),
-         ("Define", "The problem wasn’t one feature. It was where content lived. It had to move above the course."),
-         ("Structure", "Designed one model for all three: a shared library, an item inside it, and links into courses and lectures."),
-         ("Rules", "Gave the three the same four roles and the same behaviour, so teachers learn the system once."),
-         ("Design", "Designed each part end to end: Subject Areas, Book Libraries and Exam Collections."),
-         ("Connect", "Linked them together, so adding a subject to a course can bring its teacher, books and exams with it."))}
 {h2("01 — The problem", "Everything lived inside the course")}
 <p>On Aladia, a course was a container for everything. Its subjects, its books and later its exams were all created inside it. That works for one course. It breaks for a school running dozens of them.</p>
 <ul>
