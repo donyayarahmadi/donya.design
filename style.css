@@ -622,3 +622,17 @@ body:not(.is-case) .footer { margin-top: 0; }
 .tv-states .free{color:#2dea93;background:rgba(45,234,147,.14);border-color:rgba(45,234,147,.4)}
 .tv-states .prem{color:#f5a623;background:rgba(245,166,35,.14);border-color:rgba(245,166,35,.4)}
 .tv-states .lock{color:#ef362a;background:rgba(239,54,42,.14);border-color:rgba(239,54,42,.4);opacity:.75}
+
+/* ---------- At a glance (impact first) + readable line length ---------- */
+.tldr{margin:0 0 72px;padding:28px 30px;background:var(--ink);color:#fff;border-radius:14px}
+.tldr .kicker{color:var(--accent) !important;margin-bottom:12px !important}
+.tldr .tl-sum{font:500 22px/1.4 var(--f-sans);color:#fff !important;margin:0 0 10px !important}
+.tldr .tl-role{font:400 13px/1 var(--f-mono);letter-spacing:.04em;color:#a9a49c !important;margin:0 0 24px !important}
+.tldr .tl-m{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;border-top:1px solid #2c2c2c;padding-top:20px}
+.tldr .tl-m b{display:block;font:700 34px/1.1 var(--f-display);color:var(--accent);margin-bottom:6px}
+.tldr .tl-m b .arrow{color:#fff;margin:0 6px;font-weight:400}
+.tldr .tl-m span{font-size:14px;line-height:1.4;color:#d8d4cc}
+.prose > p, .prose > ul, .prose > h3 { max-width: 62ch; }
+figcaption{max-width:62ch}
+@media (max-width:760px){.tldr .tl-m{grid-template-columns:1fr}}
+.learned [data-words] .w { color: #fff !important; }

@@ -115,31 +115,31 @@
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal" data-words>Before I designed subjects, books or exams one by one, I had to solve the problem they shared: all teaching content was trapped inside courses. I designed one structure for all three, shared libraries under Education, with the same rules, linked into courses and lectures.</p>
-        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Client</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Information architecture<br>System design</dd></div><div><dt>Outcome</dt><dd>3 libraries, 1 structure</dd></div></dl>
+        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Company</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Information architecture<br>System design</dd></div></dl>
       </div>
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
-<h2 class="reveal"><span class="kicker">01 — The problem</span>Everything lived inside the course</h2>
-<p>On Aladia, a course was a container for everything. Its subjects, its books and later its exams were all created inside it. That works for one course. It breaks for a school running dozens of them.</p>
+<div class="tldr reveal"><p class="tl-sum">Subjects, books and exams were each built inside courses, and copied into every new one. Before designing any of them, I designed one structure for all three: shared libraries above the course, with the same rules.</p><p class="tl-role">UI/UX designer, course domain · Aladia · 2024–2026</p><div class="tl-m"><div><b>3</b><span>libraries under one Education group, with the same structure</span></div><div><b>4</b><span>roles shared by all three, learned once</span></div><div><b>1</b><span>version of each subject, book and exam, reused everywhere</span></div></div></div>
+<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Discover</b><p>Saw the same pattern three times: subjects, books and exams were all built inside courses, and copied into every new one.</p></li><li><span class="pn">02</span><b>Define</b><p>The problem wasn’t one feature. It was where content lived. It had to move above the course.</p></li><li><span class="pn">03</span><b>Structure</b><p>Designed one model for all three: a shared library, an item inside it, and links into courses and lectures.</p></li><li><span class="pn">04</span><b>Rules</b><p>Gave the three the same four roles and the same behaviour, so teachers learn the system once.</p></li><li><span class="pn">05</span><b>Design</b><p>Designed each part end to end: Subject Areas, Book Libraries and Exam Collections.</p></li><li><span class="pn">06</span><b>Connect</b><p>Linked them together, so adding a subject to a course can bring its teacher, books and exams with it.</p></li></ol></div>
+<h2 class="reveal"><span class="kicker">01 — Context and problem</span>Everything lived inside the course</h2>
+<p>On Aladia, a course was a container for everything: its subjects, its books and later its exams were all created inside it. That works for one course. It breaks for a school running dozens.</p>
 <ul>
 <li><strong>Subjects</strong> were rebuilt in every course. Mathematics in one course had nothing to do with Mathematics in the next, and a teacher with the same subject in 8 courses was invited 8 times.</li>
 <li><strong>Books</strong> were files attached to single lectures. One textbook used in 12 places meant 12 uploads, and 12 places to update.</li>
 <li><strong>Exams</strong> didn’t exist yet. Built the same way, every course would have had its own copy of the same exam.</li>
 </ul>
 <div class="callout">Three features, <b>one structural problem</b>: content that should be shared was trapped inside courses.</div>
-<h3>Who it affected</h3>
-<ul>
-<li><strong>Academic coordinators</strong>, managing 12 courses and more than 50 subjects, repeating every change course by course.</li>
-<li><strong>Teachers</strong>, keeping copies of the same book or exam up to date by hand.</li>
-<li><strong>Students</strong>, receiving a 300-page PDF and a message saying which chapter to read.</li>
-</ul>
 
-<h2 class="reveal"><span class="kicker">02 — The idea</span>Content lives once, courses point to it</h2>
+<h2 class="reveal"><span class="kicker">02 — My role and goal</span>Structure first, screens second</h2>
+<p>I was the UI/UX designer on the team responsible for the course domain, briefed to improve the learning flow and materials for students and teachers. I designed the overall structure first, then each part in depth: I redesigned Subjects, and designed Books and Exams from scratch. I worked closely with the project manager, the backend and frontend developers and the other designers, from requirements to handoff, and built working prototypes of my designs in code with Claude Code.</p>
+<p><strong>The goal:</strong> every piece of teaching content lives once, and every course uses it.</p>
+
+<h2 class="reveal"><span class="kicker">03 — Decision</span>Content lives once, courses point to it</h2>
 <div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Fix each feature on its own,</b> with faster copying or bulk editing. The copies would still drift apart.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Lift all teaching content above the course,</b> into shared libraries. A course doesn’t own its subjects, books and exams anymore; it uses them.</div></div></div>
 <p>That gave every piece of content the same shape: a <strong>library</strong> owned by an organisation or a freelance teacher, <strong>items</strong> inside it, and <strong>links</strong> from courses and lectures that decide how each item is used there: a level, a page range, a date, a grading scale.</p>
 
-<h2 class="reveal"><span class="kicker">03 — Information architecture</span>One tree for the whole system</h2>
+<h2 class="reveal"><span class="kicker">04 — Information architecture</span>One tree for the whole system</h2>
 <p>All three libraries sit together under <strong>Education</strong>, in settings and in the navigation, and follow the same structure. This is the map I designed before any screen.</p>
 <div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE</span>
 <div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
@@ -159,7 +159,7 @@
 </div>
 <p class="ch-note">Content lives once, above the course. Courses and lectures only point to it, and decide how it is used.</p></div>
 
-<h2 class="reveal"><span class="kicker">04 — The flow</span>How it all connects, step by step</h2>
+<h2 class="reveal"><span class="kicker">05 — The flow</span>How it all connects, step by step</h2>
 <p>The tree shows the structure. This walks through it: from the libraries in Education, into live and on-demand courses, to the student’s lectures and exams, and finally performance. Click any step, or use the arrows.</p>
 <div class="sf reveal" tabindex="0" aria-label="Interactive system flow">
 <div class="ux-head"><span class="flow-tag">SYSTEM FLOW · CLICK THROUGH</span></div>
@@ -187,23 +187,14 @@
 <div class="sf-foot"><div class="sf-steps"><div class="sf-step on" data-on="edu sa bl ec"><div class="ux-meta"><span class="ux-num">STEP 01 / 16</span><span class="ux-actor">Education</span></div><h4>One place, three libraries</h4><p>Under Education, an organisation creates a Subject Area, a Book Library and an Exam Collection. All teaching content starts here, outside any course.</p></div><div class="sf-step" data-on="sa bl ec sam blm ecm"><div class="ux-meta"><span class="ux-num">STEP 02 / 16</span><span class="ux-actor">Education</span></div><h4>Invite members</h4><p>Each library has its own members, with the same four roles everywhere: Owner, Curator, Editor and Viewer.</p></div><div class="sf-step" data-on="sa subj subj-b subj-f subj-l"><div class="ux-meta"><span class="ux-num">STEP 03 / 16</span><span class="ux-actor">Education</span></div><h4>Create a subject</h4><p>Inside a Subject Area, the subject is created once. Books, files and study levels are attached to it.</p></div><div class="sf-step" data-on="bl book book-s book-c subj"><div class="ux-meta"><span class="ux-num">STEP 04 / 16</span><span class="ux-actor">Education</span></div><h4>Create a book</h4><p>Inside a Book Library, the book is created once. It gets a subject, and companion volumes can be added to it.</p></div><div class="sf-step" data-on="ec exam exam-d"><div class="ux-meta"><span class="ux-num">STEP 05 / 16</span><span class="ux-actor">Education</span></div><h4>Create an exam template</h4><p>Inside an Exam Collection, the teacher writes the exam template in the document editor.</p></div><div class="sf-step" data-on="exam exam-ai subj book"><div class="ux-meta"><span class="ux-num">STEP 06 / 16</span><span class="ux-actor">Education</span></div><h4>Or let AI draft it</h4><p>The AI flow uses the subjects and books already on the platform to fetch the content and draft the exam. The teacher stays the author.</p></div><div class="sf-step" data-on="course live od"><div class="ux-meta"><span class="ux-num">STEP 07 / 16</span><span class="ux-actor">Course</span></div><h4>Two kinds of course</h4><p>A course is either live or on demand. Both take subjects, books and exams from the libraries in the same way.</p></div><div class="sf-step" data-on="subj course teach"><div class="ux-meta"><span class="ux-num">STEP 08 / 16</span><span class="ux-actor">Course</span></div><h4>Add a subject</h4><p>Teachers aren’t invited in the Subject Area. When the subject is added to a course, its teachers are invited to that course.</p></div><div class="sf-step" data-on="book book-s course link"><div class="ux-meta"><span class="ux-num">STEP 09 / 16</span><span class="ux-actor">Course</span></div><h4>Add a book</h4><p>If the book has a subject assigned, the subject is attached to the course along with it.</p></div><div class="sf-step" data-on="exam course link"><div class="ux-meta"><span class="ux-num">STEP 10 / 16</span><span class="ux-actor">Course</span></div><h4>Add an exam</h4><p>The same happens for exams: the exam brings its subject into the course.</p></div><div class="sf-step" data-on="course live od x-sch x-non x-oral x-non2"><div class="ux-meta"><span class="ux-num">STEP 11 / 16</span><span class="ux-actor">Course</span></div><h4>Exam types per course</h4><p>Live courses can have scheduled, non-scheduled and oral exams. On-demand courses have non-scheduled exams. All of them are added in the same way.</p></div><div class="sf-step" data-on="lecture"><div class="ux-meta"><span class="ux-num">STEP 12 / 16</span><span class="ux-actor">Student</span></div><h4>In the lecture</h4><p>The student finds the subject, its books and files already in the lecture.</p></div><div class="sf-step" data-on="x-sch room proct"><div class="ux-meta"><span class="ux-num">STEP 13 / 16</span><span class="ux-actor">Student</span></div><h4>Scheduled exam</h4><p>Scheduled exams are held in 100ms with the camera on. If proctoring is on, the session is recorded.</p></div><div class="sf-step" data-on="x-non x-non2 room proct"><div class="ux-meta"><span class="ux-num">STEP 14 / 16</span><span class="ux-actor">Student</span></div><h4>Non-scheduled exam</h4><p>The student starts it from the course. Only when proctoring is on do they join a meeting room, where the session is recorded. Without proctoring, they simply take the exam.</p></div><div class="sf-step" data-on="x-oral room"><div class="ux-meta"><span class="ux-num">STEP 15 / 16</span><span class="ux-actor">Student</span></div><h4>Oral exam</h4><p>Oral exams run inside a live session.</p></div><div class="sf-step" data-on="perf"><div class="ux-meta"><span class="ux-num">STEP 16 / 16</span><span class="ux-actor">Performance</span></div><h4>Performance</h4><p>After all of this, the performance module brings the results together for every student, course and subject.</p></div></div>
 <div class="ux-ctl"><button class="ux-prev" aria-label="Previous step">← Prev</button><span class="ux-count">1 / 16</span><button class="ux-next" aria-label="Next step">Next →</button></div></div></div>
 
-<h2 class="reveal"><span class="kicker">05 — Shared rules</span>Learn it once, use it everywhere</h2>
-<ul>
-<li><strong>The same four roles</strong> (Owner, Curator, Editor, Viewer) in every library, so permissions work the same way for subjects, books and exams.</li>
-<li><strong>Hide what your role can’t do.</strong> If someone can’t edit, the action isn’t there, instead of appearing disabled with an error.</li>
-<li><strong>One question at a time.</strong> When content is linked to a course, related things are offered, never added silently: “This subject has books. Add them too?”</li>
-<li><strong>The course decides how content is used.</strong> The exam has no date or grading scale of its own; the book has no page range. The course and lecture set them.</li>
-</ul>
-
-<h2 class="reveal"><span class="kicker">06 — The three parts</span>One by one</h2>
+<h2 class="reveal"><span class="kicker">06 — The three parts</span>Each one in depth</h2>
 <p>Each part had its own users, edge cases and decisions. These case studies go through them in detail.</p>
 <div class="parts"><a class="part reveal" href="#subjects"><img src="img/cover-subjects.jpg" alt="Subject Areas" loading="lazy"><div><span class="pn">01</span><b>Subject Areas</b><p>The decision that connected the platform: one shared subject, with its teacher, books and exams following it into every course.</p><span class="proto-cta">Read the case study →</span></div></a><a class="part reveal" href="#books"><img src="img/cover-books.jpg" alt="Book Libraries" loading="lazy"><div><span class="pn">02</span><b>Book Libraries</b><p>Books as real objects in a library, linked to lectures with a page range and opened in the built-in reader.</p><span class="proto-cta">Read the case study →</span></div></a><a class="part reveal" href="#exam"><img src="img/cover-exam.jpg" alt="Exam Module" loading="lazy"><div><span class="pn">03</span><b>Exam Module</b><p>A complete exam system, from the first question to live proctoring and a grade every course can trust.</p><span class="proto-cta">Read the case study →</span></div></a></div>
 
 <h2 class="reveal"><span class="kicker">07 — The result</span>Three tools that feel like one system</h2>
 <div class="metrics reveal"><div class="metric"><div class="num">8<span class="arrow">→</span>1</div><p>changes to replace a teacher across 8 courses</p></div><div class="metric"><div class="num">12<span class="arrow">→</span>1</div><p>copies of the same book a teacher maintains</p></div><div class="metric"><div class="num">1</div><p>version of each exam, reused across every course</p></div></div>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big" data-words>The best design work on this project happened before any screen: deciding where content lives.</p>
-<p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
+<p class="big" data-words>The best design work on this project happened before any screen: deciding where content lives.</p></div>
 </div></article>
     <div class="next"><div class="rule"></div>
       <a href="#exam">
@@ -227,29 +218,31 @@
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal" data-words>Aladia had no exam system: no builder, no proctoring, no grading. I designed the whole thing from a blank canvas: three exam formats, AI-assisted question creation, live proctored exams, and a grading model that works across courses with completely different scoring scales.</p>
-        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Client</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Live proctoring UX<br>Grading system design</dd></div><div><dt>Outcome</dt><dd>Exam creation 6 → 3.5 min</dd></div></dl>
+        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Company</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Live proctoring UX<br>Grading system design</dd></div></dl>
       </div>
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
-<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Discover</b><p>Looked at why Books and Subjects had ended up copied inside every course, and at grading scales as different as 18–30 and 0–100.</p></li><li><span class="pn">02</span><b>Define</b><p>Set one rule: the exam lives outside the course. The course decides the date, the rules and the grade.</p></li><li><span class="pn">03</span><b>Ideate</b><p>Explored the three exam formats, and where AI can help write questions while the teacher stays the author.</p></li><li><span class="pn">04</span><b>Design</b><p>Designed the builder, live proctoring, monitoring and grading on the design system, for web and mobile.</p></li><li><span class="pn">05</span><b>Validate</b><p>Built Figma prototypes for every flow, and tested exam creation with Maze: 6 → 3.5 minutes.</p></li><li><span class="pn">06</span><b>Deliver</b><p>A complete exam system, from the first question to live proctoring, grading and rechecks.</p></li></ol></div>
-<h2 class="reveal"><span class="kicker">01 — The problem</span>Exams didn’t exist yet</h2>
-<p>Teachers on Aladia needed to create exams, run them with supervision and grade them, all inside the platform. None of that existed yet.</p>
-<p>And Aladia serves very different institutions. An Italian liceo grades from 18 to 30, while a corporate course grades from 0 to 100. <strong>The same system had to work for both.</strong></p>
-<h3>Who it affected</h3>
-<ul>
-<li><strong>Teachers</strong> often reuse the same exam in several courses, and may supervise <strong>forty students at once</strong> during a live exam.</li>
-<li><strong>Students</strong> take exams from home, with camera, microphone and screen monitored, where a bad WiFi connection can look like cheating.</li>
-</ul>
-<h3>How I found the problem</h3>
-<p>Most LMS platforms put exams inside courses. It’s the obvious structure, and it ships faster.</p>
-<p>But Aladia had already hit this problem twice, with Books and with Subjects. When content lived inside a course, every course ended up with its own copy. Fix a typo in one, and the others still have it. Over time, the copies stopped being the same thing at all.</p>
-<div class="callout">The hardest part wasn’t the exam itself. It was keeping <b>one exam consistent</b> across many courses, many grading rules and many students.</div>
+<div class="tldr reveal"><p class="tl-sum">Aladia had no way to run exams. I designed the whole system, from writing questions with AI to live proctoring and grading, so one exam works across courses with completely different grading rules.</p><p class="tl-role">UI/UX designer, course domain · Aladia · 2024–2026</p><div class="tl-m"><div><b>6<span class="arrow">→</span>3.5</b><span>minutes to create an exam (Maze usability test)</span></div><div><b>1</b><span>version of each exam, reused across every course</span></div><div><b>40</b><span>students supervised by one teacher in one view</span></div></div></div>
 
-<h2 class="reveal"><span class="kicker">02 — Decision 1</span>The exam lives outside the course</h2>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Exams inside courses, like most LMS platforms.</b> Simple and fast to build, but a teacher using the same final exam in five courses would end up with five copies to maintain.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Exam Collections at the profile level.</b> An exam is created once and used anywhere.</div></div></div>
-<p>Each course adds its own <strong>schedule, proctoring rules and grading scale on top</strong>, without ever touching the exam itself. The exam only knows raw points. Each course decides how those points become a grade.</p>
-<p><strong>Why it matters:</strong> the same exam can run in a course graded 18–30 and one graded 0–100 on the same afternoon. And a teacher with forty students across three courses maintains exactly one version of each exam.</p>
+<h2 class="reveal"><span class="kicker">01 — Context</span>Schools, universities and companies on one platform</h2>
+<p>Aladia is an e-learning platform used by very different institutions. An Italian liceo grades from 18 to 30, a corporate course from 0 to 100. Teachers needed to create exams, run them with supervision and grade them, all inside the platform.</p>
+
+<h2 class="reveal"><span class="kicker">02 — The problem</span>Exams didn’t exist, and the obvious design would break</h2>
+<ul>
+<li><strong>Teachers</strong> reuse the same exam in several courses, and may supervise <strong>forty students at once</strong> in a live exam.</li>
+<li><strong>Students</strong> take exams from home, monitored, where a bad WiFi connection can look like cheating.</li>
+<li>Most platforms put exams inside courses. Aladia had already hit that with Books and Subjects: every course got its own copy, and the copies drifted apart.</li>
+</ul>
+<div class="callout">The hard part wasn’t the exam. It was keeping <b>one exam consistent</b> across many courses, grading rules and students.</div>
+
+<h2 class="reveal"><span class="kicker">03 — My role and goal</span>From the structure to the last error state</h2>
+<p>I was the UI/UX designer on the team responsible for the course domain. I designed the exam system end to end: the structure, the builder with AI, live proctoring, grading and the student side, for web and mobile, and prototyped every flow in Figma. I worked closely with the project manager, the backend and frontend developers and the other designers, from requirements to handoff, and built working prototypes of my designs in code with Claude Code.</p>
+<p><strong>The goal:</strong> write an exam once, run it anywhere, and keep the teacher in control, of the questions, the grade and every flag.</p>
+
+<h2 class="reveal"><span class="kicker">04 — Decision 1</span>The exam lives outside the course</h2>
+<p><strong>Solves:</strong> one exam turning into many drifting copies.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Exams inside courses, like most platforms.</b> Fast to build, but five courses would mean five copies to maintain.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Exam Collections, outside any course.</b> An exam is written once, and each course adds its own date, rules and grading scale.</div></div></div>
 <div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE · EXAM COLLECTIONS</span>
 <div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
 <span class="ch-down">↓</span>
@@ -266,105 +259,39 @@
 <span class="ch-arrow">→</span>
 <div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
 </div>
-<p class="ch-note">This case study covers the highlighted part: the exam is written once in a collection, with no date or grading scale. Each course that uses it adds its own. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
+<p class="ch-note">The exam is written once in a collection, with no date or grading scale. Each course that uses it adds its own. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
 <a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=3-62221&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A62221&show-proto-sidebar=1" target="_blank" rel="noopener">
   <div class="proto-thumb"><img src="img/proto-create-1.jpg" alt="Creating an exam inside a collection" loading="lazy"><span class="proto-play">▶</span></div>
   <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Creating an exam inside a collection</h4><p>Click through how a teacher opens a collection and creates an exam there, outside any course.</p><span class="proto-cta">Open the prototype ↗</span></div>
 </a>
-
-<h2 class="reveal"><span class="kicker">03 — Building the exam</span>Questions, with AI as an assistant</h2>
-<p>Teachers write exams in the Document Builder, the same block editor used for books. Each question can be one of eight types, from multiple choice and match-the-pairs to essays and file uploads, and saved questions can be reused in any exam.</p>
-<p>AI sits on each question as an <strong>Ask AI</strong> action, and a teacher can ask it to draft an exam for a subject. The teacher stays the author: AI suggests, the teacher edits and decides.</p>
-<a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=11-7129&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A7129&show-proto-sidebar=1" target="_blank" rel="noopener">
-  <div class="proto-thumb"><img src="img/proto-build-1.jpg" alt="Building questions in the exam builder" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Building questions in the exam builder</h4><p>Click through the exam builder: adding a question, choosing its type and writing the options.</p><span class="proto-cta">Open the prototype ↗</span></div>
-</a>
 <a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=57-96937&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=57%3A96937&show-proto-sidebar=1" target="_blank" rel="noopener">
-  <div class="proto-thumb"><img src="img/proto-exam-mobile.jpg" alt="Writing questions with AI, on mobile" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">MOBILE PROTOTYPE</span><h4>Writing questions with AI, on mobile</h4><p>Click through the exam builder on a phone: start an exam, open Aladia AI, and generate questions from the platform’s books or create them yourself.</p><span class="proto-cta">Open the prototype ↗</span></div>
+  <div class="proto-thumb"><img src="img/proto-exam-mobile.jpg" alt="Creating an exam, with AI on mobile" loading="lazy"><span class="proto-play">▶</span></div>
+  <div class="proto-body"><span class="flow-tag">MOBILE PROTOTYPE</span><h4>Creating an exam, with AI on mobile</h4><p>Start an exam, open Aladia AI, and generate questions from the platform’s books or write them yourself.</p><span class="proto-cta">Open the prototype ↗</span></div>
 </a>
 
-<h2 class="reveal"><span class="kicker">04 — Decision 2</span>The course decides the grade, not the exam</h2>
-<p>Every institution grades differently. An Italian liceo grades from 18 to 30, a school might use A+ to F, and a corporate course may only need pass or fail. And because exams live outside courses, the same exam can appear in all of them.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Save the grading scale inside the exam.</b> Every institution would need its own copy, which is the exact problem Decision 1 solved.</div></div><div class="opt no"><span class="tag">Rejected</span><div><b>One fixed scale for the whole platform.</b> Simple, but wrong for most institutions.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>The exam stays neutral and only knows raw points.</b> Each course decides how points become a grade.</div></div></div>
-<p><strong>What I designed:</strong> three settings inside each course.</p>
-<ul>
-<li><strong>Grading scale:</strong> the course sets its maximum score (30, 10, 100…) and pass percentage, and exam points scale automatically. Advanced grading adds custom levels like A+ to F.</li>
-<li><strong>Weights per exam type:</strong> a Final can count far more than a Quiz.</li>
-<li><strong>Which attempt counts:</strong> Highest by default, because it rewards improvement without punishing a student for trying again. A stricter course can choose Latest or Average.</li>
-</ul>
-<p><strong>Why it works:</strong> none of these settings touch the exam. Changing a course’s scale rescales every exam in it instantly, without editing a single question.</p>
-<a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=24-27782&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=24%3A27782&show-proto-sidebar=1" target="_blank" rel="noopener">
-  <div class="proto-thumb"><img src="img/proto-live-1.jpg" alt="Adding an exam to a live course" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Adding an exam to a live course</h4><p>Click through how a teacher takes an exam from a collection and adds it to a running course, where the course sets its date and rules.</p><span class="proto-cta">Open the prototype ↗</span></div>
-</a>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/exam-07.jpg" alt="Course content" loading="lazy"></div><figcaption><b>Course content.</b> Exams sit in the course calendar next to lectures and schedule changes.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-08.jpg" alt="Exam details inside a lecture" loading="lazy"></div><figcaption><b>Exam details inside a lecture.</b> Proctoring and eligibility are switched on per course.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-09.jpg" alt="Scheduling an exam in a course" loading="lazy"></div><figcaption><b>Scheduling an exam in a course.</b> The course adds date, time and proctoring on top of the shared exam.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-10.jpg" alt="Course grading settings" loading="lazy"></div><figcaption><b>Course grading settings.</b> Which attempt counts, the course’s scale and pass mark, and weights per exam type.</figcaption></figure></div>
+<h2 class="reveal"><span class="kicker">05 — Decision 2</span>The course decides the grade, not the exam</h2>
+<p><strong>Solves:</strong> the same exam running in courses graded 18–30, A+ to F or pass/fail.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Save the grading scale inside the exam.</b> Every institution would need its own copy again.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>The exam only knows raw points.</b> Each course sets its scale, pass mark, weights and which attempt counts.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/exam-09.jpg" alt="Scheduling in a course. The course adds date, time and proctoring on top of the shared exam." loading="lazy"></div><figcaption><b>Scheduling in a course.</b> The course adds date, time and proctoring on top of the shared exam.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-10.jpg" alt="Course grading. Change the scale once and every exam in the course rescales, without editing a question." loading="lazy"></div><figcaption><b>Course grading.</b> Change the scale once and every exam in the course rescales, without editing a question.</figcaption></figure></div>
 
-<h2 class="reveal"><span class="kicker">05 — Decision 3</span>Supervising 40 students without watching 40 screens</h2>
-<p>On exam day, one teacher may supervise forty students at once, each at home with a camera and a shared screen. Nobody can watch forty video feeds continuously.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>One shared room for everyone.</b> Students could see or hear each other, and the teacher would get one long recording to scroll through.</div></div><div class="opt no"><span class="tag">Rejected</span><div><b>A simple list of student names.</b> The teacher would have to click into each student to check on them.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One breakout room per student, shown in a grid,</b> with the rooms that need attention highlighted.</div></div></div>
-<ul>
-<li>The rooms are <strong>created automatically</strong> from the participant list, so the teacher sets up nothing on the day.</li>
-<li><strong>Monitor Exam</strong> shows one room per student: webcam and exam screen side by side.</li>
-<li>Rooms are sorted into tabs: <strong>Open, Closed</strong> (students who submit move out of the way automatically) and <strong>Proctoring alerts</strong>.</li>
-<li>A room <strong>lights up</strong> the moment something needs attention, like a raised hand or a flag.</li>
-</ul>
-<div class="callout">A teacher can’t scan forty rooms, but they can react to the <b>two or three that light up</b>. And each student’s session is recorded separately, so every attempt has its own file.</div>
+<h2 class="reveal"><span class="kicker">06 — Decision 3</span>Supervising 40 students without watching 40 screens</h2>
+<p><strong>Solves:</strong> one teacher, forty students at home, and no way to watch forty feeds.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>One shared room for everyone.</b> Students would see each other, and the teacher would get one long recording.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One breakout room per student, in one grid,</b> created automatically, with rooms that need attention lighting up.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/exam-13.jpg" alt="Monitor Exam. A teacher can’t scan forty rooms, but can react to the two or three that light up." loading="lazy"></div><figcaption><b>Monitor Exam.</b> A teacher can’t scan forty rooms, but can react to the two or three that light up.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-17.jpg" alt="Grading with AI. AI suggests a score for open answers; the teacher accepts or changes it." loading="lazy"></div><figcaption><b>Grading with AI.</b> AI suggests a score for open answers; the teacher accepts or changes it.</figcaption></figure></div>
+<p><strong>The system flags, the human decides.</strong> A lost camera, a WiFi drop or leaving fullscreen each gets its own calm message, and is logged for the teacher. Nothing ends an exam automatically.</p>
+
+<h2 class="reveal"><span class="kicker">07 — The result</span>A complete exam system, designed from nothing</h2>
+<div class="metrics reveal"><div class="metric"><div class="num">6<span class="arrow">→</span>3.5</div><p>minutes to create an exam</p><small>Maze usability test</small></div><div class="metric"><div class="num">1</div><p>version of each exam, reused across every course</p></div><div class="metric"><div class="num">40</div><p>students supervised by one teacher in one view</p></div></div>
 <a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=34-206021&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=34%3A206172&show-proto-sidebar=1" target="_blank" rel="noopener">
   <div class="proto-thumb"><img src="img/proto-proctor-1.jpg" alt="A live written exam, proctored and monitored" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>A live written exam, proctored and monitored</h4><p>Click through a written exam during a live session: the teacher starts it, students move into their own rooms, and the teacher monitors every room with proctoring on.</p><span class="proto-cta">Open the prototype ↗</span></div>
-</a>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/exam-11.jpg" alt="Live session" loading="lazy"></div><figcaption><b>Live session.</b> The teacher starts the exam and creates breakout rooms in one step.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-13.jpg" alt="Monitor Exam" loading="lazy"></div><figcaption><b>Monitor Exam.</b> Every room in one grid, with tabs for open and closed rooms.</figcaption></figure></div>
-<h3>Small decisions that remove work</h3>
-<ul>
-<li>If the exam is longer than its calendar slot, the end time <strong>extends automatically</strong>, instead of cutting the student’s time or showing an error.</li>
-<li>The entry window (how long students have to start) <strong>grows with the exam’s length</strong>, so the teacher never has to set it.</li>
-<li>When grading, <strong>AI suggests a score</strong> for open questions, and the teacher accepts or changes it.</li>
-</ul>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/exam-17.jpg" alt="Grading with AI" loading="lazy"></div><figcaption><b>Grading with AI.</b> AI evaluates open answers; the teacher sets the point or accepts the AI score.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-15.jpg" alt="Exam overview" loading="lazy"></div><figcaption><b>Exam overview.</b> Average score, pass rate and each student’s status, including regrade requests.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">06 — Decision 4</span>The system flags, the human decides</h2>
-<p>Students take exams from home, with camera, microphone and screen monitored. In that situation, <strong>a technical problem can look like cheating</strong>. A student whose WiFi drops shouldn’t be treated as suspicious.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>End the exam automatically when a violation is detected.</b> Too harsh, and often wrong.</div></div><div class="opt no"><span class="tag">Rejected</span><div><b>Show one generic error message.</b> Confusing for the student, and it reads as suspicious behaviour.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Flag and notify, never end.</b> The student is told in the moment, the incident is logged, and the teacher decides.</div></div></div>
-<p><strong>What I designed:</strong> a specific, calm state for each failure.</p>
-<ul>
-<li>Camera or microphone disconnected → prompt to reconnect</li>
-<li>WiFi drops → the exam pauses and shows that it’s reconnecting</li>
-<li>Leaving fullscreen (Esc or F11) → prompt to return to the exam</li>
-</ul>
-<p>Naming exactly what happened <strong>protects the student as much as it protects the exam</strong>. The same thinking runs through the whole student experience:</p>
-<ul>
-<li><strong>Scoped rechecks:</strong> students select the specific questions they want reviewed and explain why, so a recheck doesn’t become a second full grading.</li>
-<li><strong>Controlled chat:</strong> students can reach the teacher mid-exam, but only for clarification and support.</li>
-<li><strong>Oral exams</strong> got their own one-to-one flow, instead of a video call attached to a written exam.</li>
-</ul>
-<a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=38-91563&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=38%3A91563&show-proto-sidebar=1" target="_blank" rel="noopener">
-  <div class="proto-thumb"><img src="img/proto-oral-1.jpg" alt="An oral exam, one to one" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>An oral exam, one to one</h4><p>Click through an oral exam: the teacher opens the exam from the calendar, joins the session and creates breakout rooms to examine students one by one.</p><span class="proto-cta">Open the prototype ↗</span></div>
-</a>
-<a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=44-100515&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=44%3A100515&show-proto-sidebar=1" target="_blank" rel="noopener">
-  <div class="proto-thumb"><img src="img/proto-student-ondemand.jpg" alt="Student: taking an on-demand exam" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Student: taking an on-demand exam</h4><p>Click through how a student starts an on-demand exam from the course, answers the questions and submits.</p><span class="proto-cta">Open the prototype ↗</span></div>
+  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>A live written exam, proctored and monitored</h4><p>The teacher starts the exam, students move into their own rooms, and every room is monitored.</p><span class="proto-cta">Open the prototype ↗</span></div>
 </a>
 <a class="proto reveal" href="https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=44-101499&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=44%3A101499&show-proto-sidebar=1" target="_blank" rel="noopener">
   <div class="proto-thumb"><img src="img/proto-student-scheduled.jpg" alt="Student: joining a scheduled exam" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Student: joining a scheduled exam</h4><p>Click through how a student joins a scheduled exam at its set time, takes it and submits.</p><span class="proto-cta">Open the prototype ↗</span></div>
+  <div class="proto-body"><span class="flow-tag">FIGMA PROTOTYPE</span><h4>Student: joining a scheduled exam</h4><p>How a student joins a scheduled exam at its set time, takes it and submits.</p><span class="proto-cta">Open the prototype ↗</span></div>
 </a>
-
-<h2 class="reveal"><span class="kicker">07 — Performance</span>One number teachers can trust</h2>
-<p>A teacher with several courses may have <strong>a hundred students or more</strong>. Exam results alone don’t show who needs help, and neither does attendance. A student can attend every class and fail every exam; another can skip classes and still score well, until the material gets harder.</p>
-<p><strong>What I designed:</strong> Performance, one number that combines both signals: <strong>Attendance 30% + Exams 70%</strong>.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Let each course set its own formula, like grading.</b> A “75” in one course would mean something different from a “75” in another, and nobody could compare.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One fixed formula everywhere,</b> so the number always means the same thing.</div></div></div>
-<p>Exams carry the larger share on purpose: attendance shows engagement, exams show what a student can actually do, and engagement shouldn’t outweigh competence.</p>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/exam-24.jpg" alt="Registry" loading="lazy"></div><figcaption><b>Registry.</b> Attendance, score and performance for every student, with the trend over chapters.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/exam-25.jpg" alt="Subjects radar" loading="lazy"></div><figcaption><b>Subjects radar.</b> One student compared with the class average across subjects.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">08 — The result</span>A complete exam system, designed from nothing</h2>
-<div class="research reveal"><span class="flow-tag">USABILITY TESTING</span><p class="rm">Unmoderated Maze tests on the Aladia platform · 50 participants across 4 flows</p><table><thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>Time to create an exam</td><td>6 min</td><td class="after">3.5 min</td></tr></tbody></table></div>
-<div class="metrics reveal"><div class="metric"><div class="num">6<span class="arrow">→</span>3.5</div><p>minutes to create an exam</p><small>Maze usability test</small></div><div class="metric"><div class="num">1</div><p>version of each exam, reused across every course</p></div><div class="metric"><div class="num">40</div><p>students supervised by one teacher in one view</p></div></div>
-<p>A complete exam system, from creation to live proctoring, grading and rechecks, and the most structurally complex part of the platform.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big" data-words>It all traces back to one early decision: keeping the exam separate from the course.</p>
-<p>That’s what lets the same exam run under completely different grading rules, and what keeps performance comparable everywhere. Almost every detail exists because a simpler version broke down against a real edge case during design. The happy path was never the hard part.</p></div>
+<p class="big" data-words>It all traces back to one early decision: keeping the exam separate from the course.</p></div>
 </div></article>
     <div class="next"><div class="rule"></div>
       <a href="#subjects">
@@ -388,50 +315,27 @@
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal" data-words>Subjects on Aladia were rebuilt inside every course, and teachers had to be invited to each course by hand. I moved subjects into one shared Subject Area, so a subject is created once and reused everywhere, and its teacher, books and exams follow it into every course automatically.</p>
-        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Client</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Data model design<br>Permission systems</dd></div><div><dt>Outcome</dt><dd>Teacher changes 8 → 1</dd></div></dl>
+        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Company</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Data model design<br>Permission systems</dd></div></dl>
       </div>
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
-<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Discover</b><p>Mapped the full workflow, from subject to teacher to book to exam to course, and the coordinator’s repeated work.</p></li><li><span class="pn">02</span><b>Define</b><p>A subject isn’t a course-level idea. It should live above the course, and every course should use it.</p></li><li><span class="pn">03</span><b>Ideate</b><p>Compared faster copying with one shared Subject Area per organisation, and chose the shared area.</p></li><li><span class="pn">04</span><b>Design</b><p>Subject areas, automatic teacher invitations, one question at a time for books and exams, and one Education tab.</p></li><li><span class="pn">05</span><b>Validate</b><p>Walked the model through real edge cases: late assignment, a teacher on leave, inviting to every course.</p></li><li><span class="pn">06</span><b>Deliver</b><p>Replacing a teacher across 8 courses went from 8 changes to 1.</p></li></ol></div>
-<h2 class="reveal"><span class="kicker">01 — The problem</span>Built once, rebuilt everywhere</h2>
-<p>Subjects lived inside courses. Every new course meant creating Mathematics, Italian and History again from scratch, and the Mathematics in one course had nothing to do with the Mathematics in the next. Books and exams couldn’t be linked to a subject at all.</p>
-<p>Teachers were stuck in the same pattern. They could only be assigned to a subject inside a single course, so a teacher with Mathematics in eight courses had to be invited eight separate times. Once inside, they faced a calendar showing every lecture of a year-long course, while they taught roughly one lesson a week. <strong>Finding their own lectures was hard.</strong></p>
-<h3>Who it affected</h3>
-<p>The person who felt this most was the <strong>academic coordinator</strong>, managing 12 courses and more than 50 subjects. Every change had to be repeated course by course. When a teacher went on leave, replacing them meant redoing the same work in every course they taught.</p>
-<div class="quote">“I have Mathematics in 8 different courses. When a teacher goes on leave and I need to replace him everywhere, I have to do it 8 times.”<cite>Academic coordinator</cite></div>
-<h3>The insight</h3>
-<p>A subject isn’t a course-level idea. Mathematics is Mathematics wherever it’s taught. The teacher is the same person, and the books and exams are the same resources.</p>
-<div class="callout">So the subject should <b>live above the course</b>, and every course should simply use it.</div>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/subjects-03.jpg" alt="One area, many subjects" loading="lazy"></div><figcaption><b>One area, many subjects.</b> Members and subjects are managed in one place.</figcaption></figure></div>
+<div class="tldr reveal"><p class="tl-sum">Subjects were rebuilt inside every course, and teachers were invited course by course. I moved subjects into one shared Subject Area, so a subject is created once and its teacher, books and exams follow it into every course.</p><p class="tl-role">UI/UX designer, course domain · Aladia · 2024–2026</p><div class="tl-m"><div><b>8<span class="arrow">→</span>1</b><span>changes to replace a teacher across 8 courses</span></div><div><b>Auto</b><span>teacher invitations, instead of by hand</span></div><div><b>1</b><span>subject, reused by every course</span></div></div></div>
 
-<h2 class="reveal"><span class="kicker">02 — Decision 1</span>Move subjects out of courses</h2>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Keep subjects inside courses, and make copying them faster.</b> Every copy would still drift apart, and the coordinator’s problem would stay.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One shared Subject Area for each organisation or freelance teacher.</b> Create a subject once, assign its teacher, link books and exams, then add it to any course, and everything comes with it.</div></div></div>
-<p><strong>Creating a subject is deliberately light:</strong> a title, a teacher, an icon and a colour. Subjects can also be organised by <strong>study level</strong>, like Mathematics for the first two years of a Liceo Scientifico, which matches how Italian schools actually teach.</p>
-<p><strong>One permission model everywhere:</strong> Subject Areas use the same four roles as Book Libraries and Exam Collections (Owner, Curator, Editor, Viewer), so teachers learn it once. If someone can’t do something because of their role, the action simply isn’t there, instead of appearing disabled with an error.</p>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/subjects-04.jpg" alt="Subject list" loading="lazy"></div><figcaption><b>Subject list.</b> Study levels, the courses using each subject and its teachers at a glance.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/subjects-05.jpg" alt="Creating a subject" loading="lazy"></div><figcaption><b>Creating a subject.</b> Title, colour, study levels, books and the teachers assigned.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/subjects-06.jpg" alt="Safe deletion" loading="lazy"></div><figcaption><b>Safe deletion.</b> Before a subject is removed, the courses that use it are listed.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/subjects-08.jpg" alt="Adding to a course" loading="lazy"></div><figcaption><b>Adding to a course.</b> Teachers pick subjects from the shared areas, with a level for each.</figcaption></figure></div>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/subjects-mobile.jpg" alt="Subjects on mobile" loading="lazy"></div><figcaption><b>Subjects on mobile.</b> Subject Areas as a list or as cards, and editing a subject: colour, books, files, study levels and assigned teachers.</figcaption></figure></div>
+<h2 class="reveal"><span class="kicker">01 — Context</span>Schools run dozens of courses</h2>
+<p>An Italian school on Aladia runs many courses at once, and the same subjects appear in all of them: Mathematics, Italian, History. Each subject has its teachers, books and exams.</p>
 
-<h2 class="reveal"><span class="kicker">03 — Decision 2</span>One decision about who teaches what</h2>
-<p>A school may run dozens of courses, and the same teacher often teaches the same subject in many of them. The coordinator had to invite each teacher to each course by hand, and keep track of who was where.</p>
-<p><strong>The new rule:</strong> the coordinator assigns a teacher to a subject once, and the platform works out which courses they need to be in.</p>
+<h2 class="reveal"><span class="kicker">02 — The problem</span>Built once, rebuilt everywhere</h2>
 <ul>
-<li><strong>A subject is added to a course:</strong> its teacher is invited automatically. I changed this from an optional invite to a mandatory one, because a course teaching Mathematics without its Mathematics teacher is broken.</li>
-<li><strong>The subject has no teacher yet:</strong> it still joins the course, so the coordinator isn’t blocked while staffing is being decided.</li>
-<li><strong>A teacher is assigned later:</strong> the system shows every course that uses the subject and offers to invite the teacher to all of them at once.</li>
+<li><strong>Subjects lived inside courses,</strong> so every new course meant creating Mathematics again, unrelated to the Mathematics in the next.</li>
+<li><strong>Teachers were invited per course.</strong> One teacher with Mathematics in eight courses was invited eight times.</li>
+<li><strong>Books and exams</strong> couldn’t be linked to a subject at all.</li>
 </ul>
-<p>This also solves the coordinator’s leave problem: assigning a new teacher to the subject reaches every course that uses it. <strong>One change instead of eight.</strong></p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/subjects-09.jpg" alt="Teachers follow the subject" loading="lazy"></div><figcaption><b>Teachers follow the subject.</b> Adding a subject to a course invites its teachers in the same step.</figcaption></figure></div>
+<div class="quote">“I have Mathematics in 8 different courses. When a teacher goes on leave and I need to replace him everywhere, I have to do it 8 times.”<cite>Academic coordinator, 12 courses and 50+ subjects</cite></div>
 
-<h2 class="reveal"><span class="kicker">04 — Decision 3</span>Books and exams follow the subject</h2>
-<p>Once subjects lived outside courses, books and exams could be linked to them too. So adding a subject to a course could bring its content along.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Add everything automatically.</b> Fast, but teachers would lose control over their own course.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Ask one clear question at a time:</b> “This subject has books. Do you want to add them to the course?” The same for exams. Nothing is added without the teacher’s say.</div></div></div>
-<p>The same logic reaches down to lectures: when a subject with books is assigned to a lecture, the teacher can add all of them, choose some, or skip. A fully built subject, with its teacher, books and exams, can now be added to a new course <strong>in one action</strong>.</p>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/subjects-10.jpg" alt="One question at a time" loading="lazy"></div><figcaption><b>One question at a time.</b> The course can inherit the subject’s books, or not.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/subjects-07.jpg" alt="Down to the lecture" loading="lazy"></div><figcaption><b>Down to the lecture.</b> The subject’s book appears in the lecture with its page range.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">05 — Decision 4</span>One home for education content</h2>
-<p>Subject Areas, Book Libraries and Exam Collections work exactly the same way: reusable, linked, with the same roles.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Three separate places in the navigation, one for each.</b> </div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One Education tab,</b> where teachers land once and branch into subjects, books or exams.</div></div></div>
+<h2 class="reveal"><span class="kicker">03 — My role and goal</span>Redesigning a feature everyone already used</h2>
+<p>I was the UI/UX designer on the team responsible for the course domain. This was a redesign: I mapped the full workflow, from subject to teacher to book to exam to course, then redesigned the structure, permissions and flows. I worked closely with the project manager, the backend and frontend developers and the other designers, from requirements to handoff, and built working prototypes of my designs in code with Claude Code.</p>
+<p><strong>The goal:</strong> a subject should live above the course, so one change reaches every course that uses it.</p>
 <div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE · SUBJECT AREAS</span>
 <div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
 <span class="ch-down">↓</span>
@@ -448,18 +352,24 @@
 <span class="ch-arrow">→</span>
 <div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
 </div>
-<p class="ch-note">This case study covers the highlighted part: subjects live in Subject Areas, and courses use them. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
-<p>That’s what makes them feel like one system instead of three tools. And it made the other features possible: the Book Library’s subject links and the exams’ subject context both depend on subjects living outside courses.</p>
+<p class="ch-note">Subjects live in Subject Areas, and courses use them. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
+
+<h2 class="reveal"><span class="kicker">04 — Decision 1</span>Move subjects out of courses</h2>
+<p><strong>Solves:</strong> the same subject rebuilt, and drifting apart, in every course.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Keep subjects in courses, and make copying faster.</b> The copies would still drift apart.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One shared Subject Area per organisation,</b> where a subject is created once and added to any course.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/subjects-04.jpg" alt="Subject list. Study levels, the courses using each subject and its teachers, in one place." loading="lazy"></div><figcaption><b>Subject list.</b> Study levels, the courses using each subject and its teachers, in one place.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/subjects-08.jpg" alt="Adding to a course. Teachers pick subjects from the shared areas, with a level for each." loading="lazy"></div><figcaption><b>Adding to a course.</b> Teachers pick subjects from the shared areas, with a level for each.</figcaption></figure></div>
+
+<h2 class="reveal"><span class="kicker">05 — Decision 2</span>The teacher follows the subject</h2>
+<p><strong>Solves:</strong> inviting the same teacher course by course, and replacing them eight times.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Keep inviting teachers per course.</b> The coordinator’s repeated work would stay.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Assign the teacher to the subject once,</b> and the platform invites them to every course that uses it.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/subjects-09.jpg" alt="Teachers follow the subject. Adding a subject to a course invites its teachers in the same step." loading="lazy"></div><figcaption><b>Teachers follow the subject.</b> Adding a subject to a course invites its teachers in the same step.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/subjects-10.jpg" alt="One question at a time. The subject’s books can come along, or not; the teacher decides." loading="lazy"></div><figcaption><b>One question at a time.</b> The subject’s books can come along, or not; the teacher decides.</figcaption></figure></div>
+<p>Edge cases were part of the design: a subject with no teacher yet still joins the course, and assigning one later offers to invite them everywhere at once.</p>
 
 <h2 class="reveal"><span class="kicker">06 — The result</span>Set up once, reused everywhere</h2>
 <div class="metrics reveal"><div class="metric"><div class="num">8<span class="arrow">→</span>1</div><p>changes to replace a teacher across 8 courses</p></div><div class="metric"><div class="num">Auto</div><p>teacher invitations, instead of course by course by hand</p></div><div class="metric"><div class="num">3</div><p>organisational edge cases handled by the system</p><small>late assignment · leave · invite to all</small></div></div>
-<ul>
-<li><strong>Subject setup:</strong> from once in every course to once in total, reused everywhere.</li>
-<li><strong>Teacher calendar:</strong> from every lecture of the course to only their own lessons.</li>
-</ul>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/subjects-mobile.jpg" alt="Subjects on mobile. Subject Areas as a list or as cards, and editing a subject." loading="lazy"></div><figcaption><b>Subjects on mobile.</b> Subject Areas as a list or as cards, and editing a subject.</figcaption></figure></div>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big" data-words>The most useful change a designer can make isn’t always on the screen. Sometimes it’s the structure underneath.</p>
-<p>Teachers asked for one thing: to find their own lectures. Everything else was friction I uncovered by mapping the full workflow, from subject to teacher to book to exam to course, and designing the system to absorb it.</p></div>
+<p class="big" data-words>The most useful change a designer can make isn’t always on the screen. Sometimes it’s the structure underneath.</p></div>
 </div></article>
     <div class="next"><div class="rule"></div>
       <a href="#books">
@@ -483,19 +393,27 @@
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal" data-words>Aladia had no concept of a book. Teachers could only attach files to individual lectures, one at a time. I designed a Book Library from zero: one place to upload, organise and reuse books across courses, lectures, subjects and live sessions.</p>
-        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Client</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Content library design<br>In-lecture book reader</dd></div><div><dt>Outcome</dt><dd>Upload usability 62 → 81</dd></div></dl>
+        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer, end to end</dd></div><div><dt>Company</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Platform</dt><dd>Web, responsive + mobile</dd></div><div><dt>Focus</dt><dd>Content library design<br>In-lecture book reader</dd></div></dl>
       </div>
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
-<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Discover</b><p>Audited the upload workflow and watched teachers share one book across three courses. Every time, they uploaded a copy.</p></li><li><span class="pn">02</span><b>Define</b><p>Books had to become real objects in a central library, not files attached to a lecture.</p></li><li><span class="pn">03</span><b>Ideate</b><p>Mapped the data model with the PM: library → book → course → lecture → page range.</p></li><li><span class="pn">04</span><b>Design</b><p>Three paths into one form, ISBN search, cover picking, page ranges per lecture and the reader.</p></li><li><span class="pn">05</span><b>Validate</b><p>Tested book upload with Maze: the usability score went from 62 to 81.</p></li><li><span class="pn">06</span><b>Deliver</b><p>Shipped as a new part of the platform; 48% of books were added through ISBN search.</p></li></ol></div>
-<h2 class="reveal"><span class="kicker">01 — The problem</span>Books were just attachments</h2>
-<p>Before the Book Library, a “book” on Aladia was just a file attached to a lecture. If a teacher needed the same textbook in three courses, they uploaded it three times. The copies had no link to each other, no details, and no connection to their subject. When the book was updated, the teacher had to remember every place it lived, and they always missed at least one.</p>
+<div class="tldr reveal"><p class="tl-sum">A book on Aladia was just a file attached to one lecture. I designed a Book Library from scratch, so a book is uploaded once, linked to any course, and opens at the right pages inside the lecture.</p><p class="tl-role">UI/UX designer, course domain · Aladia · 2024–2026</p><div class="tl-m"><div><b>62<span class="arrow">→</span>81</b><span>usability score for book upload (Maze test)</span></div><div><b>48%</b><span>of books added through ISBN search</span></div><div><b>12<span class="arrow">→</span>1</b><span>copies of the same book a teacher maintains</span></div></div></div>
+
+<h2 class="reveal"><span class="kicker">01 — Context</span>Every lecture needs its reading</h2>
+<p>Teachers on Aladia teach from textbooks, PDFs and their own material, often the same book in several courses. Students need to know exactly what to read for each lesson.</p>
+
+<h2 class="reveal"><span class="kicker">02 — The problem</span>Books were just attachments</h2>
+<ul>
+<li><strong>The same book was uploaded again in every course,</strong> with no link between the copies.</li>
+<li><strong>Updates were missed:</strong> teachers had to remember every place a book lived.</li>
+<li><strong>Students got a 300-page PDF</strong> and a separate message saying which chapter to read.</li>
+</ul>
 <div class="quote">“I have the same PDF uploaded 12 times across my courses. When I update it, I always forget at least one.”<cite>Department head with over 200 teaching PDFs</cite></div>
-<h3>How I found the problem</h3>
-<p>I audited the existing workflow, mapped with the PM how books relate to subjects, teachers and courses, and watched teachers try to share one book across three courses. Every time, they uploaded a new copy.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>A better upload button.</b> It would make uploading faster, but teachers would still create copies.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Make books real objects on the platform,</b> living in a central library with their own details, subjects and team roles. Create once, link to any course.</div></div></div>
-<p>This meant designing a <strong>new data model before any screen</strong>, following the same structure as Subject Areas and Exam Collections: library → book → course → lecture → page range.</p>
+
+<h2 class="reveal"><span class="kicker">03 — My role and goal</span>A new part of the platform</h2>
+<p>I was the UI/UX designer on the team responsible for the course domain. I audited the existing workflow, mapped the data model with the PM, then designed the library, the upload flow and the reader from scratch. I worked closely with the project manager, the backend and frontend developers and the other designers through to handoff, and built working prototypes of my designs in code with Claude Code.</p>
+<p><strong>The goal:</strong> make books real objects on the platform. Create once, link anywhere, and point each lecture to its own pages.</p>
 <div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE · BOOK LIBRARIES</span>
 <div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
 <span class="ch-down">↓</span>
@@ -512,52 +430,22 @@
 <span class="ch-arrow">→</span>
 <div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
 </div>
-<p class="ch-note">This case study covers the highlighted part: one book in the library, and every lecture points to a different part of it. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
+<p class="ch-note">One book in the library, and every lecture points to a different part of it. <a class="ia-link" href="#education">See the full system in Education System →</a></p></div>
 
-<h2 class="reveal"><span class="kicker">02 — Decision 1</span>One place, one set of rules</h2>
-<p>Books, subjects and exams all work in a similar way and connect to each other. If each had its own place and its own rules, teachers would have to learn three systems.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>A separate section for books, with its own permissions.</b> </div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Book Libraries in the Education tab,</b> next to Subject Areas and Exam Collections, with the same four roles: Owner, Curator, Editor and Viewer.</div></div></div>
-<p><strong>Why:</strong> a teacher who understands one understands the others. And when someone can’t do something because of their role, the action simply isn’t there, which makes the role system feel natural instead of bureaucratic.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/books-03.jpg" alt="Education group" loading="lazy"></div><figcaption><b>Education group.</b> Subjects, books and exams sit together in settings and navigation.</figcaption></figure></div>
+<h2 class="reveal"><span class="kicker">04 — Decision 1</span>Three paths into one form</h2>
+<p><strong>Solves:</strong> books arriving as PDFs, purchase links or teachers’ own material.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>A better upload button.</b> Faster uploads, but teachers would still create copies.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Add New Book with three paths into one form,</b> with ISBN search that fills in the details.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/books-05.jpg" alt="Three kinds of book. PDF, purchase link or written in the editor, each clearly labelled." loading="lazy"></div><figcaption><b>Three kinds of book.</b> PDF, purchase link or written in the editor, each clearly labelled.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-06.jpg" alt="One form. ISBN search fills in the details, the route used for 48% of books." loading="lazy"></div><figcaption><b>One form.</b> ISBN search fills in the details, the route used for 48% of books.</figcaption></figure></div>
 
-<h2 class="reveal"><span class="kicker">03 — Decision 2</span>Three paths, one form</h2>
-<p>Teachers don’t all have books in the same form. Some have a PDF, some can only point to a book for sale, and some write their own material. <strong>Add New Book</strong> opens with three paths that all lead to the same form:</p>
-<ul>
-<li><strong>Upload a PDF:</strong> the most common case.</li>
-<li><strong>Attach a purchase link:</strong> for copyrighted books that can’t be shared as files. The teacher adds the ISBN and a link, and students see exactly which book to buy instead of nothing.</li>
-<li><strong>Create it manually:</strong> for teachers writing their own material.</li>
-</ul>
-<h3>Three small decisions that removed friction</h3>
-<ul>
-<li><strong>Cover images:</strong> asking teachers to make a cover for every book would stall the flow. The system shows the first five pages of the PDF, and the teacher picks one as the cover with a single tap.</li>
-<li><strong>Writing a book:</strong> instead of a new editor just for books, I reused the Document Builder, the same editor used for exams. AI sits inline on each block, like in Notion, not in a separate mode, so the teacher stays the author.</li>
-<li><strong>Book details:</strong> teachers can type them in, or search by ISBN and have everything fill in automatically. Most teachers already know the ISBN of their books, so this became the most used route: <strong>48% of books</strong> were added this way.</li>
-</ul>
-<div class="figs three"><figure class="reveal"><div class="ph"><img src="img/books-05.jpg" alt="Three kinds of book" loading="lazy"></div><figcaption><b>Three kinds of book.</b> PDF, purchase link, AI-generated and manually added books, each labelled.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-06.jpg" alt="One form" loading="lazy"></div><figcaption><b>One form.</b> ISBN search fills in the details; books link to a subject and level.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-07.jpg" alt="Writing a book" loading="lazy"></div><figcaption><b>Writing a book.</b> The Document Builder with AI inline, the same editor teachers know from exams.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">04 — Decision 3</span>Let the connections come to the teacher</h2>
-<p>A book belongs to a subject, and a subject can have its own teacher. When adding a book to a course, teachers had to remember all these connections, and they usually didn’t.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Leave it to the teacher</b> to add the related subject and invite the right people by hand.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Ask at the right moment,</b> with one question at a time the teacher can accept or skip.</div></div></div>
-<ul>
-<li>“This book belongs to a subject. Should that subject be added to the course too?”</li>
-<li>“That subject has a teacher. Should they be invited?”</li>
-</ul>
-<p><strong>Page ranges per lecture:</strong> a textbook covers a whole year, but one lecture covers a few pages. So the teacher sets a page range for each lecture: chapter three this week, chapter four next. The book lives in the library once, and each lecture points to a different part of it.</p>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/books-08.jpg" alt="Connections on request" loading="lazy"></div><figcaption><b>Connections on request.</b> Adding a book offers to add its subjects and invite their teachers.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-09.jpg" alt="Page ranges" loading="lazy"></div><figcaption><b>Page ranges.</b> Each lecture points to its own pages of the same book.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-10.jpg" alt="In the lecture" loading="lazy"></div><figcaption><b>In the lecture.</b> The book and its companion volume, with the assigned pages.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-11.jpg" alt="Recurring events too" loading="lazy"></div><figcaption><b>Recurring events too.</b> Books can be attached to a whole series of live sessions.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">05 — What the student sees</span>The right reading, already in the lecture</h2>
-<p>All of this structure leads to one simple result for the student: the lecture page. Every book assigned to the lecture appears there, and opening it launches the built-in reader <strong>directly at the assigned pages</strong>.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Before:</b> a 300-page PDF and a separate message saying which chapter to read.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Now:</b> the teacher’s decision arrives already applied.</div></div></div>
-<div class="figs three"><figure class="reveal"><div class="ph"><img src="img/books-12.jpg" alt="Books in the lecture" loading="lazy"></div><figcaption><b>Books in the lecture.</b> Each book shows the page ranges assigned for this lesson.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-13.jpg" alt="Book details" loading="lazy"></div><figcaption><b>Book details.</b> Description, language, length and its companion volumes.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-14.jpg" alt="The reader" loading="lazy"></div><figcaption><b>The reader.</b> Opens at the assigned pages, with a banner saying who assigned them.</figcaption></figure></div>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/books-mobile.jpg" alt="Book details on mobile" loading="lazy"></div><figcaption><b>Book details on mobile.</b> The cover, subject and level, key facts, Start Reading, and the companion volume right below.</figcaption></figure></div>
+<h2 class="reveal"><span class="kicker">05 — Decision 2</span>Each lecture points to its own pages</h2>
+<p><strong>Solves:</strong> students getting the whole book instead of this week’s reading.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Attach the book to the course.</b> Students would still have to find the right chapter.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>A page range per lecture,</b> and the reader opens directly at those pages.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/books-09.jpg" alt="Page ranges. One book in the library; each lecture points to its own pages." loading="lazy"></div><figcaption><b>Page ranges.</b> One book in the library; each lecture points to its own pages.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/books-mobile.jpg" alt="Book details on mobile. Start Reading opens at the assigned pages, with the companion volume below." loading="lazy"></div><figcaption><b>Book details on mobile.</b> Start Reading opens at the assigned pages, with the companion volume below.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">06 — The result</span>A new part of the platform</h2>
-<div class="research reveal"><span class="flow-tag">USABILITY TESTING</span><p class="rm">Unmoderated Maze tests on the Aladia platform · 50 participants across 4 flows</p><table><thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>Book upload usability score</td><td>62</td><td class="after">81</td></tr></tbody></table></div>
 <div class="metrics reveal"><div class="metric"><div class="num">62<span class="arrow">→</span>81</div><p>usability score for book upload</p><small>Maze usability test</small></div><div class="metric"><div class="num">48%</div><p>of books added through ISBN search, the fastest route</p></div><div class="metric"><div class="num">12<span class="arrow">→</span>1</div><p>copies of the same book a teacher maintains</p></div></div>
-<p>The Book Library shipped as a completely new part of the platform, connected to courses, lectures, subjects, calendar events and live sessions.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big" data-words>For something new, the concept has to come before the interface.</p>
-<p>I had to create the mental model, the navigation and the permissions at the same time. Once the structure was clear, every screen could follow from it. And a good default does more than a good form: one optional ISBN field saved more effort than any layout change could have.</p></div>
+<p class="big" data-words>For something new, the concept has to come before the interface.</p></div>
 </div></article>
     <div class="next"><div class="rule"></div>
       <a href="#design-system">
@@ -581,12 +469,12 @@
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal" data-words>Aladia had a design kit, but the platform had many domains, and Figma files and the product had drifted apart. I built a design system from scratch in Figma, variables first: a core palette, themes, breakpoint modes and components on top, plus a branching workflow so the team could use it without breaking it.</p>
-        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer</dd></div><div><dt>Client</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Tool</dt><dd>Figma variables & components</dd></div><div><dt>Focus</dt><dd>Design tokens<br>Component library</dd></div><div><dt>Outcome</dt><dd>735 tokens, 450+ components</dd></div></dl>
+        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Product Designer</dd></div><div><dt>Company</dt><dd>Aladia</dd></div><div><dt>Industry</dt><dd>EdTech · B2B & B2C SaaS</dd></div><div><dt>Tool</dt><dd>Figma variables & components</dd></div><div><dt>Focus</dt><dd>Design tokens<br>Component library</dd></div></dl>
       </div>
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
-<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Problem</b><p>A design kit existed, but the platform had many domains, and Figma files and the product had drifted apart.</p></li><li><span class="pn">02</span><b>Goal</b><p>Decisions made once and reused everywhere: change a value in one place, and the whole product follows.</p></li><li><span class="pn">03</span><b>Core</b><p>Tier 1: the raw palette, over 400 variables with no meaning yet.</p></li><li><span class="pn">04</span><b>Themes</b><p>Tier 2: names by purpose, with Light and Dark modes.</p></li><li><span class="pn">05</span><b>Breakpoints</b><p>Desktop, Tablet and Mobile modes, so components adapt without being redrawn.</p></li><li><span class="pn">06</span><b>Components</b><p>Atoms, molecules and organisms, built on the variables, then a branching workflow for the team.</p></li></ol></div>
+<div class="tldr reveal"><p class="tl-sum">Aladia’s design kit had drifted away from the product, and teams weren’t aligned. I built a design system from scratch in Figma, variables first, so a value changed in one place updates the whole product.</p><p class="tl-role">Product designer · Aladia · 2024–2026</p><div class="tl-m"><div><b>735</b><span>design tokens across three tiers</span></div><div><b>450+</b><span>components built on the tokens</span></div><div><b>3 + 2</b><span>breakpoint modes and Light/Dark themes</span></div></div></div>
 <h2 class="reveal"><span class="kicker">01 — The problem</span>One kit, many domains, no single truth</h2>
 <p>Aladia already had a design kit. But the platform was big, with many domains, and over time the Figma files and the live product drifted apart. <strong>Teams were not aligned</strong> on which version was right.</p>
 <div class="callout">The goal: <b>one source of truth</b>, so we could design faster and stay consistent.</div>
@@ -600,15 +488,15 @@
 
 <h2 class="reveal"><span class="kicker">03 — Tier 1 · Core</span>The raw palette</h2>
 <p>Over 400 variables for colour, typography, radius, spacing, shadows and more. None of them has a meaning yet: they are just the values the rest of the system is allowed to use.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-core.jpg" alt="Core Tier 1" loading="lazy"></div><figcaption><b>Core Tier 1.</b> Primitives for radius, colour and typography, and the variable collections in Figma.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-core.jpg" alt="Core Tier 1. Primitives for radius, colour and typography, and the variable collections in Figma." loading="lazy"></div><figcaption><b>Core Tier 1.</b> Primitives for radius, colour and typography, and the variable collections in Figma.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">04 — Tier 2 · Themes</span>Names by purpose</h2>
 <p>Themes give each value a job, like a primary background or a hover state. The same token points to a different core value in Light and in Dark, so components never need to know which theme they are in.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-themes.jpg" alt="Themes Tier 2" loading="lazy"></div><figcaption><b>Themes Tier 2.</b> Radius and content colours named by purpose, with Light and Dark values side by side.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-themes.jpg" alt="Themes Tier 2. Radius and content colours named by purpose, with Light and Dark values side by side." loading="lazy"></div><figcaption><b>Themes Tier 2.</b> Radius and content colours named by purpose, with Light and Dark values side by side.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">05 — Breakpoints</span>One component, three screen sizes</h2>
 <p>Breakpoint modes for Desktop, Tablet and Mobile change values like spacing, sizes and visibility. A component adapts by switching mode, without being redrawn for each screen. This is what made every screen on the platform responsive, with mobile versions designed too.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-breakpoints.jpg" alt="Core Breakpoints" loading="lazy"></div><figcaption><b>Core Breakpoints.</b> Responsive values per mode: Desktop, Tablet and Mobile.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-breakpoints.jpg" alt="Core Breakpoints. Responsive values per mode: Desktop, Tablet and Mobile." loading="lazy"></div><figcaption><b>Core Breakpoints.</b> Responsive values per mode: Desktop, Tablet and Mobile.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">06 — Components</span>Built in atomic levels, with variants and states</h2>
 <ul>
@@ -616,8 +504,8 @@
 <li><strong>Molecules:</strong> small interactive parts, like buttons, dropdowns, input fields and chips.</li>
 <li><strong>Organisms:</strong> complex, complete sections, like tables, breadcrumbs, cards and pop-ups.</li>
 </ul>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-atomic.jpg" alt="Atomic levels" loading="lazy"></div><figcaption><b>Atomic levels.</b> Atoms, molecules and organisms, in Aladia’s own style.</figcaption></figure></div>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-components.jpg" alt="Variants and states" loading="lazy"></div><figcaption><b>Variants and states.</b> Icons, buttons, input fields and lists, each with their variants.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-atomic.jpg" alt="Atomic levels. Atoms, molecules and organisms, in Aladia’s own style." loading="lazy"></div><figcaption><b>Atomic levels.</b> Atoms, molecules and organisms, in Aladia’s own style.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/ds-components.jpg" alt="Variants and states. Icons, buttons, input fields and lists, each with their variants." loading="lazy"></div><figcaption><b>Variants and states.</b> Icons, buttons, input fields and lists, each with their variants.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">07 — Workflow</span>How the team worked with it</h2>
 <div class="diagram reveal"><span class="flow-tag">WORKFLOW</span><div class="chain"><div class="ch-node"><b>Domain files</b><small>one Figma file per domain, with a local Components page</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Branch per task</b><small>a Figma branch named after the task, then design</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Approve and merge</b><small>after approval the branch is merged</small></div></div><p class="ch-note">The system stays clean, because nothing reaches it without review.</p></div>
@@ -648,69 +536,56 @@
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal" data-words>Connecta is a no-code integration platform built inside Odoo. It connects apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync their data without writing code. I designed the whole product: dashboards, setup flow, flow builder and marketing site.</p>
-        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Sole Product Designer</dd></div><div><dt>Client</dt><dd>Connecta Software</dd></div><div><dt>Industry</dt><dd>No-code integration · B2B SaaS</dd></div><div><dt>Year</dt><dd>2026</dd></div><div><dt>Focus</dt><dd>Role-based dashboards<br>Setup wizard design</dd></div><div><dt>Outcome</dt><dd>50+ screens, 20 flows</dd></div></dl>
+        <dl class="meta reveal d1"><div><dt>Role</dt><dd>Sole Product Designer</dd></div><div><dt>Timeline</dt><dd>May – Sep 2026</dd></div><div><dt>Platform</dt><dd>Web, responsive</dd></div><div><dt>Focus</dt><dd>Dashboard consolidation<br>Setup wizard design</dd></div></dl>
       </div>
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
-<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Discover</b><p>As the only designer, I audited the whole product: three overlapping views, setup inside the flow builder, a form that broke its layout.</p></li><li><span class="pn">02</span><b>Define</b><p>Simple and advanced tasks were mixed together. Separate them by role and by task.</p></li><li><span class="pn">03</span><b>Ideate</b><p>Weighed one shared dashboard against two role-based views, and a full-page Studio against a slide-in overlay.</p></li><li><span class="pn">04</span><b>Design</b><p>Management and development views, a four-step wizard, Studio and AI flow drafting.</p></li><li><span class="pn">05</span><b>Prototype</b><p>Rebuilt the final Figma UI as a responsive coded prototype, working on desktop and mobile.</p></li><li><span class="pn">06</span><b>Deliver</b><p>50+ screens across 20 flows; the setup wizard shipped before a trade-fair deadline.</p></li></ol></div>
-<h2 class="reveal"><span class="kicker">01 — The problem</span>“No-code” doesn’t mean simple</h2>
-<p>Behind every connection there is data mapping, sync schedules, retries and conditions between systems that don’t naturally agree. The product showed all of this to everyone, all the time. <strong>A tool built to save people time made them feel they needed a developer.</strong></p>
-<h3>Who it affected</h3>
+<div class="tldr reveal"><p class="tl-sum">A no-code integration platform for Odoo made people feel they needed a developer. I separated simple tasks from advanced ones, by role and by task, without removing any power.</p><p class="tl-role">Sole product designer · May–Sep 2026</p><div class="tl-m"><div><b>4<span class="arrow">→</span>2</b><span>separate dashboards merged into two role-based views</span></div><div><b>4</b><span>steps to a first connection, instead of the full flow builder</span></div><div><b>50+</b><span>screens across 20 flows, designed alone</span></div></div></div>
+
+<h2 class="reveal"><span class="kicker">01 — Context</span>Connecting Odoo to everything else</h2>
+<p>Connecta links Odoo with apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync orders, products and stock without writing code.</p>
+<p>Two kinds of people use it. <strong>Business owners</strong> just want to know that everything is working. <strong>Developers and admins</strong> need enough detail to fix what breaks, fast.</p>
+
+<h2 class="reveal"><span class="kicker">02 — The problem</span>A time-saving tool that felt like it needed a developer</h2>
+<p>Behind every connection are mappings, schedules, retries and conditions. The product showed all of it to everyone, all the time. I audited the whole product and found three symptoms:</p>
 <ul>
-<li><strong>Business owners</strong> want a quick answer: is everything working?</li>
-<li><strong>Developers and admins</strong> need enough detail to fix what’s broken, fast.</li>
+<li><strong>Four separate dashboards in separate tabs</strong> (historical, technical, one for business owners and one for partners) showing overlapping data. Nobody got one clear answer.</li>
+<li><strong>Connecting Shopify needed the flow builder,</strong> the most advanced tool. A customer’s very first task was the hardest one.</li>
+<li><strong>The setup form was so long it broke its own layout.</strong></li>
 </ul>
-<p>And for both of them, simply connecting a new app meant going through the full flow builder, the most complex part of the product.</p>
-<h3>How I found the problem</h3>
-<p>As the only designer, I worked across the whole product instead of one feature, so I could see the same pattern everywhere:</p>
-<ul>
-<li>the same data appeared in three overlapping views, and none of them worked well for either user;</li>
-<li>a simple task (connecting Shopify) required the most advanced tool in the product;</li>
-<li>the setup form had so many fields that it broke the layout it lived in.</li>
-</ul>
-<div class="callout">The problem wasn’t too many features. It was that <b>simple and advanced tasks were mixed together</b>, and everyone saw everything.</div>
+<div class="callout">The problem wasn’t too many features. <b>Simple and advanced tasks were mixed together</b>, and everyone saw everything.</div>
+
+<h2 class="reveal"><span class="kicker">03 — My role and goal</span>One designer, the whole product</h2>
+<p>I was the only designer, working directly with the co-founders. I audited the product, framed the problem, designed 50+ screens across 20 flows, and rebuilt the final UI as a responsive coded prototype. The setup wizard had a hard deadline: it had to ship before a trade fair.</p>
+<p><strong>The goal:</strong> keep all the power, but show the simple path by default. Each person sees what their role needs, and simple tasks never need the advanced tools.</p>
+
+<h2 class="reveal"><span class="kicker">04 — Decision 1</span>Two views of the same data</h2>
+<p><strong>Solves:</strong> four overlapping dashboards that worked for no one.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>One dashboard, with explanations for owners.</b> Owners would still dig through errors and settings they don’t need.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>One dashboard with a role switcher,</b> and two views over the same data: business owners and partners merged into Management, historical and technical merged into Development.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-02.jpg" alt="Management view. Read-only: is everything working, and what changed since my last visit?" loading="lazy"></div><figcaption><b>Management view.</b> Read-only: is everything working, and what changed since my last visit?</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-03.jpg" alt="Development view. Repeating errors grouped, with retry and a shortcut to the record in Odoo." loading="lazy"></div><figcaption><b>Development view.</b> Repeating errors grouped, with retry and a shortcut to the record in Odoo.</figcaption></figure></div>
+<p><strong>A constraint:</strong> ideally the view would follow the user’s role automatically, from the backend. The client couldn’t support that yet, so I designed a simple switcher at the top, which still turned four tabs into one place.</p>
+<p>When an app can’t retry, the button is <strong>disabled, not hidden</strong>, so the limit is visible. My rule: hide what your role can’t do, disable what the system can’t do.</p>
+
+<h2 class="reveal"><span class="kicker">05 — Decision 2</span>Taking setup out of the flow builder</h2>
+<p><strong>Solves:</strong> a first connection that required the most advanced tool.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Keep setup in the flow builder.</b> New users would have to learn the whole platform before one connection.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>A separate four-step wizard</b> that starts from the app library.</div></div></div>
+<div class="diagram reveal"><span class="flow-tag">SETUP FLOW</span><div class="chain"><div class="ch-node"><b>Ensure app</b><small>existing or new</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Connect</b><small>search the library</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Authenticate</b><small>6 methods</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Details</b><small>essentials only</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Test & save</b><small>ready to sync</small></div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-05.jpg" alt="Library first. Known apps are prefilled and tested for you, so most people never type a URL." loading="lazy"></div><figcaption><b>Library first.</b> Known apps are prefilled and tested for you, so most people never type a URL.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-07.jpg" alt="Essentials only. The extra fields that broke the layout now sit in collapsed Advanced settings." loading="lazy"></div><figcaption><b>Essentials only.</b> The extra fields that broke the layout now sit in collapsed Advanced settings.</figcaption></figure></div>
+
+<h2 class="reveal"><span class="kicker">06 — Decision 3</span>A canvas you can still read months later</h2>
+<p><strong>Solves:</strong> crowded flows that people had to relearn every time they reopened them.</p>
+<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Studio as a full page.</b> People would lose their place every time they edited a flow.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Studio as a slide-in overlay,</b> with a start page for recent work and clearer canvas blocks.</div></div></div>
+<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-09.jpg" alt="The canvas. Clearer blocks and structure, so a flow reads the same months later." loading="lazy"></div><figcaption><b>The canvas.</b> Clearer blocks and structure, so a flow reads the same months later.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-ai-2.jpg" alt="AI drafts a flow. Describe it in plain words; every step is listed and stays editable." loading="lazy"></div><figcaption><b>AI drafts a flow.</b> Describe it in plain words; every step is listed and stays editable.</figcaption></figure></div>
+
+<h2 class="reveal"><span class="kicker">07 — The result</span>Simple by default, powerful one click away</h2>
+<div class="metrics reveal"><div class="metric"><div class="num">4<span class="arrow">→</span>2</div><p>separate dashboards merged into two role-based views</p></div><div class="metric"><div class="num">4</div><p>steps to a first working connection, shipped before the trade fair</p></div><div class="metric"><div class="num">50+</div><p>screens across 20 user flows, as the sole designer</p></div></div>
 <a class="proto reveal" href="https://claude.ai/artifact/H5VD7nLN5CXi5Qm6ckoTqT" target="_blank" rel="noopener">
   <div class="proto-thumb"><img src="img/proto-connecta.jpg" alt="The redesigned Connecta, working in code" loading="lazy"><span class="proto-play">▶</span></div>
-  <div class="proto-body"><span class="flow-tag">CODED PROTOTYPE</span><h4>The redesigned Connecta, working in code</h4><p>A clickable prototype of the final UI from Figma, built in code and responsive: switch between desktop and mobile to see the same product on both.</p><span class="proto-cta">Open the prototype ↗</span></div>
+  <div class="proto-body"><span class="flow-tag">CODED PROTOTYPE</span><h4>The redesigned Connecta, working in code</h4><p>Switch between desktop and mobile to see the same product on both.</p><span class="proto-cta">Open the prototype ↗</span></div>
 </a>
-
-<h2 class="reveal"><span class="kicker">02 — Decision 1</span>Two views of the same data</h2>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>One dashboard for everyone.</b> It would do both jobs badly: too technical for owners, not detailed enough for developers.</div></div><div class="opt no"><span class="tag">Rejected</span><div><b>Keep the technical dashboard and add explanations for owners.</b> Owners would still have to dig through errors and settings they don’t need.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Two views over the same data,</b> each built for one kind of user.</div></div></div>
-<ul>
-<li><strong>Management view</strong> is calm and read-only. It shows whether everything is connected and healthy, with nothing to configure.</li>
-<li><strong>Development view</strong> is built for the people doing the work. Repeating errors are grouped instead of flooding the list, records can be filtered, and every issue has retry, retry all and retry selected, plus a shortcut to the source record in Odoo.</li>
-</ul>
-<p>When an app doesn’t support retries, the button appears <strong>disabled</strong> instead of hidden, so the limitation is visible instead of mysterious. My rule across products: <strong>hide what your role can’t do, disable what the system can’t do.</strong></p>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-02.jpg" alt="Management view" loading="lazy"></div><figcaption><b>Management view.</b> Is everything working? Today’s syncs, failures and what changed since the last visit.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-03.jpg" alt="Development view" loading="lazy"></div><figcaption><b>Development view.</b> Errors by app, top error types and active errors to fix.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">03 — Decision 2</span>Taking setup out of the flow builder</h2>
-<p>Connecting a new app meant going through the full flow builder. It’s powerful, but far too much for someone who just wants to link Shopify and move on.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Keep setup inside the flow builder.</b> New users would have to understand the whole platform before creating a single connection.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>A separate four-step wizard</b> that starts with searching the app library.</div></div></div>
-<p><strong>A problem I found along the way:</strong> the connection-details step had so many fields that it broke the wizard’s sidebar layout. I kept only the essential fields and moved the rest into a collapsed <strong>Advanced settings</strong> section. The main path stays short, and the depth is still there for anyone who needs it.</p>
-<div class="diagram reveal"><span class="flow-tag">SETUP FLOW</span><div class="chain"><div class="ch-node"><b>Ensure app</b><small>existing or new</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Connect</b><small>search the library</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Authenticate</b><small>6 methods</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Details</b><small>essentials only</small></div><span class="ch-arrow">→</span><div class="ch-node"><b>Test & save</b><small>ready to sync</small></div></div><p class="ch-note">Advanced settings stay collapsed in step 4, so the main path stays short.</p></div>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-04.jpg" alt="Step 1 — Ensure app" loading="lazy"></div><figcaption><b>Step 1 — Ensure app.</b> Pick an app you already have, or create one.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-05.jpg" alt="Step 2 — Connect" loading="lazy"></div><figcaption><b>Step 2 — Connect.</b> Search the library first; we prefill and test it for you.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-06.jpg" alt="Step 3 — Authentication" loading="lazy"></div><figcaption><b>Step 3 — Authentication.</b> Six methods described in plain language.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-07.jpg" alt="Step 4 — Details" loading="lazy"></div><figcaption><b>Step 4 — Details.</b> Only the essential fields, then test and save.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">04 — Decision 3</span>A canvas you can still read months later</h2>
-<p>Connecta Studio is where the real logic gets built: a canvas where people connect blocks to define how data moves between systems, how fields map and what conditions apply. As flows grew, the screen became crowded, and people had to find a flow, open it and understand it again, often weeks later.</p>
-<div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>Open Studio as a full page,</b> taking over the whole product. Users would lose their place every time they edited a flow.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>Open Studio as a slide-in overlay</b> from a quieter button in the top bar, so people can edit a flow and return to where they were.</div></div></div>
-<ul>
-<li>A <strong>Studio start page</strong> with Quick Create, recently closed tabs and a browse panel, so people get back to their work in one click.</li>
-<li><strong>Redesigned canvas blocks</strong> and navigation, so a flow stays readable as it grows.</li>
-<li>In the mapping tool, a <strong>field picker</strong> with drill-down navigation, a back button and required-field markers, and <strong>more than 70 functions</strong> organised into categories instead of one long list.</li>
-</ul>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-08.jpg" alt="Studio start page" loading="lazy"></div><figcaption><b>Studio start page.</b> Start from a connection, mapping, endpoint or flow, with recent work one click away.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-09.jpg" alt="The canvas" loading="lazy"></div><figcaption><b>The canvas.</b> Clear blocks and structure, so a flow is readable months later.</figcaption></figure></div>
-<h3>Describe a flow, and AI drafts it</h3>
-<p>From the same start page, people can describe what they need in plain words. Connecta AI builds a draft flow, lists every step it created, and saves it in Studio, where it stays fully editable. The person can open it on the canvas or ask for a change.</p>
-<div class="figs "><figure class="reveal"><div class="ph"><img src="img/connecta-ai-1.jpg" alt="Describe it" loading="lazy"></div><figcaption><b>Describe it.</b> Plain-language input with suggested starting points.</figcaption></figure><figure class="reveal"><div class="ph"><img src="img/connecta-ai-2.jpg" alt="Review the draft" loading="lazy"></div><figcaption><b>Review the draft.</b> Each step the AI created is listed before opening the flow.</figcaption></figure></div>
-
-<h2 class="reveal"><span class="kicker">05 — The result</span>Simple by default, powerful one click away</h2>
-<div class="metrics reveal"><div class="metric"><div class="num">3<span class="arrow">→</span>2</div><p>overlapping views became two role-based views</p></div><div class="metric"><div class="num">4</div><p>steps to a first working connection, shipped before a trade-fair deadline</p></div><div class="metric"><div class="num">50+</div><p>screens across 20 user flows, as the sole designer</p></div></div>
-<p><strong>Constraints:</strong> I was the only designer on the product, and the setup wizard had to ship before a trade-fair deadline, so I prioritised the paths new customers would hit first.</p>
-<p>Studio became easier to navigate and easier to read, even for flows built months earlier.</p>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
-<p class="big" data-words>Making a technical product simple doesn’t mean removing its power. It means deciding who needs that power, and when.</p>
-<p>Across every part of this project, the same principle held: show the simple path by default, and keep the complexity one click away.</p></div>
+<p class="big" data-words>Making a technical product simple doesn’t mean removing its power. It means deciding who needs that power, and when.</p></div>
 </div></article>
     <div class="next"><div class="rule"></div>
       <a href="#live-tv">
@@ -739,8 +614,8 @@
     </div>
     <div class="rule"></div>
     <article class="cs-body"><div class="prose">
+<div class="tldr reveal"><p class="tl-sum">A self-initiated concept: a live TV guide for 500+ channels on Android TV, where every choice is made with a remote. I designed it from the logic flow to the hi-fi screen, tokens and developer handover.</p><p class="tl-role">Concept project · Product designer, UX, UI & design system</p><div class="tl-m"><div><b>500+</b><span>channels, navigable with a D-Pad only</span></div><div><b>3</b><span>entitlement states, never shown by colour alone</span></div><div><b>1</b><span>hi-fi screen at 1920×1080, with full handover</span></div></div></div>
 <div class="callout"><b>Concept project.</b> A self-initiated exercise, designed from brief to developer handover. No real client or users, so there are no results to report.</div>
-<div class="process reveal"><span class="kicker">How I worked</span><ol><li><span class="pn">01</span><b>Brief</b><p>A live TV platform with 500+ channels, mixing free, premium and locked content, used only with a remote.</p></li><li><span class="pn">02</span><b>Flow</b><p>Mapped every path first, including loading, errors and locked content.</p></li><li><span class="pn">03</span><b>Layout</b><p>Combined a hero panel, a recommendation rail and an EPG grid on one screen.</p></li><li><span class="pn">04</span><b>Entitlement</b><p>Three states shown with colour, opacity and a label, never colour alone.</p></li><li><span class="pn">05</span><b>System</b><p>Core Tier 1 primitives and Themes Tier 2 semantic tokens.</p></li><li><span class="pn">06</span><b>Handover</b><p>D-Pad focus rules, timing, loading states and edge cases for developers.</p></li></ol></div>
 <h2 class="reveal"><span class="kicker">01 — The brief</span>500 channels, one remote</h2>
 <p>The brief described a live TV platform for Android TV with more than 500 channels, some free, some premium and some locked. The existing programme guide (EPG) was a wall of data: no hierarchy, no recommendations and no clear way to tell what the viewer could actually watch.</p>
 <ul>
@@ -752,7 +627,7 @@
 <h2 class="reveal"><span class="kicker">02 — The approach</span>Broadcast guide meets streaming app</h2>
 <div class="options"><div class="opt no"><span class="tag">Rejected</span><div><b>A classic EPG grid only.</b> Familiar, but it is exactly the wall of data that causes the problem.</div></div><div class="opt no"><span class="tag">Rejected</span><div><b>A streaming-style home with rails only.</b> Easy to browse, but it hides what is on now across 500 channels.</div></div><div class="opt yes"><span class="tag">Chosen</span><div><b>A hybrid layout,</b> with a full-bleed hero panel, a curated “Recommended Live Now” rail and a smart EPG grid on the same screen.</div></div></div>
 <p><strong>The hero panel updates on every D-Pad move.</strong> Focusing a programme anywhere shows its full title, time and actions at the top. This solves long titles on TV without tooltips or hover states, which a remote doesn’t have.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/tv-hero.jpg" alt="Main screen, 1920×1080" loading="lazy"></div><figcaption><b>Main screen, 1920×1080.</b> Hero panel, recommendation rail and EPG grid, all reachable with the D-Pad.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/tv-hero.jpg" alt="Main screen, 1920×1080. Hero panel, recommendation rail and EPG grid, all reachable with the D-Pad." loading="lazy"></div><figcaption><b>Main screen, 1920×1080.</b> Hero panel, recommendation rail and EPG grid, all reachable with the D-Pad.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">03 — Entitlement</span>Never colour alone</h2>
 <p>Every programme is <strong>Free</strong>, <strong>Premium</strong> or <strong>Locked</strong>. Each state is shown three ways at once (colour, opacity and a text label), so it still reads for colour-blind viewers and from across the room. Pressing OK on a free or premium programme plays it; on a locked one it opens the upgrade modal instead.</p>
@@ -761,14 +636,14 @@
 
 <h2 class="reveal"><span class="kicker">04 — Logic flow</span>Every path, not just the happy one</h2>
 <p>Before any screen, I mapped the whole flow: loading with a skeleton, data errors with retry, the hero actions (Watch Live, Info, Restart), the restart sheet for programmes that started earlier, and locked channels leading to the upgrade modal or back to the guide.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/tv-flow.jpg" alt="Logic flow" loading="lazy"></div><figcaption><b>Logic flow.</b> Happy and unhappy paths, plus edge cases like long titles and missing thumbnails.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/tv-flow.jpg" alt="Logic flow. Happy and unhappy paths, plus edge cases like long titles and missing thumbnails." loading="lazy"></div><figcaption><b>Logic flow.</b> Happy and unhappy paths, plus edge cases like long titles and missing thumbnails.</figcaption></figure></div>
 
 <h2 class="reveal"><span class="kicker">05 — Design system</span>Same structure, different screen</h2>
 <p>The design system uses the same two first tiers as my Aladia work: <strong>Core Tier 1</strong> primitives and <strong>Themes Tier 2</strong> semantic tokens, sized for TV with minimum font sizes and spacing for 10-foot viewing. <a class="ia-link" href="#design-system">See how I build design systems →</a></p>
 
 <h2 class="reveal"><span class="kicker">06 — Handover</span>Written for developers</h2>
 <p>The handover covers how each behaviour should work: how the hero updates on focus, how the rail and grid scroll, where the “now” line sits, when long titles start to scroll, which way BACK goes, and how often data refreshes.</p>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/tv-dev.jpg" alt="Developer notes" loading="lazy"></div><figcaption><b>Developer notes.</b> Key behaviours to implement, with timings and rules.</figcaption></figure></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/tv-dev.jpg" alt="Developer notes. Key behaviours to implement, with timings and rules." loading="lazy"></div><figcaption><b>Developer notes.</b> Key behaviours to implement, with timings and rules.</figcaption></figure></div>
 </div></article>
     <div class="next"><div class="rule"></div>
       <a href="#education">
