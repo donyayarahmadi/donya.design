@@ -519,3 +519,8 @@ figure .ph, .cs-cover .media, .cs-overview .shot img, .work-media, .next .media,
   .part{grid-template-columns:1fr}
 }
 .carousel,.carousel-nav,.carousel-nav button{border-radius:0 !important}
+/* testimonials: sit on the footer line, no centre gridline behind the heading */
+body:not(.is-case) .footer { margin-top: 0; }
+.carousel-nav { border-bottom: 0; }
+.testi-head { position: relative; z-index: 2; }
+.testi-head::before { content: ""; position: absolute; left: 50%; top: -90px; bottom: 0; width: 4px; transform: translateX(-50%); background: var(--bg); z-index: -1; }
