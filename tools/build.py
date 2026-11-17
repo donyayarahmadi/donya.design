@@ -146,7 +146,8 @@ def sysflow():
       ("Course", "Exam types per course", "Live courses can have scheduled, non-scheduled and oral exams. On-demand courses have non-scheduled exams. All of them are added in the same way.", "course live od x-sch x-non x-oral x-non2"),
       ("Student", "In the lecture", "The student finds the subject, its books and files already in the lecture.", "lecture"),
       ("Student", "Scheduled exam", "Scheduled exams are held in 100ms with the camera on. If proctoring is on, the session is recorded.", "x-sch room proct"),
-      ("Student", "Non-scheduled and oral exams", "Non-scheduled exams are started from the course. Oral exams run inside a live session.", "x-non x-non2 x-oral room"),
+      ("Student", "Non-scheduled exam", "The student starts it from the course. Only when proctoring is on do they join a meeting room, where the session is recorded. Without proctoring, they simply take the exam.", "x-non x-non2 room proct"),
+      ("Student", "Oral exam", "Oral exams run inside a live session.", "x-oral room"),
       ("Performance", "Performance", "After all of this, the performance module brings the results together for every student, course and subject.", "perf"),
     ]
     tabs, panels, phase = [], [], None
