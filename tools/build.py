@@ -465,7 +465,7 @@ connecta_body = f'''
 {process(("Discover", "As the only designer, I audited the whole product: three overlapping views, setup inside the flow builder, a form that broke its layout."),
          ("Define", "Simple and advanced tasks were mixed together. Separate them by role and by task."),
          ("Ideate", "Weighed one shared dashboard against two role-based views, and a full-page Studio against a slide-in overlay."),
-         ("Design", "Management and development views, a four-step wizard, Studio and AI flow drafting, the website, app store and portal."),
+         ("Design", "Management and development views, a four-step wizard, Studio and AI flow drafting."),
          ("Prototype", "Rebuilt the final Figma UI as a responsive coded prototype, working on desktop and mobile."),
          ("Deliver", "50+ screens across 20 flows; the setup wizard shipped before a trade-fair deadline."))}
 {h2("01 — The problem", "“No-code” doesn’t mean simple")}
@@ -525,15 +525,7 @@ connecta_body = f'''
 {figs(("connecta-ai-1.jpg", "<b>Describe it.</b> Plain-language input with suggested starting points."),
       ("connecta-ai-2.jpg", "<b>Review the draft.</b> Each step the AI created is listed before opening the flow."))}
 
-{h2("05 — Also designed", "The website, app store and customer portal")}
-<p>Alongside the product, I designed Connecta’s public website. Instead of a standard SaaS landing page, I built the sections around <strong>puzzle pieces fitting together</strong>, a visual language for what the platform actually does: connecting separate systems into one.</p>
-<p>The website also sells the product: an <strong>app store</strong> where each connector has its own details page, clear <strong>pricing</strong>, and a <strong>customer portal</strong> where customers and the Connecta team see the status of every installation.</p>
-{figs(("connecta-10.jpg", "<b>App marketplace.</b> Featured and popular connectors with clear pricing."),
-      ("connecta-11.jpg", "<b>App details.</b> What the app syncs in each direction, its pricing and what it needs to install."),
-      ("connecta-13.jpg", "<b>Pricing.</b> Apps only, or the full platform configured to your plan."),
-      ("connecta-14.jpg", "<b>Customer portal.</b> Every customer project with its environments, versions, health and backups."))}
-
-{h2("06 — The result", "Simple by default, powerful one click away")}
+{h2("05 — The result", "Simple by default, powerful one click away")}
 {metrics((arrow("3", "2"), "overlapping views became two role-based views", ""),
          ("4", "steps to a first working connection, shipped before a trade-fair deadline", ""),
          ("50+", "screens across 20 user flows, as the sole designer", ""))}
