@@ -76,6 +76,34 @@ def research(method, rows, note=""):
     n = f'<p class="ch-note">{note}</p>' if note else ""
     return f'<div class="research reveal"><span class="flow-tag">USABILITY TESTING</span><p class="rm">{method}</p><table><thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead><tbody>{r}</tbody></table>{n}</div>'
 
+def iatree():
+    def col(name, sub, groups, item, details):
+        g = "".join(f"<li>{x}</li>" for x in groups)
+        d = "".join(f"<li>{x}</li>" for x in details)
+        return f'''<div class="ia-col"><div class="ch-node lib"><b>{name}</b><small>{sub}</small></div>
+<ul class="ia-groups">{g}</ul><div class="ch-node item"><b>{item[0]}</b><small>{item[1]}</small></div><ul class="ia-details">{d}</ul></div>'''
+    cols = (col("Subject Areas", "one per organisation or teacher", ["My areas", "Shared areas"], ("Subject", "title, icon, colour"), ["Teachers assigned", "Study levels", "Linked books", "Linked exams"])
+          + col("Book Libraries", "one per organisation or teacher", ["My libraries", "Shared libraries"], ("Book", "PDF, purchase link or written"), ["Details, filled by ISBN", "Cover from the first pages", "Subject and level", "Companion volumes"])
+          + col("Exam Collections", "one per organisation or teacher", ["My collections", "Shared collections"], ("Exam", "one version, reused"), ["Questions, AI-assisted", "Written or oral", "Linked subject", "No date, no grading scale"]))
+    return f'''<div class="diagram ia reveal"><span class="flow-tag">INFORMATION ARCHITECTURE</span>
+<div class="ch-node root"><b>Education</b><small>one group in settings and navigation</small></div>
+<span class="ch-down">↓</span>
+<div class="ia-cols">{cols}</div>
+<div class="ia-roles"><span>Same roles in all three</span><b>Owner</b><b>Curator</b><b>Editor</b><b>Viewer</b></div>
+<span class="ch-down">↓ added to</span>
+<div class="ia-use">
+<div class="ch-node"><b>Course</b><small>subjects with a level · their teachers invited · books · exams with a date, rules and grading scale</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Lecture & live session</b><small>a subject · the book’s page range · an exam</small></div>
+<span class="ch-arrow">→</span>
+<div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
+</div>
+<p class="ch-note">Content lives once, above the course. Courses and lectures only point to it, and decide how it is used.</p></div>'''
+
+def parts(*items):
+    out = "".join(f'<a class="part reveal" href="#{slug}"><img src="img/{img}" alt="{t}" loading="lazy"><div><span class="pn">0{i+1}</span><b>{t}</b><p>{d}</p><span class="proto-cta">Read the case study →</span></div></a>' for i, (slug, t, d, img) in enumerate(items))
+    return f'<div class="parts">{out}</div>'
+
 def arrow(a, b):
     return f'{a}<span class="arrow">→</span>{b}'
 
@@ -458,7 +486,68 @@ connecta_body = f'''
 <p>Across every part of this project, the same principle held: show the simple path by default, and keep the complexity one click away.</p></div>
 '''
 
+# ---------------------------------------------------------------- EDUCATION (system overview)
+education_body = f'''
+{process(("Discover", "Saw the same pattern three times: subjects, books and exams were all built inside courses, and copied into every new one."),
+         ("Define", "The problem wasn’t one feature. It was where content lived. It had to move above the course."),
+         ("Structure", "Designed one model for all three: a shared library, an item inside it, and links into courses and lectures."),
+         ("Rules", "Gave the three the same four roles and the same behaviour, so teachers learn the system once."),
+         ("Design", "Designed each part end to end: Subject Areas, Book Libraries and Exam Collections."),
+         ("Connect", "Linked them together, so adding a subject to a course can bring its teacher, books and exams with it."))}
+{h2("01 — The problem", "Everything lived inside the course")}
+<p>On Aladia, a course was a container for everything. Its subjects, its books and later its exams were all created inside it. That works for one course. It breaks for a school running dozens of them.</p>
+<ul>
+<li><strong>Subjects</strong> were rebuilt in every course. Mathematics in one course had nothing to do with Mathematics in the next, and a teacher with the same subject in 8 courses was invited 8 times.</li>
+<li><strong>Books</strong> were files attached to single lectures. One textbook used in 12 places meant 12 uploads, and 12 places to update.</li>
+<li><strong>Exams</strong> didn’t exist yet. Built the same way, every course would have had its own copy of the same exam.</li>
+</ul>
+<div class="callout">Three features, <b>one structural problem</b>: content that should be shared was trapped inside courses.</div>
+<h3>Who it affected</h3>
+<ul>
+<li><strong>Academic coordinators</strong>, managing 12 courses and more than 50 subjects, repeating every change course by course.</li>
+<li><strong>Teachers</strong>, keeping copies of the same book or exam up to date by hand.</li>
+<li><strong>Students</strong>, receiving a 300-page PDF and a message saying which chapter to read.</li>
+</ul>
+
+{h2("02 — The idea", "Content lives once, courses point to it")}
+{opts(("no", "Fix each feature on its own,", "with faster copying or bulk editing. The copies would still drift apart."),
+      ("yes", "Lift all teaching content above the course,", "into shared libraries. A course doesn’t own its subjects, books and exams anymore; it uses them."))}
+<p>That gave every piece of content the same shape: a <strong>library</strong> owned by an organisation or a freelance teacher, <strong>items</strong> inside it, and <strong>links</strong> from courses and lectures that decide how each item is used there: a level, a page range, a date, a grading scale.</p>
+
+{h2("03 — Information architecture", "One tree for the whole system")}
+<p>All three libraries sit together under <strong>Education</strong>, in settings and in the navigation, and follow the same structure. This is the map I designed before any screen.</p>
+{iatree()}
+{figs(("books-03.jpg", "<b>Education in settings.</b> Subject Areas, Book Libraries and Exam Collections, side by side."), cls="one")}
+
+{h2("04 — Shared rules", "Learn it once, use it everywhere")}
+<ul>
+<li><strong>The same four roles</strong> (Owner, Curator, Editor, Viewer) in every library, so permissions work the same way for subjects, books and exams.</li>
+<li><strong>Hide what your role can’t do.</strong> If someone can’t edit, the action isn’t there, instead of appearing disabled with an error.</li>
+<li><strong>One question at a time.</strong> When content is linked to a course, related things are offered, never added silently: “This subject has books. Add them too?”</li>
+<li><strong>The course decides how content is used.</strong> The exam has no date or grading scale of its own; the book has no page range. The course and lecture set them.</li>
+</ul>
+
+{h2("05 — The three parts", "One by one")}
+<p>Each part had its own users, edge cases and decisions. These case studies go through them in detail.</p>
+{parts(("subjects", "Subject Areas", "The decision that connected the platform: one shared subject, with its teacher, books and exams following it into every course.", "cover-subjects.jpg"),
+       ("books", "Book Libraries", "Books as real objects in a library, linked to lectures with a page range and opened in the built-in reader.", "cover-books.jpg"),
+       ("exam", "Exam Module", "A complete exam system, from the first question to live proctoring and a grade every course can trust.", "cover-exam.jpg"))}
+
+{h2("06 — The result", "Three tools that feel like one system")}
+{metrics((arrow("8", "1"), "changes to replace a teacher across 8 courses", ""),
+         (arrow("12", "1"), "copies of the same book a teacher maintains", ""),
+         ("1", "version of each exam, reused across every course", ""))}
+<div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
+<p class="big">The best design work on this project happened before any screen: deciding where content lives.</p>
+<p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
+'''
+
 CASES = [
+    ("education", "Education System", "How subjects, books and exams became one connected system on Aladia.",
+     "books-03.jpg", "exam-01.jpg",
+     "Before I designed subjects, books or exams one by one, I had to solve the problem they shared: all teaching content was trapped inside courses. I designed one structure for all three, shared libraries under Education, with the same rules, linked into courses and lectures.",
+     [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Information architecture<br>System design"), ("Outcome", "3 libraries, 1 structure")],
+     education_body, ("exam", "Exam Module", "Live proctoring UX · Grading system design", "cover-exam.jpg")),
     ("exam", "Exam Module", "Designing a complete exam system, from the first question to the final grade.",
      "cover-exam.jpg", "exam-01.jpg",
      "Aladia had no exam system: no builder, no proctoring, no grading. I designed the whole thing from a blank canvas: three exam formats, AI-assisted question creation, live proctored exams, and a grading model that works across courses with completely different scoring scales.",
@@ -478,14 +567,15 @@ CASES = [
      "cover-connecta.jpg", "connecta-01.jpg",
      "Connecta is a no-code integration platform built inside Odoo. It connects apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync their data without writing code. I designed the whole product: dashboards, setup flow, flow builder and marketing site.",
      [("Role", "Sole Product Designer"), ("Client", "Connecta Software"), ("Industry", "No-code integration · B2B SaaS"), ("Year", "2026"), ("Focus", "Role-based dashboards<br>Setup wizard design"), ("Outcome", "50+ screens, 20 flows")],
-     connecta_body, ("exam", "Exam Module", "Live proctoring UX · Grading system design", "cover-exam.jpg")),
+     connecta_body, ("education", "Education System", "Information architecture · System design", "books-03.jpg")),
 ]
 
 WORKS = [
-    ("exam", "Exam Module", ["Live proctoring UX", "Grading system design"], "cover-exam.jpg", ""),
-    ("subjects", "Subject Areas", ["Data model design", "Permission systems"], "cover-subjects.jpg", "right"),
-    ("books", "Book Libraries", ["Content library design", "In-lecture book reader"], "cover-books.jpg", ""),
-    ("connecta", "Connecta", ["Role-based dashboards", "Setup wizard design"], "cover-connecta.jpg", "right"),
+    ("education", "Education System", ["Information architecture", "System design"], "books-03.jpg", ""),
+    ("exam", "Exam Module", ["Live proctoring UX", "Grading system design"], "cover-exam.jpg", "right"),
+    ("subjects", "Subject Areas", ["Data model design", "Permission systems"], "cover-subjects.jpg", ""),
+    ("books", "Book Libraries", ["Content library design", "In-lecture book reader"], "cover-books.jpg", "right"),
+    ("connecta", "Connecta", ["Role-based dashboards", "Setup wizard design"], "cover-connecta.jpg", ""),
 ]
 
 TESTIMONIALS = [
@@ -528,7 +618,7 @@ def home():
     works = "".join(
         f'''<div class="work {side}"><a href="#{slug}">
       <div class="work-media"><img src="img/{img}" alt="{title} case study" loading="lazy"></div>
-      <div class="work-meta"><div><div class="work-num">0{i+1} / 04</div><h3>{title}</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">{"<br>".join(tags)}</div></div>
+      <div class="work-meta"><div><div class="work-num">0{i+1} / 05</div><h3>{title}</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">{"<br>".join(tags)}</div></div>
     </a></div>''' for i, (slug, title, tags, img, side) in enumerate(WORKS))
     slides = "".join(
         f'<div class="slide"><blockquote>“{q}”</blockquote><div class="avatar">{ini}</div><div class="who">{who}</div><div class="role">{role}</div></div>'
@@ -577,7 +667,7 @@ def home():
   <div class="frame">
     <div class="cs-split"><div class="sticky"><span class="word l">Case</span><span class="word r">studies</span></div></div>
     <div class="works-head" id="work">
-      <div><span class="eyebrow">Selected works <span class="count">(04)</span></span><h2>Complex products, made simple to use</h2></div>
+      <div><span class="eyebrow">Selected works <span class="count">(05)</span></span><h2>Complex products, made simple to use</h2></div>
       <p>Every project here started with the same question: <b>how do you make something complex feel simple?</b></p>
     </div>
     <div class="works">{works}</div>
