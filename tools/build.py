@@ -104,23 +104,63 @@ def parts(*items):
     out = "".join(f'<a class="part reveal" href="#{slug}"><img src="img/{img}" alt="{t}" loading="lazy"><div><span class="pn">0{i+1}</span><b>{t}</b><p>{d}</p><span class="proto-cta">Read the case study →</span></div></a>' for i, (slug, t, d, img) in enumerate(items))
     return f'<div class="parts">{out}</div>'
 
-ENTS = [("S", "Subject"), ("B", "Book"), ("E", "Exam"), ("C", "Course"), ("L", "Lecture"), ("St", "Student")]
-def explorer(phases):
-    chips = "".join(f'<span class="ux-ent" data-e="{k}">{n}</span>' + ('<span class="ux-sep">→</span>' if k == "E" else "") for k, n in ENTS)
-    items, panels, n = [], [], 0
-    for phase, steps in phases:
-        items.append(f'<li class="ux-phase">{phase}</li>')
-        for actor, title, text, img, ents in steps:
-            n += 1
-            on = " on" if n == 1 else ""
-            items.append(f'<li><button class="ux-item{on}" data-i="{n-1}"><span>{n:02d}</span>{title}</button></li>')
-            panels.append(f'''<div class="ux-panel{on}" data-ents="{' '.join(ents)}"><div class="ux-img"><img src="img/{img}" alt="{title}" loading="lazy"></div>
-<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP {n:02d}</span><span class="ux-actor">{actor}</span></div><h4>{title}</h4><p>{text}</p></div></div>''')
-    return f'''<div class="ux reveal" tabindex="0" aria-label="Interactive user flow">
-<div class="ux-head"><span class="flow-tag">USER FLOW · CLICK THROUGH</span><div class="ux-ents">{chips}</div></div>
-<div class="ux-body"><ol class="ux-list">{"".join(items)}</ol>
-<div class="ux-stage">{"".join(panels)}
-<div class="ux-ctl"><button class="ux-prev" aria-label="Previous step">← Prev</button><span class="ux-count">1 / {n}</span><button class="ux-next" aria-label="Next step">Next →</button></div></div></div></div>'''
+
+def sysflow():
+    def n(i, label, sub="", cls=""):
+        return f'<div class="sf-n {cls}" data-n="{i}"><b>{label}</b>{f"<small>{sub}</small>" if sub else ""}</div>'
+    def c(i, label):
+        return f'<span class="sf-c" data-n="{i}">{label}</span>'
+    def lib(lid, lname, mid, iid, iname, isub, chips):
+        return f'''<div class="sf-col">{n(lid, lname, "", "lib")}{n(mid, "Members", "Owner · Curator · Editor · Viewer", "mem")}{n(iid, iname, isub)}<div class="sf-chips">{"".join(c(*x) for x in chips)}</div></div>'''
+    diagram = f'''<div class="sf-map">
+<div class="sf-row">{n("edu", "Education", "one place for teaching content", "root")}</div>
+<div class="sf-ar">↓</div>
+<div class="sf-cols">
+{lib("sa", "Subject Area", "sam", "subj", "Subject", "created once", [("subj-b", "Books"), ("subj-f", "Files"), ("subj-l", "Study levels")])}
+{lib("bl", "Book Library", "blm", "book", "Book", "created once", [("book-s", "Subject"), ("book-c", "Companion volumes")])}
+{lib("ec", "Exam Collection", "ecm", "exam", "Exam template", "created once", [("exam-d", "Document editor"), ("exam-ai", "AI draft from subjects & books")])}
+</div>
+<div class="sf-ar">↓ added to</div>
+<div class="sf-course">{n("course", "Course", "", "wide")}
+<div class="sf-cols two">
+<div class="sf-col">{n("live", "Live course")}<div class="sf-chips">{c("x-sch", "Scheduled exam")}{c("x-non", "Non-scheduled exam")}{c("x-oral", "Oral exam")}</div></div>
+<div class="sf-col">{n("od", "On-demand course")}<div class="sf-chips">{c("x-non2", "Non-scheduled exam")}</div></div>
+</div>
+<div class="sf-chips center">{c("teach", "Teachers invited")}{c("link", "Linked subject comes along")}</div></div>
+<div class="sf-ar">↓</div>
+<div class="sf-cols three">{n("lecture", "Student · Lecture", "subject, books, files")}{n("room", "Student · Exam room", "in 100ms, camera on")}{n("proct", "Proctoring", "session recorded")}</div>
+<div class="sf-ar">↓</div>
+<div class="sf-row">{n("perf", "Performance", "results across courses and subjects", "root")}</div>
+</div>'''
+    steps = [
+      ("Education", "One place, three libraries", "Under Education, an organisation creates a Subject Area, a Book Library and an Exam Collection. All teaching content starts here, outside any course.", "edu sa bl ec"),
+      ("Education", "Invite members", "Each library has its own members, with the same four roles everywhere: Owner, Curator, Editor and Viewer.", "sa bl ec sam blm ecm"),
+      ("Education", "Create a subject", "Inside a Subject Area, the subject is created once. Books, files and study levels are attached to it.", "sa subj subj-b subj-f subj-l"),
+      ("Education", "Create a book", "Inside a Book Library, the book is created once. It gets a subject, and companion volumes can be added to it.", "bl book book-s book-c subj"),
+      ("Education", "Create an exam template", "Inside an Exam Collection, the teacher writes the exam template in the document editor.", "ec exam exam-d"),
+      ("Education", "Or let AI draft it", "The AI flow uses the subjects and books already on the platform to fetch the content and draft the exam. The teacher stays the author.", "exam exam-ai subj book"),
+      ("Course", "Two kinds of course", "A course is either live or on demand. Both take subjects, books and exams from the libraries in the same way.", "course live od"),
+      ("Course", "Add a subject", "Teachers aren’t invited in the Subject Area. When the subject is added to a course, its teachers are invited to that course.", "subj course teach"),
+      ("Course", "Add a book", "If the book has a subject assigned, the subject is attached to the course along with it.", "book book-s course link"),
+      ("Course", "Add an exam", "The same happens for exams: the exam brings its subject into the course.", "exam course link"),
+      ("Course", "Exam types per course", "Live courses can have scheduled, non-scheduled and oral exams. On-demand courses have non-scheduled exams. All of them are added in the same way.", "course live od x-sch x-non x-oral x-non2"),
+      ("Student", "In the lecture", "The student finds the subject, its books and files already in the lecture.", "lecture"),
+      ("Student", "Scheduled exam", "Scheduled exams are held in 100ms with the camera on. If proctoring is on, the session is recorded.", "x-sch room proct"),
+      ("Student", "Non-scheduled and oral exams", "Non-scheduled exams are started from the course. Oral exams run inside a live session.", "x-non x-non2 x-oral room"),
+      ("Performance", "Performance", "After all of this, the performance module brings the results together for every student, course and subject.", "perf"),
+    ]
+    tabs, panels, phase = [], [], None
+    for i, (ph, t, d, on) in enumerate(steps):
+        if ph != phase:
+            tabs.append(f'<span class="sf-ph">{ph}</span>'); phase = ph
+        tabs.append(f'<button class="sf-dot{" on" if i == 0 else ""}" data-i="{i}" aria-label="Step {i+1}: {t}">{i+1:02d}</button>')
+        panels.append(f'<div class="sf-step{" on" if i == 0 else ""}" data-on="{on}"><div class="ux-meta"><span class="ux-num">STEP {i+1:02d} / {len(steps)}</span><span class="ux-actor">{ph}</span></div><h4>{t}</h4><p>{d}</p></div>')
+    return f'''<div class="sf reveal" tabindex="0" aria-label="Interactive system flow">
+<div class="ux-head"><span class="flow-tag">SYSTEM FLOW · CLICK THROUGH</span></div>
+<div class="sf-tabs">{"".join(tabs)}</div>
+{diagram}
+<div class="sf-foot"><div class="sf-steps">{"".join(panels)}</div>
+<div class="ux-ctl"><button class="ux-prev" aria-label="Previous step">← Prev</button><span class="ux-count">1 / {len(steps)}</span><button class="ux-next" aria-label="Next step">Next →</button></div></div></div>'''
 
 def arrow(a, b):
     return f'{a}<span class="arrow">→</span>{b}'
@@ -536,28 +576,9 @@ education_body = f'''
 <p>All three libraries sit together under <strong>Education</strong>, in settings and in the navigation, and follow the same structure. This is the map I designed before any screen.</p>
 {iatree()}
 
-{h2("04 — The flow", "Follow one subject through the system")}
-<p>The tree shows the structure. This shows it in use: one subject, from the moment it’s created to the moment a student reads its book and takes its exam. Click any step, or use the arrows.</p>
-{explorer([
-  ("Build the libraries", [
-    ("Coordinator", "Create a subject", "In a Subject Area, the coordinator creates Mathematics once: a title, an icon, a colour, its study levels and the teacher assigned to it.", "subjects-05.jpg", ["S"]),
-    ("Teacher", "Add a book to the library", "The teacher uploads a PDF, adds a purchase link or writes the book. ISBN search fills in the details, and the book is linked to its subject and level.", "books-06.jpg", ["B", "S"]),
-    ("Teacher", "Create an exam in a collection", "The exam is written once in an Exam Collection, with AI helping on questions. It has no date and no grading scale yet: those belong to the course.", "proto-create-1.jpg", ["E", "S"]),
-  ]),
-  ("Build the course", [
-    ("Coordinator", "Add the subject to a course", "The coordinator picks subjects from the shared areas and sets a level for each. Nothing is rebuilt inside the course.", "subjects-08.jpg", ["S", "C"]),
-    ("System", "The teacher is invited automatically", "Because the subject has a teacher, the platform invites them to the course in the same step. No inviting course by course.", "subjects-09.jpg", ["S", "C"]),
-    ("System", "Bring the books too?", "The subject has books, so the platform asks one clear question: add them to the course as well? The teacher decides.", "subjects-10.jpg", ["S", "B", "C"]),
-    ("Teacher", "Schedule the exam in the course", "The teacher adds the shared exam to the course. The course adds the date, the time and proctoring on top of it.", "exam-09.jpg", ["E", "C"]),
-    ("Coordinator", "The course sets the grading", "Which attempt counts, the course’s scale and pass mark, and the weight of each exam type. The exam itself never changes.", "exam-10.jpg", ["C", "E"]),
-  ]),
-  ("In the lecture", [
-    ("Teacher", "Give each lecture its pages", "The book lives once in the library. Each lecture points to its own page range: chapter three this week, chapter four next.", "books-09.jpg", ["B", "L"]),
-    ("Teacher", "Everything meets in the lecture", "The lecture shows its subject, the books with the assigned pages, and any exam, already connected.", "books-10.jpg", ["L", "S", "B"]),
-    ("Student", "Read the right pages", "The student opens the book from the lecture, and the reader starts directly at the assigned pages.", "books-14.jpg", ["St", "B", "L"]),
-    ("Student", "Take the exam", "The student joins the scheduled exam from the course. The grade uses the course’s own scale, so results stay comparable everywhere.", "proto-student-scheduled.jpg", ["St", "E", "C"]),
-  ]),
-])}
+{h2("04 — The flow", "How it all connects, step by step")}
+<p>The tree shows the structure. This walks through it: from the libraries in Education, into live and on-demand courses, to the student’s lectures and exams, and finally performance. Click any step, or use the arrows.</p>
+{sysflow()}
 
 {h2("05 — Shared rules", "Learn it once, use it everywhere")}
 <ul>

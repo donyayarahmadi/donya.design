@@ -229,3 +229,27 @@
     go(0);
   });
 })();
+
+/* ---------- System flow (Education) ---------- */
+(function () {
+  document.querySelectorAll(".sf").forEach(function (sf) {
+    var dots = sf.querySelectorAll(".sf-dot"), steps = sf.querySelectorAll(".sf-step"),
+        nodes = sf.querySelectorAll("[data-n]"), count = sf.querySelector(".ux-count"), i = 0;
+    function go(k) {
+      i = (k + steps.length) % steps.length;
+      dots.forEach(function (d, j) { d.classList.toggle("on", j === i); d.classList.toggle("done", j < i); });
+      steps.forEach(function (s, j) { s.classList.toggle("on", j === i); });
+      var on = steps[i].dataset.on.split(" ");
+      nodes.forEach(function (n) { n.classList.toggle("hit", on.indexOf(n.dataset.n) > -1); });
+      count.textContent = (i + 1) + " / " + steps.length;
+    }
+    dots.forEach(function (d) { d.addEventListener("click", function () { go(+d.dataset.i); }); });
+    sf.querySelector(".ux-prev").addEventListener("click", function () { go(i - 1); });
+    sf.querySelector(".ux-next").addEventListener("click", function () { go(i + 1); });
+    sf.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); go(i + 1); }
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); go(i - 1); }
+    });
+    go(0);
+  });
+})();
