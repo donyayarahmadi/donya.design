@@ -97,11 +97,10 @@
       var stage = $(".portrait-stage");
       var e = 1 - Math.pow(1 - p, 2);
       var rotY = 180 - 180 * clamp(p / 0.6, 0, 1);
-      var tilt = 18 * (1 - clamp(p / 0.6, 0, 1));
       var scale = 1 + e * 0.85;
       var base = window.innerWidth < 761 ? 46 : 66, lift = window.innerWidth < 761 ? 22 : 46;
       stage.style.top = (base - lift * e) + "vh";
-      portrait.style.transform = "rotateY(" + rotY + "deg) rotateX(" + tilt * 0.4 + "deg) rotateZ(" + (-tilt * 0.25) + "deg) scale(" + scale + ")";
+      portrait.style.transform = "rotateY(" + rotY + "deg) scale(" + scale + ")";
       $(".hero-hint").style.opacity = String(1 - clamp(p / 0.15, 0, 1));
     }
 
