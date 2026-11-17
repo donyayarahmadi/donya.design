@@ -739,3 +739,7 @@ figcaption{max-width:62ch}
 @media (min-width: 761px) {
   .work-fill { background-image: repeating-linear-gradient(135deg, rgba(10,10,10,.09) 0 1px, transparent 1px 14px); }
 }
+.work-fill { display: flex; align-items: center; justify-content: center; }
+.fill-note { max-width: 380px; padding: 40px 32px; background: var(--bg, #f8f6f1); text-align: left; }
+.fill-note p { margin: 16px 0 22px; font-size: 22px; line-height: 1.35; letter-spacing: -0.01em; }
+.fill-note .view-case:hover { color: var(--ink); }

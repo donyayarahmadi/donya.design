@@ -436,21 +436,17 @@ education_body = f'''
       ("yes", "Lift all teaching content above the course,", "into shared libraries. A course doesn’t own its subjects, books and exams anymore; it uses them."))}
 <p>That gave every piece of content the same shape: a <strong>library</strong> owned by an organisation or a freelance teacher, <strong>items</strong> inside it, and <strong>links</strong> from courses and lectures that decide how each item is used there: a level, a page range, a date, a grading scale.</p>
 
-{h2("04 — Information architecture", "One tree for the whole system")}
-<p>All three libraries sit together under <strong>Education</strong>, in settings and in the navigation, and follow the same structure. This is the map I designed before any screen.</p>
-{iatree()}
-
-{h2("05 — The flow", "How it all connects, step by step")}
-<p>The tree shows the structure. This walks through it: from the libraries in Education, into live and on-demand courses, to the student’s lectures and exams, and finally performance. Click any step, or use the arrows.</p>
+{h2("04 — The flow", "How it all connects, step by step")}
+<p>This is the map I designed before any screen, as a walkthrough: from the libraries in Education, into live and on-demand courses, to the student’s lectures and exams, and finally performance. Click any step, or use the arrows.</p>
 {sysflow()}
 
-{h2("06 — The three parts", "Each one in depth")}
+{h2("05 — The three parts", "Each one in depth")}
 <p>Each part had its own users, edge cases and decisions. These case studies go through them in detail.</p>
 {parts(("subjects", "Subject Areas", "The decision that connected the platform: one shared subject, with its teacher, books and exams following it into every course.", "cover-subjects.jpg"),
        ("books", "Book Libraries", "Books as real objects in a library, linked to lectures with a page range and opened in the built-in reader.", "cover-books.jpg"),
        ("exam", "Exam Module", "A complete exam system, from the first question to live proctoring and a grade every course can trust.", "cover-exam.jpg"))}
 
-{h2("07 — The result", "Three tools that feel like one system")}
+{h2("06 — The result", "Three tools that feel like one system")}
 {metrics((arrow("8", "1"), "changes to replace a teacher across 8 courses", ""),
          (arrow("12", "1"), "copies of the same book a teacher maintains", ""),
          ("1", "version of each exam, reused across every course", ""))}
@@ -628,7 +624,7 @@ def home():
     steps = "".join(
         f'<div class="step"><div class="step-top"><span>{k}</span>{dots()}</div><div><h3>{t}</h3><p>{d}</p></div></div>'
         for k, t, d in STEPS)
-    works_fill = '<div class="work work-fill" aria-hidden="true"></div>' if len(WORKS) % 2 else ""
+    works_fill = '<div class="work work-fill"><div class="fill-note"><span class="eyebrow">More work</span><p>Some of my work is under NDA, so it isn’t shown here. I’m happy to walk you through it on a call.</p><a class="view-case" href="https://calendly.com/donyarahmadi/30min" target="_blank" rel="noopener">BOOK A CALL →</a></div></div>' if len(WORKS) % 2 else ""
     works = "".join(
         f'''<div class="work {side}"><a href="#{slug}">
       <div class="work-media"><img src="img/{img}" alt="{title} case study" loading="lazy"></div>
