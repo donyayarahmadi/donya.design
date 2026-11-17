@@ -524,3 +524,49 @@ body:not(.is-case) .footer { margin-top: 0; }
 .carousel-nav { border-bottom: 0; }
 .testi-head { position: relative; z-index: 2; }
 .testi-head::before { content: ""; position: absolute; left: 50%; top: -90px; bottom: 0; width: 4px; transform: translateX(-50%); background: var(--bg); z-index: -1; }
+
+/* ---------- Interactive user flow ---------- */
+.ux{margin:40px 0;border:1px solid var(--line);background:#fff;outline:none}
+.ux:focus-visible{border-color:var(--ink)}
+.ux-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.ux-ents{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ux-ent{font:500 12px/1 var(--f-sans);padding:7px 10px;border:1px solid var(--line);color:var(--muted);background:var(--bg);transition:all .25s var(--ease)}
+.ux-ent.on{background:var(--accent);border-color:var(--accent);color:#000}
+.ux-sep{color:var(--faint);font-size:13px;margin:0 2px}
+.ux-body{display:grid;grid-template-columns:230px 1fr}
+.ux-list{list-style:none;margin:0 !important;padding:8px 0 !important;border-right:1px solid var(--line);max-height:620px;overflow:auto}
+.ux-list li{margin:0 !important;padding:0 !important}
+.ux-list li::before{content:none !important}
+.ux-phase{font:400 10.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:16px 16px 8px !important}
+.ux-item{display:flex;gap:10px;width:100%;text-align:left;padding:9px 16px;font-size:13.5px;line-height:1.3;color:var(--ink-2);border-left:2px solid transparent}
+.ux-item span{font:400 11px/1.6 var(--f-mono);color:var(--faint)}
+.ux-item:hover{background:var(--bg)}
+.ux-item.done{color:var(--ink)}
+.ux-item.done span{color:var(--muted)}
+.ux-item.on{background:var(--bg);border-left-color:var(--accent);color:var(--ink);font-weight:600}
+.ux-item.on span{color:var(--ink)}
+.ux-stage{display:flex;flex-direction:column;min-width:0}
+.ux-panel{display:none;flex-direction:column}
+.ux-panel.on{display:flex;animation:uxin .45s var(--ease)}
+@keyframes uxin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.ux-img{background:var(--bg);border-bottom:1px solid var(--line);aspect-ratio:16/10;overflow:hidden}
+.ux-img img{width:100%;height:100%;object-fit:cover}
+.ux-txt{padding:18px 22px 6px}
+.ux-meta{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.ux-num{font:400 11px/1 var(--f-mono);color:var(--muted);letter-spacing:.06em}
+.ux-actor{font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 7px;background:var(--ink);color:#fff}
+.ux-txt h4{font:600 20px/1.25 var(--f-sans);margin:0 0 6px}
+.ux-txt p{margin:0 !important;font-size:15px;color:var(--ink-2)}
+.ux-ctl{display:flex;align-items:center;justify-content:space-between;padding:14px 22px 18px;margin-top:auto}
+.ux-ctl button{font:500 12px/1 var(--f-mono);letter-spacing:.06em;padding:10px 14px;border:1px solid var(--line)}
+.ux-ctl button:hover{border-color:var(--ink)}
+.ux-next{background:var(--ink);color:#fff;border-color:var(--ink) !important}
+.ux-count{font:400 12px/1 var(--f-mono);color:var(--muted)}
+@media (max-width:760px){
+  .ux-body{grid-template-columns:1fr}
+  .ux-list{display:flex;overflow-x:auto;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding:8px !important}
+  .ux-phase{display:none}
+  .ux-item{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;padding:8px 10px}
+  .ux-item.on{border-bottom-color:var(--accent)}
+}
+.ux-list .ux-phase{padding:16px 16px 8px !important}

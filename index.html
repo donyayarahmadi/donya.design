@@ -68,7 +68,7 @@
       <p>Every project here started with the same question: <b>how do you make something complex feel simple?</b></p>
     </div>
     <div class="works"><div class="work "><a href="#education">
-      <div class="work-media"><img src="img/books-03.jpg" alt="Education System case study" loading="lazy"></div>
+      <div class="work-media"><img src="img/cover-education.jpg" alt="Education System case study" loading="lazy"></div>
       <div class="work-meta"><div><div class="work-num">01 / 05</div><h3>Education System</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">Information architecture<br>System design</div></div>
     </a></div><div class="work right"><a href="#exam">
       <div class="work-media"><img src="img/cover-exam.jpg" alt="Exam Module case study" loading="lazy"></div>
@@ -103,10 +103,10 @@
       <p>How subjects, books and exams became one connected system on Aladia.</p>
     </header>
     <div class="rule"></div>
-    <div class="cs-cover"><div class="media"><img src="img/books-03.jpg" alt="Education System cover"></div></div>
+    <div class="cs-cover"><div class="media"><img src="img/cover-education.jpg" alt="Education System cover"></div></div>
     <div class="rule"></div>
     <div class="cs-overview">
-      <div class="shot reveal"><img src="img/exam-01.jpg" alt="Education System main screen"></div>
+      <div class="shot reveal"><img src="img/books-03.jpg" alt="Education System main screen"></div>
       <div class="side">
         <span class="eyebrow">Overview</span>
         <p class="reveal">Before I designed subjects, books or exams one by one, I had to solve the problem they shared: all teaching content was trapped inside courses. I designed one structure for all three, shared libraries under Education, with the same rules, linked into courses and lectures.</p>
@@ -154,9 +154,28 @@
 <div class="ch-node"><b>Student</b><small>sees only what’s assigned, already in the lecture</small></div>
 </div>
 <p class="ch-note">Content lives once, above the course. Courses and lectures only point to it, and decide how it is used.</p></div>
-<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/books-03.jpg" alt="Education in settings" loading="lazy"></div><figcaption><b>Education in settings.</b> Subject Areas, Book Libraries and Exam Collections, side by side.</figcaption></figure></div>
 
-<h2 class="reveal"><span class="kicker">04 — Shared rules</span>Learn it once, use it everywhere</h2>
+<h2 class="reveal"><span class="kicker">04 — The flow</span>Follow one subject through the system</h2>
+<p>The tree shows the structure. This shows it in use: one subject, from the moment it’s created to the moment a student reads its book and takes its exam. Click any step, or use the arrows.</p>
+<div class="ux reveal" tabindex="0" aria-label="Interactive user flow">
+<div class="ux-head"><span class="flow-tag">USER FLOW · CLICK THROUGH</span><div class="ux-ents"><span class="ux-ent" data-e="S">Subject</span><span class="ux-ent" data-e="B">Book</span><span class="ux-ent" data-e="E">Exam</span><span class="ux-sep">→</span><span class="ux-ent" data-e="C">Course</span><span class="ux-ent" data-e="L">Lecture</span><span class="ux-ent" data-e="St">Student</span></div></div>
+<div class="ux-body"><ol class="ux-list"><li class="ux-phase">Build the libraries</li><li><button class="ux-item on" data-i="0"><span>01</span>Create a subject</button></li><li><button class="ux-item" data-i="1"><span>02</span>Add a book to the library</button></li><li><button class="ux-item" data-i="2"><span>03</span>Create an exam in a collection</button></li><li class="ux-phase">Build the course</li><li><button class="ux-item" data-i="3"><span>04</span>Add the subject to a course</button></li><li><button class="ux-item" data-i="4"><span>05</span>The teacher is invited automatically</button></li><li><button class="ux-item" data-i="5"><span>06</span>Bring the books too?</button></li><li><button class="ux-item" data-i="6"><span>07</span>Schedule the exam in the course</button></li><li><button class="ux-item" data-i="7"><span>08</span>The course sets the grading</button></li><li class="ux-phase">In the lecture</li><li><button class="ux-item" data-i="8"><span>09</span>Give each lecture its pages</button></li><li><button class="ux-item" data-i="9"><span>10</span>Everything meets in the lecture</button></li><li><button class="ux-item" data-i="10"><span>11</span>Read the right pages</button></li><li><button class="ux-item" data-i="11"><span>12</span>Take the exam</button></li></ol>
+<div class="ux-stage"><div class="ux-panel on" data-ents="S"><div class="ux-img"><img src="img/subjects-05.jpg" alt="Create a subject" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 01</span><span class="ux-actor">Coordinator</span></div><h4>Create a subject</h4><p>In a Subject Area, the coordinator creates Mathematics once: a title, an icon, a colour, its study levels and the teacher assigned to it.</p></div></div><div class="ux-panel" data-ents="B S"><div class="ux-img"><img src="img/books-06.jpg" alt="Add a book to the library" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 02</span><span class="ux-actor">Teacher</span></div><h4>Add a book to the library</h4><p>The teacher uploads a PDF, adds a purchase link or writes the book. ISBN search fills in the details, and the book is linked to its subject and level.</p></div></div><div class="ux-panel" data-ents="E S"><div class="ux-img"><img src="img/proto-create-1.jpg" alt="Create an exam in a collection" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 03</span><span class="ux-actor">Teacher</span></div><h4>Create an exam in a collection</h4><p>The exam is written once in an Exam Collection, with AI helping on questions. It has no date and no grading scale yet: those belong to the course.</p></div></div><div class="ux-panel" data-ents="S C"><div class="ux-img"><img src="img/subjects-08.jpg" alt="Add the subject to a course" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 04</span><span class="ux-actor">Coordinator</span></div><h4>Add the subject to a course</h4><p>The coordinator picks subjects from the shared areas and sets a level for each. Nothing is rebuilt inside the course.</p></div></div><div class="ux-panel" data-ents="S C"><div class="ux-img"><img src="img/subjects-09.jpg" alt="The teacher is invited automatically" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 05</span><span class="ux-actor">System</span></div><h4>The teacher is invited automatically</h4><p>Because the subject has a teacher, the platform invites them to the course in the same step. No inviting course by course.</p></div></div><div class="ux-panel" data-ents="S B C"><div class="ux-img"><img src="img/subjects-10.jpg" alt="Bring the books too?" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 06</span><span class="ux-actor">System</span></div><h4>Bring the books too?</h4><p>The subject has books, so the platform asks one clear question: add them to the course as well? The teacher decides.</p></div></div><div class="ux-panel" data-ents="E C"><div class="ux-img"><img src="img/exam-09.jpg" alt="Schedule the exam in the course" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 07</span><span class="ux-actor">Teacher</span></div><h4>Schedule the exam in the course</h4><p>The teacher adds the shared exam to the course. The course adds the date, the time and proctoring on top of it.</p></div></div><div class="ux-panel" data-ents="C E"><div class="ux-img"><img src="img/exam-10.jpg" alt="The course sets the grading" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 08</span><span class="ux-actor">Coordinator</span></div><h4>The course sets the grading</h4><p>Which attempt counts, the course’s scale and pass mark, and the weight of each exam type. The exam itself never changes.</p></div></div><div class="ux-panel" data-ents="B L"><div class="ux-img"><img src="img/books-09.jpg" alt="Give each lecture its pages" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 09</span><span class="ux-actor">Teacher</span></div><h4>Give each lecture its pages</h4><p>The book lives once in the library. Each lecture points to its own page range: chapter three this week, chapter four next.</p></div></div><div class="ux-panel" data-ents="L S B"><div class="ux-img"><img src="img/books-10.jpg" alt="Everything meets in the lecture" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 10</span><span class="ux-actor">Teacher</span></div><h4>Everything meets in the lecture</h4><p>The lecture shows its subject, the books with the assigned pages, and any exam, already connected.</p></div></div><div class="ux-panel" data-ents="St B L"><div class="ux-img"><img src="img/books-14.jpg" alt="Read the right pages" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 11</span><span class="ux-actor">Student</span></div><h4>Read the right pages</h4><p>The student opens the book from the lecture, and the reader starts directly at the assigned pages.</p></div></div><div class="ux-panel" data-ents="St E C"><div class="ux-img"><img src="img/proto-student-scheduled.jpg" alt="Take the exam" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP 12</span><span class="ux-actor">Student</span></div><h4>Take the exam</h4><p>The student joins the scheduled exam from the course. The grade uses the course’s own scale, so results stay comparable everywhere.</p></div></div>
+<div class="ux-ctl"><button class="ux-prev" aria-label="Previous step">← Prev</button><span class="ux-count">1 / 12</span><button class="ux-next" aria-label="Next step">Next →</button></div></div></div></div>
+
+<h2 class="reveal"><span class="kicker">05 — Shared rules</span>Learn it once, use it everywhere</h2>
 <ul>
 <li><strong>The same four roles</strong> (Owner, Curator, Editor, Viewer) in every library, so permissions work the same way for subjects, books and exams.</li>
 <li><strong>Hide what your role can’t do.</strong> If someone can’t edit, the action isn’t there, instead of appearing disabled with an error.</li>
@@ -164,12 +183,13 @@
 <li><strong>The course decides how content is used.</strong> The exam has no date or grading scale of its own; the book has no page range. The course and lecture set them.</li>
 </ul>
 
-<h2 class="reveal"><span class="kicker">05 — The three parts</span>One by one</h2>
+<h2 class="reveal"><span class="kicker">06 — The three parts</span>One by one</h2>
 <p>Each part had its own users, edge cases and decisions. These case studies go through them in detail.</p>
 <div class="parts"><a class="part reveal" href="#subjects"><img src="img/cover-subjects.jpg" alt="Subject Areas" loading="lazy"><div><span class="pn">01</span><b>Subject Areas</b><p>The decision that connected the platform: one shared subject, with its teacher, books and exams following it into every course.</p><span class="proto-cta">Read the case study →</span></div></a><a class="part reveal" href="#books"><img src="img/cover-books.jpg" alt="Book Libraries" loading="lazy"><div><span class="pn">02</span><b>Book Libraries</b><p>Books as real objects in a library, linked to lectures with a page range and opened in the built-in reader.</p><span class="proto-cta">Read the case study →</span></div></a><a class="part reveal" href="#exam"><img src="img/cover-exam.jpg" alt="Exam Module" loading="lazy"><div><span class="pn">03</span><b>Exam Module</b><p>A complete exam system, from the first question to live proctoring and a grade every course can trust.</p><span class="proto-cta">Read the case study →</span></div></a></div>
 
-<h2 class="reveal"><span class="kicker">06 — The result</span>Three tools that feel like one system</h2>
+<h2 class="reveal"><span class="kicker">07 — The result</span>Three tools that feel like one system</h2>
 <div class="metrics reveal"><div class="metric"><div class="num">8<span class="arrow">→</span>1</div><p>changes to replace a teacher across 8 courses</p></div><div class="metric"><div class="num">12<span class="arrow">→</span>1</div><p>copies of the same book a teacher maintains</p></div><div class="metric"><div class="num">1</div><p>version of each exam, reused across every course</p></div></div>
+<div class="figs one"><figure class="reveal"><div class="ph"><img src="img/education-tabs.jpg" alt="One Education group, three tabs" loading="lazy"></div><figcaption><b>One Education group, three tabs.</b> Subject Areas, Book Libraries and Exam Collections share the same layout, roles and behaviour.</figcaption></figure></div>
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
 <p class="big">The best design work on this project happened before any screen: deciding where content lives.</p>
 <p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
@@ -571,7 +591,7 @@
     <div class="next"><div class="rule"></div>
       <a href="#education">
         <div><small>NEXT PROJECT</small><h3>Education System</h3><p class="count" style="margin-top:12px">Information architecture · System design</p></div>
-        <div class="media"><img src="img/books-03.jpg" alt="Education System cover" loading="lazy"></div>
+        <div class="media"><img src="img/cover-education.jpg" alt="Education System cover" loading="lazy"></div>
       </a>
     </div>
   </div>

@@ -104,6 +104,24 @@ def parts(*items):
     out = "".join(f'<a class="part reveal" href="#{slug}"><img src="img/{img}" alt="{t}" loading="lazy"><div><span class="pn">0{i+1}</span><b>{t}</b><p>{d}</p><span class="proto-cta">Read the case study →</span></div></a>' for i, (slug, t, d, img) in enumerate(items))
     return f'<div class="parts">{out}</div>'
 
+ENTS = [("S", "Subject"), ("B", "Book"), ("E", "Exam"), ("C", "Course"), ("L", "Lecture"), ("St", "Student")]
+def explorer(phases):
+    chips = "".join(f'<span class="ux-ent" data-e="{k}">{n}</span>' + ('<span class="ux-sep">→</span>' if k == "E" else "") for k, n in ENTS)
+    items, panels, n = [], [], 0
+    for phase, steps in phases:
+        items.append(f'<li class="ux-phase">{phase}</li>')
+        for actor, title, text, img, ents in steps:
+            n += 1
+            on = " on" if n == 1 else ""
+            items.append(f'<li><button class="ux-item{on}" data-i="{n-1}"><span>{n:02d}</span>{title}</button></li>')
+            panels.append(f'''<div class="ux-panel{on}" data-ents="{' '.join(ents)}"><div class="ux-img"><img src="img/{img}" alt="{title}" loading="lazy"></div>
+<div class="ux-txt"><div class="ux-meta"><span class="ux-num">STEP {n:02d}</span><span class="ux-actor">{actor}</span></div><h4>{title}</h4><p>{text}</p></div></div>''')
+    return f'''<div class="ux reveal" tabindex="0" aria-label="Interactive user flow">
+<div class="ux-head"><span class="flow-tag">USER FLOW · CLICK THROUGH</span><div class="ux-ents">{chips}</div></div>
+<div class="ux-body"><ol class="ux-list">{"".join(items)}</ol>
+<div class="ux-stage">{"".join(panels)}
+<div class="ux-ctl"><button class="ux-prev" aria-label="Previous step">← Prev</button><span class="ux-count">1 / {n}</span><button class="ux-next" aria-label="Next step">Next →</button></div></div></div></div>'''
+
 def arrow(a, b):
     return f'{a}<span class="arrow">→</span>{b}'
 
@@ -517,9 +535,31 @@ education_body = f'''
 {h2("03 — Information architecture", "One tree for the whole system")}
 <p>All three libraries sit together under <strong>Education</strong>, in settings and in the navigation, and follow the same structure. This is the map I designed before any screen.</p>
 {iatree()}
-{figs(("books-03.jpg", "<b>Education in settings.</b> Subject Areas, Book Libraries and Exam Collections, side by side."), cls="one")}
 
-{h2("04 — Shared rules", "Learn it once, use it everywhere")}
+{h2("04 — The flow", "Follow one subject through the system")}
+<p>The tree shows the structure. This shows it in use: one subject, from the moment it’s created to the moment a student reads its book and takes its exam. Click any step, or use the arrows.</p>
+{explorer([
+  ("Build the libraries", [
+    ("Coordinator", "Create a subject", "In a Subject Area, the coordinator creates Mathematics once: a title, an icon, a colour, its study levels and the teacher assigned to it.", "subjects-05.jpg", ["S"]),
+    ("Teacher", "Add a book to the library", "The teacher uploads a PDF, adds a purchase link or writes the book. ISBN search fills in the details, and the book is linked to its subject and level.", "books-06.jpg", ["B", "S"]),
+    ("Teacher", "Create an exam in a collection", "The exam is written once in an Exam Collection, with AI helping on questions. It has no date and no grading scale yet: those belong to the course.", "proto-create-1.jpg", ["E", "S"]),
+  ]),
+  ("Build the course", [
+    ("Coordinator", "Add the subject to a course", "The coordinator picks subjects from the shared areas and sets a level for each. Nothing is rebuilt inside the course.", "subjects-08.jpg", ["S", "C"]),
+    ("System", "The teacher is invited automatically", "Because the subject has a teacher, the platform invites them to the course in the same step. No inviting course by course.", "subjects-09.jpg", ["S", "C"]),
+    ("System", "Bring the books too?", "The subject has books, so the platform asks one clear question: add them to the course as well? The teacher decides.", "subjects-10.jpg", ["S", "B", "C"]),
+    ("Teacher", "Schedule the exam in the course", "The teacher adds the shared exam to the course. The course adds the date, the time and proctoring on top of it.", "exam-09.jpg", ["E", "C"]),
+    ("Coordinator", "The course sets the grading", "Which attempt counts, the course’s scale and pass mark, and the weight of each exam type. The exam itself never changes.", "exam-10.jpg", ["C", "E"]),
+  ]),
+  ("In the lecture", [
+    ("Teacher", "Give each lecture its pages", "The book lives once in the library. Each lecture points to its own page range: chapter three this week, chapter four next.", "books-09.jpg", ["B", "L"]),
+    ("Teacher", "Everything meets in the lecture", "The lecture shows its subject, the books with the assigned pages, and any exam, already connected.", "books-10.jpg", ["L", "S", "B"]),
+    ("Student", "Read the right pages", "The student opens the book from the lecture, and the reader starts directly at the assigned pages.", "books-14.jpg", ["St", "B", "L"]),
+    ("Student", "Take the exam", "The student joins the scheduled exam from the course. The grade uses the course’s own scale, so results stay comparable everywhere.", "proto-student-scheduled.jpg", ["St", "E", "C"]),
+  ]),
+])}
+
+{h2("05 — Shared rules", "Learn it once, use it everywhere")}
 <ul>
 <li><strong>The same four roles</strong> (Owner, Curator, Editor, Viewer) in every library, so permissions work the same way for subjects, books and exams.</li>
 <li><strong>Hide what your role can’t do.</strong> If someone can’t edit, the action isn’t there, instead of appearing disabled with an error.</li>
@@ -527,16 +567,17 @@ education_body = f'''
 <li><strong>The course decides how content is used.</strong> The exam has no date or grading scale of its own; the book has no page range. The course and lecture set them.</li>
 </ul>
 
-{h2("05 — The three parts", "One by one")}
+{h2("06 — The three parts", "One by one")}
 <p>Each part had its own users, edge cases and decisions. These case studies go through them in detail.</p>
 {parts(("subjects", "Subject Areas", "The decision that connected the platform: one shared subject, with its teacher, books and exams following it into every course.", "cover-subjects.jpg"),
        ("books", "Book Libraries", "Books as real objects in a library, linked to lectures with a page range and opened in the built-in reader.", "cover-books.jpg"),
        ("exam", "Exam Module", "A complete exam system, from the first question to live proctoring and a grade every course can trust.", "cover-exam.jpg"))}
 
-{h2("06 — The result", "Three tools that feel like one system")}
+{h2("07 — The result", "Three tools that feel like one system")}
 {metrics((arrow("8", "1"), "changes to replace a teacher across 8 courses", ""),
          (arrow("12", "1"), "copies of the same book a teacher maintains", ""),
          ("1", "version of each exam, reused across every course", ""))}
+{figs(("education-tabs.jpg", "<b>One Education group, three tabs.</b> Subject Areas, Book Libraries and Exam Collections share the same layout, roles and behaviour."), cls="one")}
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
 <p class="big">The best design work on this project happened before any screen: deciding where content lives.</p>
 <p>Once subjects, books and exams shared one structure and one set of rules, each new feature was faster to design and easier for teachers to learn, because they already knew how it would behave.</p></div>
@@ -544,7 +585,7 @@ education_body = f'''
 
 CASES = [
     ("education", "Education System", "How subjects, books and exams became one connected system on Aladia.",
-     "books-03.jpg", "exam-01.jpg",
+     "cover-education.jpg", "books-03.jpg",
      "Before I designed subjects, books or exams one by one, I had to solve the problem they shared: all teaching content was trapped inside courses. I designed one structure for all three, shared libraries under Education, with the same rules, linked into courses and lectures.",
      [("Role", "Product Designer, end to end"), ("Client", "Aladia"), ("Industry", "EdTech · B2B & B2C SaaS"), ("Platform", "Web, responsive + mobile"), ("Focus", "Information architecture<br>System design"), ("Outcome", "3 libraries, 1 structure")],
      education_body, ("exam", "Exam Module", "Live proctoring UX · Grading system design", "cover-exam.jpg")),
@@ -567,11 +608,11 @@ CASES = [
      "cover-connecta.jpg", "connecta-01.jpg",
      "Connecta is a no-code integration platform built inside Odoo. It connects apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync their data without writing code. I designed the whole product: dashboards, setup flow, flow builder and marketing site.",
      [("Role", "Sole Product Designer"), ("Client", "Connecta Software"), ("Industry", "No-code integration · B2B SaaS"), ("Year", "2026"), ("Focus", "Role-based dashboards<br>Setup wizard design"), ("Outcome", "50+ screens, 20 flows")],
-     connecta_body, ("education", "Education System", "Information architecture · System design", "books-03.jpg")),
+     connecta_body, ("education", "Education System", "Information architecture · System design", "cover-education.jpg")),
 ]
 
 WORKS = [
-    ("education", "Education System", ["Information architecture", "System design"], "books-03.jpg", ""),
+    ("education", "Education System", ["Information architecture", "System design"], "cover-education.jpg", ""),
     ("exam", "Exam Module", ["Live proctoring UX", "Grading system design"], "cover-exam.jpg", "right"),
     ("subjects", "Subject Areas", ["Data model design", "Permission systems"], "cover-subjects.jpg", ""),
     ("books", "Book Libraries", ["Content library design", "In-lecture book reader"], "cover-books.jpg", "right"),
