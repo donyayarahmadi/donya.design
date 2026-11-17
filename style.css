@@ -617,3 +617,8 @@ body:not(.is-case) .footer { margin-top: 0; }
 /* smooth word highlight on scroll (about, overviews, learned) */
 [data-words] .w { color: var(--ink) !important; opacity: .18; transition: opacity .35s linear; }
 .portrait .back { display: none; }
+.tv-states{display:flex;gap:14px;flex-wrap:wrap;margin:24px 0;padding:22px;background:#0b0d16;border-radius:12px}
+.tv-states .st{font:600 16px/1 var(--f-sans);padding:10px 14px;border-radius:8px;border:1px solid}
+.tv-states .free{color:#2dea93;background:rgba(45,234,147,.14);border-color:rgba(45,234,147,.4)}
+.tv-states .prem{color:#f5a623;background:rgba(245,166,35,.14);border-color:rgba(245,166,35,.4)}
+.tv-states .lock{color:#ef362a;background:rgba(239,54,42,.14);border-color:rgba(239,54,42,.4);opacity:.75}

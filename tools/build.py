@@ -644,6 +644,47 @@ ds_body = f'''
 <p>Every web screen on Aladia was responsive and had a mobile version, built from the same tokens and components.</p>
 '''
 
+# ---------------------------------------------------------------- LIVE TV (concept)
+tv_body = f'''
+<div class="callout"><b>Concept project.</b> A self-initiated exercise, designed from brief to developer handover. No real client or users, so there are no results to report.</div>
+{process(("Brief", "A live TV platform with 500+ channels, mixing free, premium and locked content, used only with a remote."),
+         ("Flow", "Mapped every path first, including loading, errors and locked content."),
+         ("Layout", "Combined a hero panel, a recommendation rail and an EPG grid on one screen."),
+         ("Entitlement", "Three states shown with colour, opacity and a label, never colour alone."),
+         ("System", "Core Tier 1 primitives and Themes Tier 2 semantic tokens."),
+         ("Handover", "D-Pad focus rules, timing, loading states and edge cases for developers."))}
+{h2("01 — The brief", "500 channels, one remote")}
+<p>The brief described a live TV platform for Android TV with more than 500 channels, some free, some premium and some locked. The existing programme guide (EPG) was a wall of data: no hierarchy, no recommendations and no clear way to tell what the viewer could actually watch.</p>
+<ul>
+<li><strong>Choice paralysis:</strong> scrolling hundreds of channels before choosing anything.</li>
+<li><strong>Entitlement:</strong> showing what is free, premium or locked without cluttering the screen.</li>
+<li><strong>Input:</strong> everything had to work with a D-Pad remote only, at 1920×1080, read from a sofa.</li>
+</ul>
+
+{h2("02 — The approach", "Broadcast guide meets streaming app")}
+{opts(("no", "A classic EPG grid only.", "Familiar, but it is exactly the wall of data that causes the problem."),
+      ("no", "A streaming-style home with rails only.", "Easy to browse, but it hides what is on now across 500 channels."),
+      ("yes", "A hybrid layout,", "with a full-bleed hero panel, a curated “Recommended Live Now” rail and a smart EPG grid on the same screen."))}
+<p><strong>The hero panel updates on every D-Pad move.</strong> Focusing a programme anywhere shows its full title, time and actions at the top. This solves long titles on TV without tooltips or hover states, which a remote doesn’t have.</p>
+{figs(("tv-hero.jpg", "<b>Main screen, 1920×1080.</b> Hero panel, recommendation rail and EPG grid, all reachable with the D-Pad."), cls="one")}
+
+{h2("03 — Entitlement", "Never colour alone")}
+<p>Every programme is <strong>Free</strong>, <strong>Premium</strong> or <strong>Locked</strong>. Each state is shown three ways at once (colour, opacity and a text label), so it still reads for colour-blind viewers and from across the room. Pressing OK on a free or premium programme plays it; on a locked one it opens the upgrade modal instead.</p>
+<div class="tv-states reveal"><span class="st free">✓ Free</span><span class="st prem">★ Premium</span><span class="st lock">🔒 Locked</span></div>
+<p>Every interactive element also has a visible focused state, because on TV the focus <em>is</em> the cursor.</p>
+
+{h2("04 — Logic flow", "Every path, not just the happy one")}
+<p>Before any screen, I mapped the whole flow: loading with a skeleton, data errors with retry, the hero actions (Watch Live, Info, Restart), the restart sheet for programmes that started earlier, and locked channels leading to the upgrade modal or back to the guide.</p>
+{figs(("tv-flow.jpg", "<b>Logic flow.</b> Happy and unhappy paths, plus edge cases like long titles and missing thumbnails."), cls="one")}
+
+{h2("05 — Design system", "Same structure, different screen")}
+<p>The design system uses the same two first tiers as my Aladia work: <strong>Core Tier 1</strong> primitives and <strong>Themes Tier 2</strong> semantic tokens, sized for TV with minimum font sizes and spacing for 10-foot viewing. <a class="ia-link" href="#design-system">See how I build design systems →</a></p>
+
+{h2("06 — Handover", "Written for developers")}
+<p>The handover covers how each behaviour should work: how the hero updates on focus, how the rail and grid scroll, where the “now” line sits, when long titles start to scroll, which way BACK goes, and how often data refreshes.</p>
+{figs(("tv-dev.jpg", "<b>Developer notes.</b> Key behaviours to implement, with timings and rules."), cls="one")}
+'''
+
 CASES = [
     ("education", "Education System", "How subjects, books and exams became one connected system on Aladia.",
      "cover-education.jpg", "education-tabs.jpg",
@@ -674,7 +715,12 @@ CASES = [
      "cover-connecta.jpg", "connecta-01.jpg",
      "Connecta is a no-code integration platform built inside Odoo. It connects apps like Shopify, Bol.com, Exact Online and Magento, so businesses can sync their data without writing code. I designed the whole product: dashboards, setup flow, flow builder and marketing site.",
      [("Role", "Sole Product Designer"), ("Client", "Connecta Software"), ("Industry", "No-code integration · B2B SaaS"), ("Year", "2026"), ("Focus", "Role-based dashboards<br>Setup wizard design"), ("Outcome", "50+ screens, 20 flows")],
-     connecta_body, ("education", "Education System", "Information architecture · System design", "cover-education.jpg")),
+     connecta_body, ("live-tv", "Live TV Guide", "Concept · Android TV", "cover-tv.jpg")),
+    ("live-tv", "Live TV Guide", "A concept for choosing from 500 live channels on Android TV, using only a remote.",
+     "cover-tv.jpg", "tv-hero.jpg",
+     "A self-initiated concept: redesigning the live programme guide of a 500-channel Android TV platform with free, premium and locked content. I designed it from the logic flow to the hi-fi screen, design tokens and a full developer handover, all for D-Pad navigation.",
+     [("Type", "Concept project"), ("Role", "Product Designer, UX, UI & design system"), ("Platform", "Android TV, 1920×1080"), ("Input", "D-Pad remote only"), ("Focus", "EPG layout<br>Entitlement states"), ("Deliverables", "Flow, hi-fi, tokens, handover")],
+     tv_body, ("education", "Education System", "Information architecture · System design", "cover-education.jpg")),
 ]
 
 WORKS = [
@@ -684,6 +730,7 @@ WORKS = [
     ("books", "Book Libraries", ["Content library design", "In-lecture book reader"], "cover-books.jpg", "right"),
     ("design-system", "Design System", ["Design tokens", "Component library"], "cover-design-system.jpg", ""),
     ("connecta", "Connecta", ["Role-based dashboards", "Setup wizard design"], "cover-connecta.jpg", "right"),
+    ("live-tv", "Live TV Guide", ["Concept project", "Android TV · D-Pad UX"], "cover-tv.jpg", ""),
 ]
 
 TESTIMONIALS = [
@@ -726,7 +773,7 @@ def home():
     works = "".join(
         f'''<div class="work {side}"><a href="#{slug}">
       <div class="work-media"><img src="img/{img}" alt="{title} case study" loading="lazy"></div>
-      <div class="work-meta"><div><div class="work-num">0{i+1} / 06</div><h3>{title}</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">{"<br>".join(tags)}</div></div>
+      <div class="work-meta"><div><div class="work-num">0{i+1} / 07</div><h3>{title}</h3><span class="view-case">VIEW CASE STUDY →</span></div><div class="tags">{"<br>".join(tags)}</div></div>
     </a></div>''' for i, (slug, title, tags, img, side) in enumerate(WORKS))
     slides = "".join(
         f'<div class="slide"><blockquote>“{q}”</blockquote><div class="avatar">{ini}</div><div class="who">{who}</div><div class="role">{role}</div></div>'
@@ -774,7 +821,7 @@ def home():
   <div class="frame">
     <div class="cs-split"><div class="sticky"><span class="word l">Case</span><span class="word r">studies</span></div></div>
     <div class="works-head" id="work">
-      <div><span class="eyebrow">Selected works <span class="count">(06)</span></span><h2>Complex products, made simple to use</h2></div>
+      <div><span class="eyebrow">Selected works <span class="count">(07)</span></span><h2>Complex products, made simple to use</h2></div>
       <p>Every project here started with the same question: <b>how do you make something complex feel simple?</b></p>
     </div>
     <div class="works">{works}</div>
