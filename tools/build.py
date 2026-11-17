@@ -623,7 +623,7 @@ def dots(n=4):
 
 def home():
     stats = "".join(
-        f'<div class="stat">{dots()}<div class="stat-num" data-count="{n}" data-suffix="{s}">0{s}</div><h3>{t}</h3><p>{d}</p></div>'
+        f'<div class="stat"><i class="pt"></i><i class="pt r"></i>{dots()}<div class="stat-num" data-count="{n}" data-suffix="{s}">0{s}</div><h3>{t}</h3><p>{d}</p></div>'
         for n, s, t, d in STATS)
     steps = "".join(
         f'<div class="step"><div class="step-top"><span>{k}</span>{dots()}</div><div><h3>{t}</h3><p>{d}</p></div></div>'
@@ -669,7 +669,7 @@ def home():
       <div class="approach-head"><span class="eyebrow">Approach <span class="count">(04)</span></span><h2 class="approach-title">How I work</h2></div>
       <div class="rule"></div>
       <div class="approach-grid">
-        <div class="approach-img"><img src="img/approach.jpg" alt="Sketching a user flow on paper" loading="lazy"></div>
+        <div class="approach-img"><img src="img/approach.jpg" alt="Illustration of my process as four stacked layers: constraints, structure, every state, shipped" loading="lazy"></div>
         {steps}
       </div>
       <div class="approach-foot"></div>

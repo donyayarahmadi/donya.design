@@ -636,3 +636,75 @@ body:not(.is-case) .footer { margin-top: 0; }
 figcaption{max-width:62ch}
 @media (max-width:760px){.tldr .tl-m{grid-template-columns:1fr}}
 .learned [data-words] .w { color: #fff !important; }
+/* No full-height grid lines; keep column dividers only where they structure content (stats) */
+.gridlines { display: none !important; }
+.stats .stat:first-child { border-left: 1px solid var(--line); }
+.stats .stat:last-child { border-right: 1px solid var(--line); }
+/* "+" marks wherever two lines cross */
+.stat { position: relative; }
+.stat::after, .stats .stat:last-child::before, .cta-call::after,
+.carousel-nav::before, .carousel-nav::after, .carousel-nav button + button::after {
+  content: "+"; position: absolute; font: 300 18px/1 var(--f-sans); color: var(--ink); pointer-events: none;
+}
+.stat::after { left: -6px; bottom: -10px; }
+.stats .stat:last-child::before { right: -6px; bottom: -10px; }
+.cta-call { position: relative; }
+.cta-call::after { left: -6px; bottom: -10px; z-index: 2; }
+.carousel-nav { position: relative; }
+.carousel-nav::before { left: -6px; bottom: -10px; }
+.carousel-nav::after { right: -6px; bottom: -10px; }
+.carousel-nav button + button { position: relative; }
+.carousel-nav button + button::after { left: -6px; bottom: -10px; }
+@media (max-width: 760px) { .stat::after, .stats .stat:last-child::before { display: none; } }
+/* testimonial card always spans exactly the two middle columns (desktop and tablet) */
+@media (min-width: 761px) { .carousel { margin: 0 25% !important; } }
+/* Feedback: the card's two side lines continue up to the section rule, framing the heading */
+@media (min-width: 761px) {
+  .testi { padding-top: 0; }
+  .testi-head { margin: 0 25%; padding: 90px var(--pad) 50px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .testi-head::before, .testi-head::after { content: "+" !important; position: absolute; top: -10px; bottom: auto !important; width: auto !important; transform: none !important; background: none !important; font: 300 18px/1 var(--f-sans); color: var(--ink); z-index: 3 !important; }
+  .testi-head::before { left: -6px; }
+  .testi-head::after { right: -6px; left: auto; }
+}
+@media (min-width: 761px) {
+  .carousel { overflow: visible !important; }
+  .carousel::before, .carousel::after { content: "+"; position: absolute; top: -10px; font: 300 18px/1 var(--f-sans); color: var(--ink); z-index: 3; }
+  .carousel::before { left: -6px; }
+  .carousel::after { right: -6px; }
+}
+/* stats: top rule with + at every intersection */
+.stat { border-top: 1px solid var(--line); }
+.stat .pt { position: absolute; top: -10px; left: -6px; font: 300 18px/1 var(--f-sans); color: var(--ink); font-style: normal; pointer-events: none; }
+.stat .pt::before { content: "+"; }
+.stat .pt.r { display: none; left: auto; right: -6px; }
+.stats .stat:last-child .pt.r { display: block; }
+@media (max-width: 760px) { .stat .pt { display: none !important; } }
+/* About: outer left/right lines run from the facts rule down into the stats */
+@media (min-width: 761px) {
+  .about { position: relative; border-left: 1px solid var(--line); border-right: 1px solid var(--line); padding-bottom: 90px; }
+  .stats { padding-top: 0 !important; }
+  .about::before, .about::after { content: "+"; position: absolute; top: -10px; font: 300 18px/1 var(--f-sans); color: var(--ink); }
+  .about::before { left: -6px; } .about::after { right: -6px; }
+}
+@media (min-width: 761px) { .stats { border-left: 1px solid var(--line); border-right: 1px solid var(--line); } }
+/* Outer left/right frame lines: always visible on every page and section */
+.gridlines { display: grid !important; z-index: 40 !important; }
+.gridlines span { border-left: 0 !important; border-right: 0 !important; }
+.gridlines span:first-child { border-left: 1px solid rgba(128,128,128,.32) !important; }
+.gridlines span:last-child { border-right: 1px solid rgba(128,128,128,.32) !important; }
+.stats .stat:first-child { border-left: 0 !important; }
+.stats .stat:last-child { border-right: 0 !important; }
+@media (min-width: 761px) { .about, .stats { border-left: 0 !important; border-right: 0 !important; } }
+/* + where the outer frame lines meet the header's bottom rule */
+.header .frame { position: relative; }
+.header .frame::before, .header .frame::after { content: "+"; position: absolute; bottom: -10px; font: 300 18px/1 var(--f-sans); color: var(--ink); pointer-events: none; z-index: 2; }
+.header .frame::before { left: -6px; }
+.header .frame::after { right: -6px; }
+@media (max-width: 1000px) { .gridlines span:nth-child(2), .gridlines span:nth-child(3) { display: none; } }
+/* Case overview: + where the image/overview divider meets the rules above and below */
+@media (min-width: 761px) {
+  .cs-overview { position: relative; }
+  .cs-overview::before, .cs-overview::after { content: "+"; position: absolute; left: calc(200% / 3 - 6px); font: 300 18px/1 var(--f-sans); color: var(--ink); pointer-events: none; z-index: 2; }
+  .cs-overview::before { top: -10px; }
+  .cs-overview::after { bottom: -8px; }
+}
