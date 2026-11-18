@@ -649,7 +649,7 @@ def home():
     steps = "".join(
         f'<div class="step"><div class="step-top"><span>{k}</span>{dots()}</div><div><h3>{t}</h3><p>{d}</p></div></div>'
         for k, t, d in STEPS)
-    works_fill = '<div class="work work-fill"><div class="fill-note"><span class="eyebrow">More work</span><p>Some of my work is under NDA, so it isn’t shown here. I’m happy to walk you through it on a call.</p><a class="view-case" href="https://calendly.com/donyarahmadi/30min" target="_blank" rel="noopener">BOOK A CALL →</a></div></div>' if len(WORKS) % 2 else ""
+    works_fill = '<div class="work work-fill"><div class="fill-note motto"><p><span>Every project here started with the same question:</span> how do you make something complex feel simple?</p></div></div>' if len(WORKS) % 2 else ""
     works = "".join(
         f'''<div class="work {side}"><a href="#{slug}">
       <div class="work-media"><img src="img/{img}" alt="{title} case study" loading="lazy"></div>
@@ -702,7 +702,6 @@ def home():
     <div class="cs-split"><div class="sticky"><span class="word l">Case</span><span class="word r">studies</span></div></div>
     <div class="works-head" id="work">
       <div><span class="eyebrow">Selected works <span class="count">(07)</span></span><h2>Complex products, made simple to use</h2></div>
-      <p>Every project here started with the same question: <b>how do you make something complex feel simple?</b></p>
     </div>
     <div class="works">{works}{works_fill}</div>
 

@@ -743,3 +743,10 @@ figcaption{max-width:62ch}
 .fill-note { max-width: 380px; padding: 40px 32px; background: var(--bg, #f8f6f1); text-align: left; }
 .fill-note p { margin: 16px 0 22px; font-size: 22px; line-height: 1.35; letter-spacing: -0.01em; }
 .fill-note .view-case:hover { color: var(--ink); }
+/* Empty works cell: no hatch pattern, just the words */
+.work-fill { background-image: none !important; }
+.fill-note { background: transparent !important; }
+.fill-note.motto p { margin: 0; font: 700 clamp(34px, 3.6vw, 56px)/1.05 var(--f-display); letter-spacing: -0.035em; color: var(--ink); }
+.fill-note.motto { max-width: 560px; }
+.fill-note.motto p { font-size: clamp(30px, 2.8vw, 44px); line-height: 1.1; }
+.fill-note.motto p span { color: var(--muted); }
