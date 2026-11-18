@@ -225,10 +225,22 @@ exam_body = f'''
 <div class="callout">The hard part wasn’t the exam. It was keeping <b>one exam consistent</b> across many courses, grading rules and students.</div>
 
 {h2("03 — My role and goal", "From the structure to the last error state")}
-<p>I was the UI/UX designer on the team responsible for the course domain. I designed the exam system end to end: the structure, the builder with AI, live proctoring, grading and the student side, for web and mobile, and prototyped every flow in Figma. I worked closely with the project manager, the backend and frontend developers and the other designers, from requirements to handoff, and built working prototypes of my designs in code with Claude Code.</p>
-<p><strong>The goal:</strong> write an exam once, run it anywhere, and keep the teacher in control, of the questions, the grade and every flag.</p>
+<p>I was the UI/UX designer on the course domain, and designed the exam system end to end, for web and mobile. I worked with the project manager, developers and other designers, and prototyped the flows in Figma and in code with Claude Code.</p>
+<p><strong>The goal:</strong> write an exam once, run it anywhere, and keep the teacher in control.</p>
 
-{h2("04 — Decision 1", "The exam lives outside the course")}
+{h2("04 — The process", "From teachers’ needs to every flow")}
+<p>The exam was a big feature, with many flows that affect each other. I started from the teachers, and mapped every flow before designing the screens.</p>
+{process(("Interviews", "One-to-one interviews with teachers on the platform: fair exams, control over when results are published, and monitoring 40 students at once."),
+         ("Exam and question types", "Defined the exam types (scheduled, non-scheduled and oral) and the question types they need."),
+         ("User journeys", "Mapped a journey for each role: the course coordinator in an organisation, the freelance teacher, and the student."),
+         ("Create", "Exam Collections, where the teacher builds the exam in the document builder, by hand or with AI."),
+         ("Add to a course", "The exam is added to a course, and the course coordinator sets its grading."),
+         ("Run and monitor", "The teacher runs the exam and monitors every student during it."),
+         ("Review and publish", "Open answers are reviewed by the teacher, or first by AI with the teacher approving, then results are published."),
+         ("Student side", "Students take each type of exam, receive their result, and can ask for a recheck."),
+         ("Performance", "Exam results come together with attendance in the performance module."))}
+
+{h2("05 — Decision 1", "The exam lives outside the course")}
 <p><strong>Solves:</strong> one exam turning into many drifting copies.</p>
 {opts(("no", "Exams inside courses, like most platforms.", "Fast to build, but five courses would mean five copies to maintain."),
       ("yes", "Exam Collections, outside any course.", "An exam is written once, and each course adds its own date, rules and grading scale."))}
@@ -236,28 +248,40 @@ exam_body = f'''
 {proto("Creating an exam inside a collection", "Click through how a teacher opens a collection and creates an exam there, outside any course.", "proto-create-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=3-62221&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A62221&show-proto-sidebar=1")}
 {proto("Creating an exam, with AI on mobile", "Start an exam, open Aladia AI, and generate questions from the platform’s books or write them yourself.", "proto-exam-mobile.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=57-96937&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=57%3A96937&show-proto-sidebar=1", tag="MOBILE PROTOTYPE")}
 
-{h2("05 — Decision 2", "The course decides the grade, not the exam")}
+{h2("06 — Decision 2", "The course decides the grade, not the exam")}
 <p><strong>Solves:</strong> the same exam running in courses graded 18–30, A+ to F or pass/fail.</p>
-{opts(("no", "Save the grading scale inside the exam.", "Every institution would need its own copy again."),
-      ("yes", "The exam only knows raw points.", "Each course sets its scale, pass mark, weights and which attempt counts."))}
+{opts(("no", "One grading scale for the whole platform.", "Too rigid: every organisation grades in its own way."),
+      ("no", "The grading scale saved inside the exam.", "Against the idea of reuse: every institution would need its own copy again."),
+      ("yes", "The course defines the score scale.", "The exam only knows raw points, and is scaled to the course’s scale, pass mark and weights. Every organisation keeps its own scale, and grading stays consistent inside each course."))}
+{proto("Adding an exam to a course", "Click through how the exam is added to a course, and how the course sets its date, rules and grading.", "proto-add-to-course.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=24-27782&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=24%3A27782&show-proto-sidebar=1")}
 {figs(("exam-09.jpg", "<b>Scheduling in a course.</b> The course adds date, time and proctoring on top of the shared exam."),
       ("exam-10.jpg", "<b>Course grading.</b> Change the scale once and every exam in the course rescales, without editing a question."))}
 
-{h2("06 — Decision 3", "Supervising 40 students without watching 40 screens")}
+{h2("07 — Decision 3", "Supervising 40 students without watching 40 screens")}
 <p><strong>Solves:</strong> one teacher, forty students at home, and no way to watch forty feeds.</p>
 {opts(("no", "One shared room for everyone.", "Students would see each other, and the teacher would get one long recording."),
       ("yes", "One breakout room per student, in one grid,", "created automatically, with rooms that need attention lighting up."))}
 {figs(("exam-13.jpg", "<b>Monitor Exam.</b> A teacher can’t scan forty rooms, but can react to the two or three that light up."),
       ("exam-17.jpg", "<b>Grading with AI.</b> AI suggests a score for open answers; the teacher accepts or changes it."))}
 <p><strong>The system flags, the human decides.</strong> A lost camera, a WiFi drop or leaving fullscreen each gets its own calm message, and is logged for the teacher. Nothing ends an exam automatically.</p>
+{proto("A live written exam, proctored and monitored", "The teacher starts the exam, students move into their own rooms, and every room is monitored.", "proto-proctor-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=34-206021&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=34%3A206172&show-proto-sidebar=1")}
+<p><strong>The student side.</strong> Students take each type of exam, receive their result when it is published, and can ask for a recheck.</p>
+{proto("Student: joining a scheduled exam", "How a student joins a scheduled exam at its set time, takes it and submits.", "proto-student-scheduled.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=44-101499&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=44%3A101499&show-proto-sidebar=1")}
 
-{h2("07 — The result", "A complete exam system, designed from nothing")}
+{h2("08 — The result", "A complete exam system, designed from nothing")}
 {metrics(("42%", "faster exam creation with the AI flow", "Maze usability test, 6 → 3.5 min on average"),
          ("1", "version of each exam, reused across every course", ""),
          ("40", "students supervised by one teacher in one view", ""))}
-<p><strong>How the 42% was measured:</strong> in a Maze usability test, participants did the same exam-creation task by hand and with Ask AI, and we compared the average time.</p>
-{proto("A live written exam, proctored and monitored", "The teacher starts the exam, students move into their own rooms, and every room is monitored.", "proto-proctor-1.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=34-206021&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=34%3A206172&show-proto-sidebar=1")}
-{proto("Student: joining a scheduled exam", "How a student joins a scheduled exam at its set time, takes it and submits.", "proto-student-scheduled.jpg", "https://www.figma.com/proto/V7itexfsk2WrTZHVXnbVie/Portflio-prototypes?node-id=44-101499&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=44%3A101499&show-proto-sidebar=1")}
+<p><strong>How the 42% was measured:</strong> we tested two versions of the document builder in Maze, the first without AI and the second with Ask AI. Participants did the same exam-creation task in both, and adding AI made it 42% faster on average.</p>
+{h2("09 — Performance", "From exam results to students who need attention")}
+<p>Attendance was already recorded on the platform, from live lessons and watched videos. With exam scores, the platform could show each student’s <strong>performance</strong> across courses and subjects.</p>
+{metrics(("30%", "of the performance score comes from attendance: live lessons and watched videos", ""),
+         ("70%", "comes from the average exam score", ""),
+         ("1", "performance view per student, course and subject", ""))}
+<p>Teachers can see who needs attention: a student who skips classes but scores high, or one who attends every lesson but struggles in exams. From the same view, the teacher sends feedback, and the student receives it.</p>
+{figs(("exam-performance.jpg", "<strong>Performance.</strong> The course registry lists every student’s attendance, score and performance. Opening one shows the trend by chapter, and the teacher can send feedback from here."), cls="one")}
+<div class="callout">Exams didn’t only grade students. Together with attendance, they showed teachers <b>where to help</b>.</div>
+
 <div class="learned reveal"><span class="kicker" style="color:#888">What I learned</span>
 <p class="big" data-words>It all traces back to one early decision: keeping the exam separate from the course.</p></div>
 '''
